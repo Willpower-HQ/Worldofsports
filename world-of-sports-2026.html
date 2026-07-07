@@ -310,7 +310,9 @@
     .bcar-row--3 .bcar-track { animation: marquee 36s linear infinite; }
     .bcar-row:hover .bcar-track { animation-play-state: paused; }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    .bcar-logo { display: block; height: 52px; width: auto; object-fit: contain; margin: 0 48px; opacity: .85; filter: brightness(0) invert(1); }
+    .bcar-item { display: inline-flex; flex-direction: column; align-items: center; gap: 7px; margin: 0 36px; flex-shrink: 0; }
+    .bcar-logo { display: block; height: 40px; width: 110px; object-fit: contain; opacity: .85; filter: brightness(0) invert(1); }
+    .bcar-name { font-family: var(--cond); font-size: 8px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.38); white-space: nowrap; line-height: 1; }
     .bcar-logo:hover { opacity: 1; }
     .bcar-sep { font-size: 10px; color: rgba(255,255,255,.12); padding: 0 4px; align-self: center; }
 
@@ -390,6 +392,18 @@
       background: linear-gradient(90deg, rgba(245,197,32,.4), transparent); pointer-events: none; }
     .pod-base { position: relative; }
 
+    .pod-flag-wrap { display: flex; padding: 0 20px 0; }
+    .pod-flag { display: flex; flex-direction: column; align-items: flex-start; }
+    .pod-flag__cloth { width: 76px; height: 44px; display: flex; align-items: center; justify-content: center; padding: 6px; border-radius: 2px 4px 4px 0; }
+    .pod-flag__pole { width: 3px; height: 28px; border-radius: 1px; }
+    .pod-flag__logo { max-width: 100%; max-height: 32px; object-fit: contain; filter: invert(1); opacity: .85; }
+    .podium-col--1 .pod-flag__cloth { background: rgba(212,175,55,.12); border: 1px solid rgba(212,175,55,.28); }
+    .podium-col--1 .pod-flag__pole { background: rgba(212,175,55,.5); }
+    .podium-col--2 .pod-flag__cloth { background: rgba(176,200,216,.08); border: 1px solid rgba(176,200,216,.22); }
+    .podium-col--2 .pod-flag__pole { background: rgba(176,200,216,.4); }
+    .podium-col--3 .pod-flag__cloth { background: rgba(196,106,26,.1); border: 1px solid rgba(196,106,26,.24); }
+    .podium-col--3 .pod-flag__pole { background: rgba(196,106,26,.4); }
+
     /* ━━━━ PAGE 3: AUDIENCE ━━━━ */
     .p3 { background: var(--ink); }
     .p3__inner { max-width: var(--max); margin: 0 auto; padding: 52px 40px 36px; display: flex; flex-direction: column; height: 100%; box-sizing: border-box; }
@@ -461,7 +475,9 @@
     .p4-car-row-logos::before { left: 0; background: linear-gradient(to right, var(--ink), transparent); }
     .p4-car-row-logos::after  { right: 0; background: linear-gradient(to left, var(--ink), transparent); }
     .p4-car-track { display: flex; align-items: center; gap: 0; width: max-content; }
-    .p4-car-logo { display: block; height: 36px; width: auto; object-fit: contain; margin: 0 36px; opacity: .8; flex-shrink: 0; }
+    .p4-logo-item { display: inline-flex; flex-direction: column; align-items: center; gap: 4px; margin: 0 26px; flex-shrink: 0; }
+    .p4-car-logo { display: block; height: 28px; width: 72px; object-fit: contain; opacity: .8; }
+    .p4-logo-name { font-family: var(--cond); font-size: 6.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.3); white-space: nowrap; line-height: 1; }
     .p4-car-logo:hover { opacity: 1; }
     .p4-car-row--iconic    .p4-car-track { animation: marquee 34s linear infinite; }
     .p4-car-row--enterprise .p4-car-track { animation: marquee 26s linear infinite reverse; }
@@ -489,6 +505,8 @@
     .p5-flag__text { font-size: 12px; color: rgba(255,255,255,.55); line-height: 1.5; flex: 1; }
     .p5-flag__logos { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
     .p5-logo { font-family: var(--cond); font-size: 8.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.35); white-space: nowrap; }
+    .p5-logo-img { display: block; height: 22px; width: auto; max-width: 90px; object-fit: contain; filter: brightness(0) invert(1); opacity: .7; }
+    .p5-flag:hover .p5-logo-img { opacity: 1; }
     .p5-flag--blue  .p5-flag__pole { background: #7baad4; }
     .p5-flag--blue  .p5-flag__head { color: #7baad4; }
     .p5-flag--red   .p5-flag__pole { background: #c94a4a; }
@@ -917,16 +935,16 @@
         <div class="bcar-label">Consumer Brands</div>
         <div class="bcar-row-logos">
           <div class="bcar-track">
-            <img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124177/willpower/logos/brand-higherdose.png" alt="HIGHERDOSE">
-            <img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124778/willpower/logos/sponsor-yeti-logo.png" alt="YETI">
-            <img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124192/willpower/logos/brand-huckberry.png" alt="Huckberry">
-            <img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124447/willpower/logos/brand-tecovas-logo.svg" alt="TECOVAS">
-            <img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124222/willpower/logos/brand-kendra-scott-hq.png" alt="Kendra Scott">
-            <img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124177/willpower/logos/brand-higherdose.png" alt="HIGHERDOSE">
-            <img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124778/willpower/logos/sponsor-yeti-logo.png" alt="YETI">
-            <img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124192/willpower/logos/brand-huckberry.png" alt="Huckberry">
-            <img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124447/willpower/logos/brand-tecovas-logo.svg" alt="TECOVAS">
-            <img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124222/willpower/logos/brand-kendra-scott-hq.png" alt="Kendra Scott">
+            <div class="bcar-item"><img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124177/willpower/logos/brand-higherdose.png" alt="HIGHERDOSE"><span class="bcar-name">HIGHERDOSE</span></div>
+            <div class="bcar-item"><img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124778/willpower/logos/sponsor-yeti-logo.png" alt="YETI"><span class="bcar-name">YETI</span></div>
+            <div class="bcar-item"><img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124192/willpower/logos/brand-huckberry.png" alt="Huckberry"><span class="bcar-name">Huckberry</span></div>
+            <div class="bcar-item"><img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124447/willpower/logos/brand-tecovas-logo.svg" alt="TECOVAS"><span class="bcar-name">TECOVAS</span></div>
+            <div class="bcar-item"><img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124222/willpower/logos/brand-kendra-scott-hq.png" alt="Kendra Scott"><span class="bcar-name">Kendra Scott</span></div>
+            <div class="bcar-item"><img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124177/willpower/logos/brand-higherdose.png" alt="HIGHERDOSE"><span class="bcar-name">HIGHERDOSE</span></div>
+            <div class="bcar-item"><img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124778/willpower/logos/sponsor-yeti-logo.png" alt="YETI"><span class="bcar-name">YETI</span></div>
+            <div class="bcar-item"><img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124192/willpower/logos/brand-huckberry.png" alt="Huckberry"><span class="bcar-name">Huckberry</span></div>
+            <div class="bcar-item"><img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124447/willpower/logos/brand-tecovas-logo.svg" alt="TECOVAS"><span class="bcar-name">TECOVAS</span></div>
+            <div class="bcar-item"><img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124222/willpower/logos/brand-kendra-scott-hq.png" alt="Kendra Scott"><span class="bcar-name">Kendra Scott</span></div>
           </div>
         </div>
       </div>
@@ -936,16 +954,16 @@
         <div class="bcar-label">Wellness Tech &amp; Innovation</div>
         <div class="bcar-row-logos">
           <div class="bcar-track">
-            <img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124522/willpower/logos/brand-whoop-logo.png" alt="WHOOP">
-            <img class="bcar-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://backcountry.com&size=256" alt="Backcountry" style="filter:invert(1);">
-            <img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124334/willpower/logos/brand-oura.png" alt="OURA">
-            <img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124254/willpower/logos/brand-kohler-logo.png" alt="KOHLER">
-            <img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783123972/willpower/logos/brand-ammortal-logo.svg" alt="Ammortal">
-            <img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124522/willpower/logos/brand-whoop-logo.png" alt="WHOOP">
-            <img class="bcar-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://backcountry.com&size=256" alt="Backcountry" style="filter:invert(1);">
-            <img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124334/willpower/logos/brand-oura.png" alt="OURA">
-            <img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124254/willpower/logos/brand-kohler-logo.png" alt="KOHLER">
-            <img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783123972/willpower/logos/brand-ammortal-logo.svg" alt="Ammortal">
+            <div class="bcar-item"><img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124522/willpower/logos/brand-whoop-logo.png" alt="WHOOP"><span class="bcar-name">WHOOP</span></div>
+            <div class="bcar-item"><img class="bcar-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://backcountry.com&size=256" alt="Backcountry" style="filter:invert(1);"><span class="bcar-name">Backcountry</span></div>
+            <div class="bcar-item"><img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124334/willpower/logos/brand-oura.png" alt="OURA"><span class="bcar-name">OURA</span></div>
+            <div class="bcar-item"><img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124254/willpower/logos/brand-kohler-logo.png" alt="KOHLER"><span class="bcar-name">KOHLER</span></div>
+            <div class="bcar-item"><img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783123972/willpower/logos/brand-ammortal-logo.svg" alt="Ammortal"><span class="bcar-name">Ammortal</span></div>
+            <div class="bcar-item"><img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124522/willpower/logos/brand-whoop-logo.png" alt="WHOOP"><span class="bcar-name">WHOOP</span></div>
+            <div class="bcar-item"><img class="bcar-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://backcountry.com&size=256" alt="Backcountry" style="filter:invert(1);"><span class="bcar-name">Backcountry</span></div>
+            <div class="bcar-item"><img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124334/willpower/logos/brand-oura.png" alt="OURA"><span class="bcar-name">OURA</span></div>
+            <div class="bcar-item"><img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124254/willpower/logos/brand-kohler-logo.png" alt="KOHLER"><span class="bcar-name">KOHLER</span></div>
+            <div class="bcar-item"><img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783123972/willpower/logos/brand-ammortal-logo.svg" alt="Ammortal"><span class="bcar-name">Ammortal</span></div>
           </div>
         </div>
       </div>
@@ -955,18 +973,18 @@
         <div class="bcar-label">Wellness Comm. Sports, Influencers &amp; Media</div>
         <div class="bcar-row-logos">
           <div class="bcar-track">
-            <img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124395/willpower/logos/brand-soho-house.png" alt="Soho House">
-            <img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124097/willpower/logos/brand-equinox-hq.png" alt="Equinox">
-            <img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124413/willpower/logos/brand-spurs-logo-white.svg" alt="Spurs">
-            <img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124126/willpower/logos/brand-flosports.png" alt="FloSports">
-            <img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124092/willpower/logos/brand-dolphins-logo.svg" alt="Miami Dolphins">
-            <img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783123985/willpower/logos/brand-austinfc-logo.png" alt="Austin FC">
-            <img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124395/willpower/logos/brand-soho-house.png" alt="Soho House">
-            <img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124097/willpower/logos/brand-equinox-hq.png" alt="Equinox">
-            <img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124413/willpower/logos/brand-spurs-logo-white.svg" alt="Spurs">
-            <img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124126/willpower/logos/brand-flosports.png" alt="FloSports">
-            <img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124092/willpower/logos/brand-dolphins-logo.svg" alt="Miami Dolphins">
-            <img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783123985/willpower/logos/brand-austinfc-logo.png" alt="Austin FC">
+            <div class="bcar-item"><img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124395/willpower/logos/brand-soho-house.png" alt="Soho House"><span class="bcar-name">Soho House</span></div>
+            <div class="bcar-item"><img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124097/willpower/logos/brand-equinox-hq.png" alt="Equinox"><span class="bcar-name">Equinox</span></div>
+            <div class="bcar-item"><img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124413/willpower/logos/brand-spurs-logo-white.svg" alt="Spurs"><span class="bcar-name">Spurs</span></div>
+            <div class="bcar-item"><img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124126/willpower/logos/brand-flosports.png" alt="FloSports"><span class="bcar-name">FloSports</span></div>
+            <div class="bcar-item"><img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124092/willpower/logos/brand-dolphins-logo.svg" alt="Miami Dolphins"><span class="bcar-name">Miami Dolphins</span></div>
+            <div class="bcar-item"><img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783123985/willpower/logos/brand-austinfc-logo.png" alt="Austin FC"><span class="bcar-name">Austin FC</span></div>
+            <div class="bcar-item"><img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124395/willpower/logos/brand-soho-house.png" alt="Soho House"><span class="bcar-name">Soho House</span></div>
+            <div class="bcar-item"><img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124097/willpower/logos/brand-equinox-hq.png" alt="Equinox"><span class="bcar-name">Equinox</span></div>
+            <div class="bcar-item"><img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124413/willpower/logos/brand-spurs-logo-white.svg" alt="Spurs"><span class="bcar-name">Spurs</span></div>
+            <div class="bcar-item"><img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124126/willpower/logos/brand-flosports.png" alt="FloSports"><span class="bcar-name">FloSports</span></div>
+            <div class="bcar-item"><img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124092/willpower/logos/brand-dolphins-logo.svg" alt="Miami Dolphins"><span class="bcar-name">Miami Dolphins</span></div>
+            <div class="bcar-item"><img class="bcar-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783123985/willpower/logos/brand-austinfc-logo.png" alt="Austin FC"><span class="bcar-name">Austin FC</span></div>
           </div>
         </div>
       </div>
@@ -982,6 +1000,12 @@
       <div class="podium-stage">
         <!-- P2 — left step -->
         <div class="podium-col podium-col--2">
+          <div class="pod-flag-wrap">
+            <div class="pod-flag">
+              <div class="pod-flag__cloth"><img class="pod-flag__logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783123972/willpower/logos/brand-ammortal-logo.svg" alt="Ammortal"></div>
+              <div class="pod-flag__pole"></div>
+            </div>
+          </div>
           <div class="pod-card">
             <div class="pod-card__watermark">2</div>
             <div class="pod-card__tag">02 — Flagship Suite</div>
@@ -992,6 +1016,12 @@
         </div>
         <!-- P1 — center, tallest step -->
         <div class="podium-col podium-col--1">
+          <div class="pod-flag-wrap">
+            <div class="pod-flag">
+              <div class="pod-flag__cloth"><img class="pod-flag__logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783123942/willpower/logos/brand-aescape-wordmark-white.svg" alt="Aescape"></div>
+              <div class="pod-flag__pole"></div>
+            </div>
+          </div>
           <div class="pod-card">
             <div class="pod-card__watermark">1</div>
             <div class="pod-card__tag">01 — Headline Moment</div>
@@ -1002,6 +1032,12 @@
         </div>
         <!-- P3 — right, shortest step -->
         <div class="podium-col podium-col--3">
+          <div class="pod-flag-wrap">
+            <div class="pod-flag">
+              <div class="pod-flag__cloth"><img class="pod-flag__logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124022/willpower/logos/brand-cadillac-f1-logo.png" alt="Cadillac"></div>
+              <div class="pod-flag__pole"></div>
+            </div>
+          </div>
           <div class="pod-card">
             <div class="pod-card__watermark">3</div>
             <div class="pod-card__tag">03 — Anchor Partner</div>
@@ -1103,38 +1139,38 @@
           </div>
           <div class="p4-car-row-logos">
           <div class="p4-car-track">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://lululemon.com&size=256" alt="Lululemon" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://gatorade.com&size=256" alt="Gatorade" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124364/willpower/logos/brand-redbull.png" alt="Red Bull" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://therabody.com&size=256" alt="Therabody" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://liquiddeath.com&size=256" alt="Liquid Death" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://on-running.com&size=256" alt="On" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://hoka.com&size=256" alt="Hoka" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://vuoriclothing.com&size=256" alt="Vuori" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://aloyoga.com&size=256" alt="Alo Yoga" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://gymshark.com&size=256" alt="Gymshark" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://eightsleep.com&size=256" alt="Eight Sleep" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://celsius.com&size=256" alt="Celsius" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://drinkprime.com&size=256" alt="Prime" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://skims.com&size=256" alt="Skims" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://livemomentous.com&size=256" alt="Momentous" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://liquid-iv.com&size=256" alt="Liquid I.V." style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://lululemon.com&size=256" alt="Lululemon" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://gatorade.com&size=256" alt="Gatorade" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124364/willpower/logos/brand-redbull.png" alt="Red Bull" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://therabody.com&size=256" alt="Therabody" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://liquiddeath.com&size=256" alt="Liquid Death" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://on-running.com&size=256" alt="On" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://hoka.com&size=256" alt="Hoka" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://vuoriclothing.com&size=256" alt="Vuori" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://aloyoga.com&size=256" alt="Alo Yoga" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://gymshark.com&size=256" alt="Gymshark" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://eightsleep.com&size=256" alt="Eight Sleep" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://celsius.com&size=256" alt="Celsius" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://drinkprime.com&size=256" alt="Prime" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://skims.com&size=256" alt="Skims" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://livemomentous.com&size=256" alt="Momentous" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://liquid-iv.com&size=256" alt="Liquid I.V." style="filter:invert(1);">
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://lululemon.com&size=256" alt="Lululemon" style="filter:invert(1);"><span class="p4-logo-name">Lululemon</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://gatorade.com&size=256" alt="Gatorade" style="filter:invert(1);"><span class="p4-logo-name">Gatorade</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124364/willpower/logos/brand-redbull.png" alt="Red Bull" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Red Bull</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://therabody.com&size=256" alt="Therabody" style="filter:invert(1);"><span class="p4-logo-name">Therabody</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://liquiddeath.com&size=256" alt="Liquid Death" style="filter:invert(1);"><span class="p4-logo-name">Liquid Death</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://on-running.com&size=256" alt="On" style="filter:invert(1);"><span class="p4-logo-name">On</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://hoka.com&size=256" alt="Hoka" style="filter:invert(1);"><span class="p4-logo-name">Hoka</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://vuoriclothing.com&size=256" alt="Vuori" style="filter:invert(1);"><span class="p4-logo-name">Vuori</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://aloyoga.com&size=256" alt="Alo Yoga" style="filter:invert(1);"><span class="p4-logo-name">Alo Yoga</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://gymshark.com&size=256" alt="Gymshark" style="filter:invert(1);"><span class="p4-logo-name">Gymshark</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://eightsleep.com&size=256" alt="Eight Sleep" style="filter:invert(1);"><span class="p4-logo-name">Eight Sleep</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://celsius.com&size=256" alt="Celsius" style="filter:invert(1);"><span class="p4-logo-name">Celsius</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://drinkprime.com&size=256" alt="Prime" style="filter:invert(1);"><span class="p4-logo-name">Prime</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://skims.com&size=256" alt="Skims" style="filter:invert(1);"><span class="p4-logo-name">Skims</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://livemomentous.com&size=256" alt="Momentous" style="filter:invert(1);"><span class="p4-logo-name">Momentous</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://liquid-iv.com&size=256" alt="Liquid I.V." style="filter:invert(1);"><span class="p4-logo-name">Liquid I.V.</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://lululemon.com&size=256" alt="Lululemon" style="filter:invert(1);"><span class="p4-logo-name">Lululemon</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://gatorade.com&size=256" alt="Gatorade" style="filter:invert(1);"><span class="p4-logo-name">Gatorade</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124364/willpower/logos/brand-redbull.png" alt="Red Bull" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Red Bull</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://therabody.com&size=256" alt="Therabody" style="filter:invert(1);"><span class="p4-logo-name">Therabody</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://liquiddeath.com&size=256" alt="Liquid Death" style="filter:invert(1);"><span class="p4-logo-name">Liquid Death</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://on-running.com&size=256" alt="On" style="filter:invert(1);"><span class="p4-logo-name">On</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://hoka.com&size=256" alt="Hoka" style="filter:invert(1);"><span class="p4-logo-name">Hoka</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://vuoriclothing.com&size=256" alt="Vuori" style="filter:invert(1);"><span class="p4-logo-name">Vuori</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://aloyoga.com&size=256" alt="Alo Yoga" style="filter:invert(1);"><span class="p4-logo-name">Alo Yoga</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://gymshark.com&size=256" alt="Gymshark" style="filter:invert(1);"><span class="p4-logo-name">Gymshark</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://eightsleep.com&size=256" alt="Eight Sleep" style="filter:invert(1);"><span class="p4-logo-name">Eight Sleep</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://celsius.com&size=256" alt="Celsius" style="filter:invert(1);"><span class="p4-logo-name">Celsius</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://drinkprime.com&size=256" alt="Prime" style="filter:invert(1);"><span class="p4-logo-name">Prime</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://skims.com&size=256" alt="Skims" style="filter:invert(1);"><span class="p4-logo-name">Skims</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://livemomentous.com&size=256" alt="Momentous" style="filter:invert(1);"><span class="p4-logo-name">Momentous</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://liquid-iv.com&size=256" alt="Liquid I.V." style="filter:invert(1);"><span class="p4-logo-name">Liquid I.V.</span></div>
           </div>
         </div>
         </div>
@@ -1146,36 +1182,36 @@
           </div>
           <div class="p4-car-row-logos">
           <div class="p4-car-track">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124334/willpower/logos/brand-oura.png" alt="Oura" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124522/willpower/logos/brand-whoop-logo.png" alt="Whoop" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124202/willpower/logos/brand-hyperice-logo.png" alt="Hyperice" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124778/willpower/logos/sponsor-yeti-logo.png" alt="Yeti" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783123947/willpower/logos/brand-ag1-hq.png" alt="AG1" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124104/willpower/logos/brand-estee-lauder-logo.svg" alt="Estée Lauder" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124487/willpower/logos/brand-trueclassic-logo.png" alt="True Classic" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://allbirds.com&size=256" alt="Allbirds" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124447/willpower/logos/brand-tecovas-logo.svg" alt="Tecovas" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124006/willpower/logos/brand-bloom-logo.svg" alt="Bloom" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124309/willpower/logos/brand-nutrabolt-logo.svg" alt="Nutrabolt" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124222/willpower/logos/brand-kendra-scott-hq.png" alt="Kendra Scott" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124342/willpower/logos/brand-poppi-logo.png" alt="Poppi" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124317/willpower/logos/brand-olipop-logo.png" alt="OLIPOP" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124022/willpower/logos/brand-cadillac-f1-logo.png" alt="Cadillac" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124334/willpower/logos/brand-oura.png" alt="Oura" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124522/willpower/logos/brand-whoop-logo.png" alt="Whoop" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124202/willpower/logos/brand-hyperice-logo.png" alt="Hyperice" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124778/willpower/logos/sponsor-yeti-logo.png" alt="Yeti" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783123947/willpower/logos/brand-ag1-hq.png" alt="AG1" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124104/willpower/logos/brand-estee-lauder-logo.svg" alt="Estée Lauder" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124487/willpower/logos/brand-trueclassic-logo.png" alt="True Classic" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://allbirds.com&size=256" alt="Allbirds" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124447/willpower/logos/brand-tecovas-logo.svg" alt="Tecovas" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124006/willpower/logos/brand-bloom-logo.svg" alt="Bloom" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124309/willpower/logos/brand-nutrabolt-logo.svg" alt="Nutrabolt" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124222/willpower/logos/brand-kendra-scott-hq.png" alt="Kendra Scott" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124342/willpower/logos/brand-poppi-logo.png" alt="Poppi" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124317/willpower/logos/brand-olipop-logo.png" alt="OLIPOP" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124022/willpower/logos/brand-cadillac-f1-logo.png" alt="Cadillac" style="filter:brightness(0) invert(1);">
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124334/willpower/logos/brand-oura.png" alt="Oura" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Oura</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124522/willpower/logos/brand-whoop-logo.png" alt="Whoop" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Whoop</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124202/willpower/logos/brand-hyperice-logo.png" alt="Hyperice" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Hyperice</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124778/willpower/logos/sponsor-yeti-logo.png" alt="Yeti" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Yeti</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783123947/willpower/logos/brand-ag1-hq.png" alt="AG1" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">AG1</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124104/willpower/logos/brand-estee-lauder-logo.svg" alt="Estée Lauder" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Estée Lauder</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124487/willpower/logos/brand-trueclassic-logo.png" alt="True Classic" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">True Classic</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://allbirds.com&size=256" alt="Allbirds" style="filter:invert(1);"><span class="p4-logo-name">Allbirds</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124447/willpower/logos/brand-tecovas-logo.svg" alt="Tecovas" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Tecovas</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124006/willpower/logos/brand-bloom-logo.svg" alt="Bloom" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Bloom</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124309/willpower/logos/brand-nutrabolt-logo.svg" alt="Nutrabolt" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Nutrabolt</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124222/willpower/logos/brand-kendra-scott-hq.png" alt="Kendra Scott" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Kendra Scott</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124342/willpower/logos/brand-poppi-logo.png" alt="Poppi" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Poppi</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124317/willpower/logos/brand-olipop-logo.png" alt="OLIPOP" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">OLIPOP</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124022/willpower/logos/brand-cadillac-f1-logo.png" alt="Cadillac" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Cadillac</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124334/willpower/logos/brand-oura.png" alt="Oura" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Oura</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124522/willpower/logos/brand-whoop-logo.png" alt="Whoop" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Whoop</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124202/willpower/logos/brand-hyperice-logo.png" alt="Hyperice" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Hyperice</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124778/willpower/logos/sponsor-yeti-logo.png" alt="Yeti" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Yeti</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783123947/willpower/logos/brand-ag1-hq.png" alt="AG1" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">AG1</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124104/willpower/logos/brand-estee-lauder-logo.svg" alt="Estée Lauder" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Estée Lauder</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124487/willpower/logos/brand-trueclassic-logo.png" alt="True Classic" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">True Classic</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://allbirds.com&size=256" alt="Allbirds" style="filter:invert(1);"><span class="p4-logo-name">Allbirds</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124447/willpower/logos/brand-tecovas-logo.svg" alt="Tecovas" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Tecovas</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124006/willpower/logos/brand-bloom-logo.svg" alt="Bloom" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Bloom</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124309/willpower/logos/brand-nutrabolt-logo.svg" alt="Nutrabolt" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Nutrabolt</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124222/willpower/logos/brand-kendra-scott-hq.png" alt="Kendra Scott" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Kendra Scott</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124342/willpower/logos/brand-poppi-logo.png" alt="Poppi" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Poppi</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124317/willpower/logos/brand-olipop-logo.png" alt="OLIPOP" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">OLIPOP</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124022/willpower/logos/brand-cadillac-f1-logo.png" alt="Cadillac" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Cadillac</span></div>
           </div>
         </div>
         </div>
@@ -1187,32 +1223,32 @@
           </div>
           <div class="p4-car-row-logos">
           <div class="p4-car-track">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124282/willpower/logos/brand-momofuku.png" alt="Momofuku" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://truff.com&size=256" alt="TRUFF" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://bpn.com&size=256" alt="BPN" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124035/willpower/logos/brand-catalinacrunch-logo.png" alt="Catalina Crunch" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://yellowbirdsauce.com&size=256" alt="Yellowbird" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124075/willpower/logos/brand-david-logo.png" alt="David" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124110/willpower/logos/brand-everydaydose-logo.png" alt="Everyday Dose" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124167/willpower/logos/brand-graza-logo.png" alt="Graza" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124240/willpower/logos/brand-kettlefire-logo.png" alt="Kettle &amp; Fire" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124722/willpower/logos/sponsor-supercoffee-logo-white.svg" alt="Super Coffee" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124247/willpower/logos/brand-kineuphorics-logo.png" alt="Kin Euphorics" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124484/willpower/logos/brand-tonys-hunter.png" alt="Tony's Chocolonely" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124349/willpower/logos/brand-promix-logo.png" alt="Promix" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124282/willpower/logos/brand-momofuku.png" alt="Momofuku" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://truff.com&size=256" alt="TRUFF" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://bpn.com&size=256" alt="BPN" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124035/willpower/logos/brand-catalinacrunch-logo.png" alt="Catalina Crunch" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://yellowbirdsauce.com&size=256" alt="Yellowbird" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124075/willpower/logos/brand-david-logo.png" alt="David" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124110/willpower/logos/brand-everydaydose-logo.png" alt="Everyday Dose" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124167/willpower/logos/brand-graza-logo.png" alt="Graza" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124240/willpower/logos/brand-kettlefire-logo.png" alt="Kettle &amp; Fire" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124722/willpower/logos/sponsor-supercoffee-logo-white.svg" alt="Super Coffee" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124247/willpower/logos/brand-kineuphorics-logo.png" alt="Kin Euphorics" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124484/willpower/logos/brand-tonys-hunter.png" alt="Tony's Chocolonely" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124349/willpower/logos/brand-promix-logo.png" alt="Promix" style="filter:brightness(0) invert(1);">
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124282/willpower/logos/brand-momofuku.png" alt="Momofuku" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Momofuku</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://truff.com&size=256" alt="TRUFF" style="filter:invert(1);"><span class="p4-logo-name">TRUFF</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://bpn.com&size=256" alt="BPN" style="filter:invert(1);"><span class="p4-logo-name">BPN</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124035/willpower/logos/brand-catalinacrunch-logo.png" alt="Catalina Crunch" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Catalina Crunch</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://yellowbirdsauce.com&size=256" alt="Yellowbird" style="filter:invert(1);"><span class="p4-logo-name">Yellowbird</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124075/willpower/logos/brand-david-logo.png" alt="David" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">David</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124110/willpower/logos/brand-everydaydose-logo.png" alt="Everyday Dose" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Everyday Dose</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124167/willpower/logos/brand-graza-logo.png" alt="Graza" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Graza</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124240/willpower/logos/brand-kettlefire-logo.png" alt="Kettle &amp; Fire" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Kettle &amp; Fire</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124722/willpower/logos/sponsor-supercoffee-logo-white.svg" alt="Super Coffee" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Super Coffee</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124247/willpower/logos/brand-kineuphorics-logo.png" alt="Kin Euphorics" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Kin Euphorics</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124484/willpower/logos/brand-tonys-hunter.png" alt="Tony's Chocolonely" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Tony's Chocolonely</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124349/willpower/logos/brand-promix-logo.png" alt="Promix" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Promix</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124282/willpower/logos/brand-momofuku.png" alt="Momofuku" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Momofuku</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://truff.com&size=256" alt="TRUFF" style="filter:invert(1);"><span class="p4-logo-name">TRUFF</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://bpn.com&size=256" alt="BPN" style="filter:invert(1);"><span class="p4-logo-name">BPN</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124035/willpower/logos/brand-catalinacrunch-logo.png" alt="Catalina Crunch" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Catalina Crunch</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://yellowbirdsauce.com&size=256" alt="Yellowbird" style="filter:invert(1);"><span class="p4-logo-name">Yellowbird</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124075/willpower/logos/brand-david-logo.png" alt="David" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">David</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124110/willpower/logos/brand-everydaydose-logo.png" alt="Everyday Dose" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Everyday Dose</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124167/willpower/logos/brand-graza-logo.png" alt="Graza" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Graza</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124240/willpower/logos/brand-kettlefire-logo.png" alt="Kettle &amp; Fire" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Kettle &amp; Fire</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124722/willpower/logos/sponsor-supercoffee-logo-white.svg" alt="Super Coffee" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Super Coffee</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124247/willpower/logos/brand-kineuphorics-logo.png" alt="Kin Euphorics" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Kin Euphorics</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124484/willpower/logos/brand-tonys-hunter.png" alt="Tony's Chocolonely" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Tony's Chocolonely</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124349/willpower/logos/brand-promix-logo.png" alt="Promix" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Promix</span></div>
           </div>
         </div>
         </div>
@@ -1224,28 +1260,28 @@
           </div>
           <div class="p4-car-row-logos">
           <div class="p4-car-track">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783123942/willpower/logos/brand-aescape-wordmark-white.svg" alt="Aescape" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783123972/willpower/logos/brand-ammortal-logo.svg" alt="Ammortal" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124376/willpower/logos/brand-rythmhealth-logo.png" alt="Rythm" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124112/willpower/logos/brand-evolv-logo.svg" alt="Evolv" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124433/willpower/logos/brand-supergut-logo.svg" alt="Supergut" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://superpower.com&size=256" alt="Superpower" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://hytro.com&size=256" alt="Hytro" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124301/willpower/logos/brand-neurable-logo.png" alt="Neurable" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://rallyrd.com&size=256" alt="Rally" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124205/willpower/logos/brand-hyrox-logo.svg" alt="Hyrox" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124509/willpower/logos/brand-vollebak-logo.png" alt="Vollebak" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783123942/willpower/logos/brand-aescape-wordmark-white.svg" alt="Aescape" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783123972/willpower/logos/brand-ammortal-logo.svg" alt="Ammortal" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124376/willpower/logos/brand-rythmhealth-logo.png" alt="Rythm" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124112/willpower/logos/brand-evolv-logo.svg" alt="Evolv" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124433/willpower/logos/brand-supergut-logo.svg" alt="Supergut" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://superpower.com&size=256" alt="Superpower" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://hytro.com&size=256" alt="Hytro" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124301/willpower/logos/brand-neurable-logo.png" alt="Neurable" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://rallyrd.com&size=256" alt="Rally" style="filter:invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124205/willpower/logos/brand-hyrox-logo.svg" alt="Hyrox" style="filter:brightness(0) invert(1);">
-            <img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124509/willpower/logos/brand-vollebak-logo.png" alt="Vollebak" style="filter:brightness(0) invert(1);">
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783123942/willpower/logos/brand-aescape-wordmark-white.svg" alt="Aescape" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Aescape</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783123972/willpower/logos/brand-ammortal-logo.svg" alt="Ammortal" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Ammortal</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124376/willpower/logos/brand-rythmhealth-logo.png" alt="Rythm" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Rythm</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124112/willpower/logos/brand-evolv-logo.svg" alt="Evolv" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Evolv</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124433/willpower/logos/brand-supergut-logo.svg" alt="Supergut" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Supergut</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://superpower.com&size=256" alt="Superpower" style="filter:invert(1);"><span class="p4-logo-name">Superpower</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://hytro.com&size=256" alt="Hytro" style="filter:invert(1);"><span class="p4-logo-name">Hytro</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124301/willpower/logos/brand-neurable-logo.png" alt="Neurable" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Neurable</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://rallyrd.com&size=256" alt="Rally" style="filter:invert(1);"><span class="p4-logo-name">Rally</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124205/willpower/logos/brand-hyrox-logo.svg" alt="Hyrox" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Hyrox</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124509/willpower/logos/brand-vollebak-logo.png" alt="Vollebak" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Vollebak</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783123942/willpower/logos/brand-aescape-wordmark-white.svg" alt="Aescape" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Aescape</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783123972/willpower/logos/brand-ammortal-logo.svg" alt="Ammortal" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Ammortal</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124376/willpower/logos/brand-rythmhealth-logo.png" alt="Rythm" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Rythm</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124112/willpower/logos/brand-evolv-logo.svg" alt="Evolv" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Evolv</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124433/willpower/logos/brand-supergut-logo.svg" alt="Supergut" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Supergut</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://superpower.com&size=256" alt="Superpower" style="filter:invert(1);"><span class="p4-logo-name">Superpower</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://hytro.com&size=256" alt="Hytro" style="filter:invert(1);"><span class="p4-logo-name">Hytro</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124301/willpower/logos/brand-neurable-logo.png" alt="Neurable" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Neurable</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://rallyrd.com&size=256" alt="Rally" style="filter:invert(1);"><span class="p4-logo-name">Rally</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124205/willpower/logos/brand-hyrox-logo.svg" alt="Hyrox" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Hyrox</span></div>
+            <div class="p4-logo-item"><img class="p4-car-logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124509/willpower/logos/brand-vollebak-logo.png" alt="Vollebak" style="filter:brightness(0) invert(1);"><span class="p4-logo-name">Vollebak</span></div>
           </div>
         </div>
         </div>
@@ -1274,10 +1310,10 @@
             <div class="p5-flag__head">Sponsorship Deals &amp; Partnerships</div>
             <div class="p5-flag__text">Connect Pro Sports, College Sports &amp; Motorsports teams with Wellness &amp; lifestyle consumer brands → Community to Cultural Impact</div>
             <div class="p5-flag__logos">
-              <span class="p5-logo">Spurs</span>
-              <span class="p5-logo">Nutrabolt</span>
-              <span class="p5-logo">WHOOP</span>
-              <span class="p5-logo">Austin FC</span>
+              <img class="p5-logo-img" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124413/willpower/logos/brand-spurs-logo-white.svg" alt="Spurs" style="filter:brightness(0) invert(1);">
+              <img class="p5-logo-img" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124309/willpower/logos/brand-nutrabolt-logo.svg" alt="Nutrabolt" style="filter:brightness(0) invert(1);">
+              <img class="p5-logo-img" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124522/willpower/logos/brand-whoop-logo.png" alt="WHOOP" style="filter:brightness(0) invert(1);">
+              <img class="p5-logo-img" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783123985/willpower/logos/brand-austinfc-logo.png" alt="Austin FC" style="filter:brightness(0) invert(1);">
             </div>
           </div>
         </div>
@@ -1288,9 +1324,9 @@
             <div class="p5-flag__head">Connecting Performance Brands w/ Solutions</div>
             <div class="p5-flag__text">Align Dual-Use innovators (Anduril, NVIDIA, startups) with Motorsports teams &amp; Defense Agencies (DIU, DHA, SOCOM, NASA) for problem set curation</div>
             <div class="p5-flag__logos">
-              <span class="p5-logo">Anduril</span>
-              <span class="p5-logo">Def. Innovation Unit</span>
-              <span class="p5-logo">Cadillac</span>
+              <img class="p5-logo-img" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://anduril.com&size=256" alt="Anduril" style="filter:invert(1);">
+              <img class="p5-logo-img" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124088/willpower/logos/brand-diu-logo.png" alt="Def. Innovation Unit" style="filter:brightness(0) invert(1);">
+              <img class="p5-logo-img" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124022/willpower/logos/brand-cadillac-f1-logo.png" alt="Cadillac" style="filter:brightness(0) invert(1);">
             </div>
           </div>
         </div>
@@ -1301,9 +1337,9 @@
             <div class="p5-flag__head">Connecting Brand Needs w/ Solutions</div>
             <div class="p5-flag__text">Match CMO/Founders with relevant tech and innovation platforms to spark growth</div>
             <div class="p5-flag__logos">
-              <span class="p5-logo">Klaviyo</span>
-              <span class="p5-logo">Shopify</span>
-              <span class="p5-logo">Power Digital</span>
+              <img class="p5-logo-img" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124615/willpower/logos/sponsor-klaviyo-logo.png" alt="Klaviyo" style="filter:brightness(0) invert(1);">
+              <img class="p5-logo-img" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124382/willpower/logos/brand-shopify-hq.png" alt="Shopify" style="filter:brightness(0) invert(1);">
+              <img class="p5-logo-img" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://powerdigital.com&size=256" alt="Power Digital" style="filter:invert(1);">
             </div>
           </div>
         </div>
@@ -1314,9 +1350,9 @@
             <div class="p5-flag__head">Brand Halo &amp; Cultural Elevation</div>
             <div class="p5-flag__text">Deliver premium experience, team presence, and content capture that lift brand perception and drive conversion</div>
             <div class="p5-flag__logos">
-              <span class="p5-logo">Cadillac</span>
-              <span class="p5-logo">F1</span>
-              <span class="p5-logo">Texas Longhorns</span>
+              <img class="p5-logo-img" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124022/willpower/logos/brand-cadillac-f1-logo.png" alt="Cadillac" style="filter:brightness(0) invert(1);">
+              <img class="p5-logo-img" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124129/willpower/logos/brand-formula1-logo.svg" alt="F1" style="filter:brightness(0) invert(1);">
+              <img class="p5-logo-img" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124500/willpower/logos/brand-utexas-logo.png" alt="Texas Longhorns" style="filter:brightness(0) invert(1);">
               <span class="p5-logo">F/I</span>
             </div>
           </div>
