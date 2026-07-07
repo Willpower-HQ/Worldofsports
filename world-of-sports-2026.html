@@ -646,8 +646,13 @@
       height: 100%; box-sizing: border-box; display: flex; flex-direction: column; }
     .p6__body { display: flex; gap: 40px; margin-top: 44px; align-items: stretch; justify-content: space-between; flex: 1; min-height: 0; }
     /* ── Pit board rows ── */
-    .ros { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
-    .ros-pages { position: relative; flex: 1; min-height: 0; overflow: hidden; }
+    /* align-self:flex-start so this column hugs its own content height instead of
+       stretching to match the taller film carousel — otherwise .ros-pages (which
+       has no in-flow content to size from, since its children are all absolutely
+       positioned for the crossfade) inherits that extra height as dead space
+       between the last schedule row and the toggle button below it. */
+    .ros { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 12px; align-self: flex-start; }
+    .ros-pages { position: relative; height: 366px; overflow: hidden; }
     .ros-page {
       position: absolute; inset: 0; display: flex; flex-direction: column; gap: 5px;
       opacity: 0; transform: translateX(24px); pointer-events: none;
@@ -802,7 +807,7 @@
 
     /* ━━━━ PAGE 8: SPONSORSHIP ━━━━ */
     .p8 { background: var(--deep); }
-    .p8__inner { max-width: var(--max); margin: 0 auto; padding: 72px 40px; position: relative; z-index: 2; }
+    .p8__inner { max-width: var(--max); margin: 0 auto; padding: 140px 40px 40px; position: relative; z-index: 2; }
     .sp-layout { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; margin-top: 60px; }
     .sp-tiers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; align-items: stretch; flex: 1; min-width: 0; }
     /* filmstrip carousel — height locked to match the tier cards so it can't force page scroll */
@@ -952,15 +957,15 @@
 
     /* ━━━━ PAGE 9: PAST EVENTS ━━━━ */
     .p9 { background: var(--ink); }
-    .p9__inner { max-width: var(--max); margin: 0 auto; padding: 72px 40px; position: relative; z-index: 2; }
+    .p9__inner { max-width: var(--max); margin: 0 auto; padding: 94px 40px 16px; position: relative; z-index: 2; }
     .p9__head { text-align: center; }
     .p9__head .label { justify-content: center; }
     /* ── Pit Stop Timeline ───────────────────────── */
-    .pit-circuit-wrap { position: relative; margin-top: 36px; }
+    .pit-circuit-wrap { position: relative; margin-top: 16px; }
     .pit-circuit-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; z-index: 0; }
     .circuit-car { position: absolute; top: 0; left: 0; width: 52px; height: 26px; z-index: 10; pointer-events: none; filter: drop-shadow(0 3px 8px rgba(0,0,0,.7)); transition: transform .85s cubic-bezier(.4,0,.2,1); }
     .circuit-car svg { width: 52px; height: 26px; }
-    .pit-track { display: flex; flex-direction: column; gap: 72px; }
+    .pit-track { display: flex; flex-direction: column; gap: 28px; }
     .pit-row { position: relative; display: grid; grid-template-columns: repeat(5,1fr); gap: 0; }
     .pit { position: relative; display: flex; flex-direction: column; align-items: center; padding: 0 8px; transition: opacity .35s, transform .35s; }
     .pit__num {
@@ -995,7 +1000,7 @@
     #pit-row-1 .pit--active .pit__line { background: linear-gradient(to top, var(--yellow), transparent); }
     #pit-row-1 .pit__card { transform: translateY(calc(-100% - 84px)); }
     #pit-row-1 .pit--active .pit__card { transform: translateY(calc(-100% - 84px)) scale(1.03); }
-    .pit__card { border: 1px solid var(--border); border-radius: var(--r); padding: 14px 13px; width: 100%; display: flex; flex-direction: column; gap: 6px; background: var(--card); transition: border-color .35s, transform .35s, box-shadow .35s; }
+    .pit__card { border: 1px solid var(--border); border-radius: var(--r); padding: 10px 12px; width: 100%; display: flex; flex-direction: column; gap: 6px; background: var(--card); transition: border-color .35s, transform .35s, box-shadow .35s; }
     .pit__series { font-family: var(--cond); font-size: 9px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--yellow); }
     .pit__title { font-family: var(--serif); font-size: 13px; font-weight: 500; color: var(--cream); line-height: 1.3; }
     .pit__meta { font-size: 10.5px; color: rgba(255,255,255,.3); }
