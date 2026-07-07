@@ -65,6 +65,18 @@
     /* Enter from left (going backward) */
     .page.from-above { transform: translateX(-40px); }
 
+    /* Shared background photo + dark overlay, behind streaks and content on every slide */
+    .page::before {
+      content: ''; position: absolute; inset: 0;
+      background: url('WH Thumbnails/bg-hero.png') center/cover no-repeat;
+      z-index: -2; pointer-events: none;
+    }
+    .page::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(8,9,14,.55) 0%, rgba(8,9,14,.8) 100%);
+      z-index: -1; pointer-events: none;
+    }
+
     /* ── Nav ─────────────────────────────────────── */
     .nav {
       position: sticky; top: 0; z-index: 200;
@@ -204,6 +216,27 @@
     .btn--red { background: var(--red); color: #fff; }
     .btn--red:hover { opacity: .88; transform: translateY(-1px); }
 
+    /* Hero action buttons — transparent with strong colored glow on hover */
+    .p1__actions .btn { border: 1.5px solid; transition: all .3s cubic-bezier(0.4,0,0.2,1); }
+    .p1__actions .btn--blue { background: transparent; color: var(--blue); border-color: rgba(123,170,212,.6); }
+    .p1__actions .btn--blue:hover { transform: translateY(-2px); background: rgba(123,170,212,.08); border-color: var(--blue);
+      box-shadow: 0 0 20px rgba(123,170,212,.85), 0 0 42px rgba(123,170,212,.55), 0 0 75px rgba(123,170,212,.3); }
+    .p1__actions .btn--ghost { background: transparent; color: var(--white); border-color: rgba(255,255,255,.4); }
+    .p1__actions .btn--ghost:hover { transform: translateY(-2px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.9);
+      box-shadow: 0 0 20px rgba(255,255,255,.75), 0 0 42px rgba(255,255,255,.45), 0 0 75px rgba(255,255,255,.25); }
+    .p1__actions .btn--red { background: transparent; color: #e88878; border-color: rgba(201,74,58,.6); }
+    .p1__actions .btn--red:hover { transform: translateY(-2px); background: rgba(201,74,58,.08); border-color: var(--red);
+      box-shadow: 0 0 20px rgba(201,74,58,.85), 0 0 42px rgba(201,74,58,.55), 0 0 75px rgba(201,74,58,.3); }
+
+    /* Closing CTA buttons — transparent with strong colored glow on hover */
+    .p10__actions .btn { border: 1.5px solid; transition: all .3s cubic-bezier(0.4,0,0.2,1); }
+    .p10__actions .btn--blue { background: transparent; color: var(--blue); border-color: rgba(123,170,212,.6); }
+    .p10__actions .btn--blue:hover { transform: translateY(-2px); background: rgba(123,170,212,.08); border-color: var(--blue);
+      box-shadow: 0 0 20px rgba(123,170,212,.85), 0 0 42px rgba(123,170,212,.55), 0 0 75px rgba(123,170,212,.3); }
+    .p10__actions .btn--red { background: transparent; color: #e88878; border-color: rgba(201,74,58,.6); }
+    .p10__actions .btn--red:hover { transform: translateY(-2px); background: rgba(201,74,58,.08); border-color: var(--red);
+      box-shadow: 0 0 20px rgba(201,74,58,.85), 0 0 42px rgba(201,74,58,.55), 0 0 75px rgba(201,74,58,.3); }
+
     /* Racing stripe — red, gap, yellow, gap, repeating */
     .stripe {
       height: 3px;
@@ -250,7 +283,7 @@
     /* ━━━━ PAGE 1: HERO ━━━━ */
     .p1 {
       min-height: 100vh; display: flex; flex-direction: column;
-      position: relative; overflow: hidden;
+      overflow: hidden;
       background: radial-gradient(ellipse 70% 50% at 65% 25%, rgba(123,170,212,0.08) 0%, transparent 55%), var(--ink);
     }
     .p1__body {
@@ -258,12 +291,7 @@
       padding: 40px 40px 100px; max-width: 1400px; margin: 0 auto; width: 100%;
       position: relative; z-index: 2;
     }
-    /* COTA circuit */
-    .p1__cota {
-      position: absolute; right: -10px; top: 5%; bottom: 5%;
-      width: 48%; opacity: .05; pointer-events: none;
-    }
-    .p1__eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; }
+    .p1__eyebrow { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 28px; }
     .p1__eyebrow-dash { width: 24px; height: 2px; background: var(--red); }
     .pill {
       font-family: var(--cond); font-size: 11px; font-weight: 700;
@@ -274,16 +302,17 @@
     .pill--red  { border: 1px solid var(--red-bdr); background: var(--red-dim); color: #e88878; }
     .p1__h1 {
       font-family: var(--serif); font-weight: 400;
-      font-size: clamp(56px, 9vw, 110px);
+      font-size: 95px;
       line-height: .95; color: var(--white); margin-bottom: 14px;
+      text-align: center;
     }
     .p1__h1 em { font-style: italic; color: var(--blue); }
-    .p1__sub { font-size: clamp(15px, 1.7vw, 18px); color: var(--muted); max-width: 500px; margin-bottom: 32px; font-weight: 300; }
+    .p1__sub { font-size: clamp(13px, 1.7vw, 18px); color: var(--muted); max-width: 1180px; margin: 0 auto 32px; font-weight: 300; text-align: center; align-self: center; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     .p1__sub em { font-style: italic; color: var(--blue); font-weight: 400; }
 
     /* Telemetry */
-    .telem { display: flex; flex-wrap: wrap; max-width: 680px; margin-bottom: 40px; border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
-    .tl { flex: 1; min-width: 130px; padding: 16px 20px; border-right: 1px solid var(--border); position: relative; }
+    .telem { display: flex; flex-wrap: wrap; width: 900px; max-width: 100%; margin: 0 auto 40px; border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
+    .tl { flex: 1; min-width: 170px; padding: 24px 28px; border-right: 1px solid var(--border); position: relative; }
     .tl:last-child { border-right: none; }
     .tl__lbl { font-size: 9.5px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 5px; }
     .tl__val { font-family: var(--serif); font-size: 28px; font-weight: 500; color: var(--white); line-height: 1; }
@@ -291,11 +320,11 @@
     .tl__val--red  { color: var(--red); }
     .tl__sub { font-size: 11px; color: rgba(255,255,255,0.3); margin-top: 3px; }
     .tl__dot { position: absolute; top: 10px; right: 10px; width: 5px; height: 5px; border-radius: 50%; background: var(--blue); animation: pulse 2s ease infinite; }
-    .p1__actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .p1__actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
 
     /* ━━━━ BLANK / BRAND CAROUSELS ━━━━ */
     .p-blank { background: var(--ink); display: flex; flex-direction: column; justify-content: center; padding: 0; }
-    .bcar-wrap { display: flex; flex-direction: column; justify-content: center; gap: 0; flex: 1; padding: 80px 0; box-sizing: border-box; }
+    .bcar-wrap { display: flex; flex-direction: column; justify-content: center; gap: 0; flex: 1; padding: 80px 0; box-sizing: border-box; position: relative; z-index: 2; }
     .bcar-row { position: relative; padding: 20px 0 24px; border-top: 1px solid rgba(255,255,255,.06); display: flex; flex-direction: column; gap: 14px; }
     .bcar-row:last-child { border-bottom: 1px solid rgba(255,255,255,.06); }
     .bcar-row-logos { overflow: hidden; position: relative; }
@@ -318,31 +347,70 @@
 
     /* ━━━━ PAGE 2: HEADLINERS ━━━━ */
     .p2 { background: var(--deep); }
-    .p2__inner { max-width: var(--max); margin: 0 auto; padding: 72px 40px; }
+    .p2__inner { max-width: var(--max); margin: 0 auto; padding: 72px 40px; position: relative; z-index: 2; }
+    .p2__inner h2.serif { text-align: center; max-width: 780px; margin: 0 auto; }
 
     /* Podium stage — cols bottom-aligned, card + step stacked in each col */
     .podium-stage { display: flex; align-items: flex-end; gap: 3px; margin-top: 44px; }
-    .podium-col { flex: 1; display: flex; flex-direction: column; }
+    .podium-col { flex: 1; display: flex; flex-direction: column; transition: flex .4s ease; cursor: pointer; }
 
     /* Card (same height for all three) */
-    .pod-card { background: var(--card); padding: 32px 24px; position: relative; overflow: hidden;
-      display: flex; flex-direction: column; justify-content: flex-end; height: 240px;
-      border-radius: var(--r) var(--r) 0 0; }
+    .pod-card { background: var(--card); padding: 30px 24px; position: relative; overflow: hidden;
+      display: flex; flex-direction: column; justify-content: flex-end; height: 260px;
+      border-radius: var(--r) var(--r) 0 0;
+      transition: transform .3s cubic-bezier(0.4,0,0.2,1), box-shadow .3s cubic-bezier(0.4,0,0.2,1), border-color .3s ease; }
+
+    /* Interactive expand/collapse — click a card to spotlight it and show its placeholder gallery */
+    .pod-card__gallery { display: none; gap: 4px; height: 130px; flex-shrink: 0; margin-top: 12px; }
+    .pod-card__gallery img { flex: 1; min-width: 0; height: 100%; object-fit: cover; display: block; border-radius: 6px; }
+    .podium-col.pod-active .pod-card { height: auto; min-height: 260px; }
+    .podium-col.pod-active .pod-card__gallery { display: flex; }
+    /* Whichever card is expanded rises to the #1 podium height — uniform spotlight, hierarchy still reads in the resting/collapsed state */
+    .podium-col.pod-active .pod-platform { height: 110px; transition: height .4s ease; }
+    .podium-col.pod-collapsed { flex: 0 0 64px; }
+    .podium-col.pod-collapsed .pod-card { padding: 16px 6px; align-items: center; justify-content: center; }
+    .podium-col.pod-collapsed .pod-card__tag,
+    .podium-col.pod-collapsed .pod-card__title,
+    .podium-col.pod-collapsed .pod-card__desc,
+    .podium-col.pod-collapsed .pod-card__gallery { display: none; }
+    .pod-collapsed .pod-card__watermark {
+      position: static; font-size: 34px; opacity: 1; line-height: 1;
+    }
+    .podium-col--1.pod-collapsed .pod-card__watermark { color: #e8c94a; }
+    .podium-col--2.pod-collapsed .pod-card__watermark { color: #c5dae8; }
+    .podium-col--3.pod-collapsed .pod-card__watermark { color: #d4854a; }
+    .podium-col--4.pod-collapsed .pod-card__watermark { color: #9ec3e6; }
     /* P1 — Gold: deep champagne glow */
-    .podium-col--1 .pod-card { background: radial-gradient(ellipse at 30% 0%, #1e1600 0%, #0d0a00 100%);
+    .podium-col--1 .pod-card { background: radial-gradient(ellipse at 30% 0%, rgba(30,22,0,.82) 0%, rgba(13,10,0,.9) 100%),
+      url('WH Thumbnails/pod-tom-brady.jpg') center/cover no-repeat;
       border: 1px solid rgba(212,175,55,.3); border-bottom: none; }
+    .podium-col--1 .pod-card:hover { transform: translateY(-8px); border-color: rgba(212,175,55,.8);
+      box-shadow: 0 12px 40px rgba(212,175,55,.25), 0 0 0 1px rgba(212,175,55,.2); }
     /* P2 — Silver: cool steel */
-    .podium-col--2 .pod-card { background: radial-gradient(ellipse at 30% 0%, #111820 0%, #080c10 100%);
+    .podium-col--2 .pod-card { background: radial-gradient(ellipse at 30% 0%, rgba(17,24,32,.82) 0%, rgba(8,12,16,.9) 100%),
+      url('WH Thumbnails/pod-longevity-lounge.jpg') center/cover no-repeat;
       border: 1px solid rgba(160,180,200,.18); border-bottom: none; }
+    .podium-col--2 .pod-card:hover { transform: translateY(-8px); border-color: rgba(176,200,216,.7);
+      box-shadow: 0 12px 40px rgba(176,200,216,.18), 0 0 0 1px rgba(176,200,216,.15); }
     /* P3 — Bronze: warm copper */
-    .podium-col--3 .pod-card { background: radial-gradient(ellipse at 30% 0%, #1a0d00 0%, #0c0700 100%);
+    .podium-col--3 .pod-card { background: radial-gradient(ellipse at 30% 0%, rgba(26,13,0,.82) 0%, rgba(12,7,0,.9) 100%),
+      url('WH Thumbnails/pod-cadillac-house.jpg') center/cover no-repeat;
       border: 1px solid rgba(180,100,30,.25); border-bottom: none; }
+    .podium-col--3 .pod-card:hover { transform: translateY(-8px); border-color: rgba(196,106,26,.8);
+      box-shadow: 0 12px 40px rgba(196,106,26,.22), 0 0 0 1px rgba(196,106,26,.18); }
+    /* P4 — Blue: cool access tier */
+    .podium-col--4 .pod-card { background: radial-gradient(ellipse at 30% 0%, rgba(14,26,36,.82) 0%, rgba(8,14,20,.9) 100%),
+      url('WH Thumbnails/pod-f1-paddock-club.jpg') center/cover no-repeat;
+      border: 1px solid rgba(123,170,212,.25); border-bottom: none; }
+    .podium-col--4 .pod-card:hover { transform: translateY(-8px); border-color: rgba(123,170,212,.75);
+      box-shadow: 0 12px 40px rgba(123,170,212,.2), 0 0 0 1px rgba(123,170,212,.16); }
 
     /* Glowing top accent line on each card */
     .pod-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
     .podium-col--1 .pod-card::before { background: linear-gradient(90deg, #d4af37 0%, rgba(212,175,55,.3) 60%, transparent); }
     .podium-col--2 .pod-card::before { background: linear-gradient(90deg, #b0c8d8 0%, rgba(176,200,216,.15) 60%, transparent); }
     .podium-col--3 .pod-card::before { background: linear-gradient(90deg, #c46a1a 0%, rgba(196,106,26,.2) 60%, transparent); }
+    .podium-col--4 .pod-card::before { background: linear-gradient(90deg, #7baad4 0%, rgba(123,170,212,.25) 60%, transparent); }
 
     /* Faded watermark number inside card */
     .pod-card__watermark { position: absolute; bottom: -16px; right: 4px; font-family: var(--serif);
@@ -350,6 +418,7 @@
     .podium-col--1 .pod-card__watermark { color: rgba(212,175,55,.07); }
     .podium-col--2 .pod-card__watermark { color: rgba(176,200,216,.05); }
     .podium-col--3 .pod-card__watermark { color: rgba(196,106,26,.07); }
+    .podium-col--4 .pod-card__watermark { color: rgba(123,170,212,.06); }
 
     .pod-card__tag { font-size: 9px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
       color: rgba(255,255,255,.22); margin-bottom: 10px; position: relative; z-index: 1; }
@@ -358,7 +427,8 @@
     .podium-col--1 .pod-card__title { color: #e8c94a; font-size: 25px; }
     .podium-col--2 .pod-card__title { color: #c5dae8; }
     .podium-col--3 .pod-card__title { color: #d4854a; }
-    .pod-card__desc { font-size: 12px; color: var(--muted); line-height: 1.65; position: relative; z-index: 1; }
+    .podium-col--4 .pod-card__title { color: #9ec3e6; }
+    .pod-card__desc { font-size: 12px; color: var(--muted); line-height: 1.6; position: relative; z-index: 1; }
 
     /* Platform / step block — heights create the stepped podium shape */
     .pod-platform { display: flex; align-items: center; justify-content: center; border-radius: 0 0 2px 2px; }
@@ -366,31 +436,23 @@
     .podium-col--1 .pod-platform { height: 110px;
       background: linear-gradient(180deg, rgba(212,175,55,.2) 0%, rgba(212,175,55,.06) 100%);
       border: 1px solid rgba(212,175,55,.35); border-top: 3px solid #d4af37; }
-    /* P2 — Silver platform, medium */
-    .podium-col--2 .pod-platform { height: 68px;
+    /* P2 — Silver platform */
+    .podium-col--2 .pod-platform { height: 72px;
       background: linear-gradient(180deg, rgba(176,200,216,.12) 0%, rgba(176,200,216,.03) 100%);
       border: 1px solid rgba(176,200,216,.2); border-top: 2px solid #b0c8d8; }
-    /* P3 — Bronze platform, shortest */
-    .podium-col--3 .pod-platform { height: 40px;
+    /* P3 — Bronze platform */
+    .podium-col--3 .pod-platform { height: 48px;
       background: linear-gradient(180deg, rgba(196,106,26,.18) 0%, rgba(196,106,26,.04) 100%);
       border: 1px solid rgba(196,106,26,.28); border-top: 2px solid #c46a1a; }
+    /* P4 — Blue platform, shortest */
+    .podium-col--4 .pod-platform { height: 28px;
+      background: linear-gradient(180deg, rgba(123,170,212,.16) 0%, rgba(123,170,212,.03) 100%);
+      border: 1px solid rgba(123,170,212,.25); border-top: 2px solid #7baad4; }
     .pod-platform__num { font-family: var(--cond); font-weight: 900; letter-spacing: -.02em; line-height: 1; }
     .podium-col--1 .pod-platform__num { font-size: 52px; color: rgba(212,175,55,.45); }
-    .podium-col--2 .pod-platform__num { font-size: 36px; color: rgba(176,200,216,.3); }
-    .podium-col--3 .pod-platform__num { font-size: 24px; color: rgba(196,106,26,.4); }
-
-    /* P4 — wide base card */
-    .pod-base { background: rgba(255,255,255,.02); border: 1px solid var(--border); border-radius: var(--r);
-      padding: 24px 32px; display: flex; gap: 36px; align-items: center; margin-top: 4px; }
-    .pod-base__num { font-family: var(--serif); font-size: 56px; font-weight: 700;
-      color: rgba(245,197,32,.12); line-height: 1; flex-shrink: 0; width: 72px; }
-    .pod-base__tag { font-size: 9px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
-      color: rgba(255,255,255,.22); margin-bottom: 8px; }
-    .pod-base__title { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--white); margin-bottom: 6px; }
-    .pod-base__desc { font-size: 12px; color: var(--muted); line-height: 1.65; }
-    .pod-base::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, rgba(245,197,32,.4), transparent); pointer-events: none; }
-    .pod-base { position: relative; }
+    .podium-col--2 .pod-platform__num { font-size: 38px; color: rgba(176,200,216,.3); }
+    .podium-col--3 .pod-platform__num { font-size: 28px; color: rgba(196,106,26,.4); }
+    .podium-col--4 .pod-platform__num { font-size: 18px; color: rgba(123,170,212,.4); }
 
     .pod-flag-wrap { display: flex; padding: 0 20px 0; }
     .pod-flag { display: flex; flex-direction: column; align-items: flex-start; }
@@ -406,19 +468,62 @@
 
     /* ━━━━ PAGE 3: AUDIENCE ━━━━ */
     .p3 { background: var(--ink); }
-    .p3__inner { max-width: var(--max); margin: 0 auto; padding: 52px 40px 36px; display: flex; flex-direction: column; height: 100%; box-sizing: border-box; }
-    .p3__head { margin-bottom: 32px; }
+    .p3__inner { max-width: var(--max); margin: 0 auto; padding: 52px 40px 36px; display: flex; flex-direction: column; height: 100%; box-sizing: border-box; position: relative; z-index: 2; }
+    .p3__head { margin-bottom: 32px; text-align: center; }
+    .p3__head .label { justify-content: center; }
     .p3__stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 2px; }
-    .p3-stat { background: var(--card); padding: 22px 32px; }
-    .p3-stat__val { font-family: var(--serif); font-size: 40px; font-weight: 500; color: var(--blue); line-height: 1; margin-bottom: 6px; }
-    .p3-stat__lbl { font-size: 11.5px; color: var(--muted); line-height: 1.4; }
+    /* brushed-metal finish, like an F1 chassis panel — real reflective-material texture, tinted back to the original navy */
+    .p3-stat, .p3-col {
+      border-radius: 10px; position: relative; overflow: hidden;
+      background-image: linear-gradient(135deg, rgba(15,17,30,.93) 0%, rgba(20,23,40,.9) 50%, rgba(13,15,26,.94) 100%),
+        url('WH Thumbnails/container-texture.jpg');
+      background-size: cover, cover;
+      background-position: center, center;
+      border-top: 1px solid rgba(255,255,255,.14);
+    }
+    /* metallic shine sweep — same effect as the sponsorship tier band, to highlight the headline stats */
+    .p3-stat::after {
+      content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background: linear-gradient(100deg, transparent 30%, rgba(255,255,255,.35) 48%, rgba(255,255,255,.35) 52%, transparent 70%);
+      background-size: 220% 100%;
+      animation: bandShine 5s ease-in-out infinite;
+      mix-blend-mode: overlay;
+    }
+    /* columns sit darker/more recessed so the 3 headline stats read as the highlight, plus a checkered texture like pages 5/6/7 */
+    .p3-col {
+      background-image: repeating-conic-gradient(rgba(255,255,255,.03) 0% 25%, transparent 0% 50%),
+        linear-gradient(135deg, rgba(8,9,16,.96) 0%, rgba(11,12,21,.94) 50%, rgba(7,8,14,.97) 100%),
+        url('WH Thumbnails/container-texture.jpg');
+      background-size: 10px 10px, cover, cover;
+      background-position: 0 0, center, center;
+    }
+    .p3-stat { padding: 22px 32px; border: 1px solid transparent; border-top: 1px solid rgba(255,255,255,.14);
+      transition: transform .3s cubic-bezier(0.4,0,0.2,1), box-shadow .3s cubic-bezier(0.4,0,0.2,1), border-color .3s ease, background .3s ease; }
+    .p3-stat:hover, .p3-stat.p3-sync { transform: translateY(-8px); background: var(--card2);
+      border-color: rgba(123,170,212,.65);
+      box-shadow: 0 16px 50px rgba(123,170,212,.3), 0 0 0 1px rgba(123,170,212,.2); }
+    .p3-stat__val { font-family: var(--serif); font-size: 40px; font-weight: 500; color: var(--blue); line-height: 1; margin-bottom: 6px;
+      position: relative; z-index: 1;
+      text-shadow: 0 0 14px rgba(123,170,212,.4), 0 0 0px rgba(123,170,212,0), 0 0 0px rgba(123,170,212,0);
+      transition: text-shadow .3s ease; }
+    .p3-stat:hover .p3-stat__val, .p3-stat.p3-sync .p3-stat__val {
+      text-shadow: 0 0 18px rgba(123,170,212,1), 0 0 36px rgba(123,170,212,.85), 0 0 64px rgba(123,170,212,.5); }
+    .p3-stat__lbl { font-size: 11.5px; color: var(--muted); line-height: 1.4; position: relative; z-index: 1; }
     .p3__cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; flex: 1; }
-    .p3-col { background: var(--card); padding: 24px 28px; display: flex; flex-direction: column; }
-    .p3-col__head { font-family: var(--cond); font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--blue); margin-bottom: 18px; line-height: 1; }
-    .p3-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 11px; }
-    .p3-col li { font-size: 13px; color: rgba(255,255,255,.72); line-height: 1.5; padding-left: 14px; position: relative; }
-    .p3-col li::before { content: '—'; position: absolute; left: 0; color: rgba(255,255,255,.2); font-size: 10px; top: 3px; }
+    .p3-col { padding: 24px 28px; display: flex; flex-direction: column;
+      border: 1px solid transparent; border-top: 1px solid rgba(255,255,255,.14);
+      transition: transform .3s cubic-bezier(0.4,0,0.2,1), box-shadow .3s cubic-bezier(0.4,0,0.2,1), border-color .3s ease, background .3s ease; }
+    .p3-col:hover, .p3-col.p3-sync { transform: translateY(-8px); background: var(--card2);
+      border-color: rgba(123,170,212,.5);
+      box-shadow: 0 12px 40px rgba(123,170,212,.2), 0 0 0 1px rgba(123,170,212,.15); }
+    .p3-col__head { font-family: var(--cond); font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--blue); margin-bottom: 18px; line-height: 1;
+      position: relative; z-index: 1; }
+    .p3-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 11px; position: relative; z-index: 1; }
+    .p3-col li { font-size: 13px; color: rgba(255,255,255,.72); line-height: 1.5; padding-left: 14px; position: relative; transition: color .3s ease; }
+    .p3-col li::before { content: '—'; position: absolute; left: 0; color: rgba(255,255,255,.2); font-size: 10px; top: 3px; transition: color .3s ease; }
     .p3-col li strong { color: var(--white); font-weight: 500; }
+    .p3-col:hover li, .p3-col.p3-sync li { color: rgba(255,255,255,.9); }
+    .p3-col:hover li::before, .p3-col.p3-sync li::before { color: var(--blue); }
     .p3__where { margin-top: 20px; font-size: 12.5px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
     .p3__where-label { font-family: var(--cond); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; font-size: 10px; color: rgba(255,255,255,.35); }
     .p3__where em { font-style: italic; color: rgba(255,255,255,.55); }
@@ -445,29 +550,45 @@
     .gw-tier--funded .gw-brand { font-size: 11px; color: rgba(255,255,255,.35); }
     /* ━━ p4 carousels ━━ */
     .p4 { display: flex; flex-direction: column; }
-    .p4__inner { max-width: var(--max); margin: 0 auto; padding: 52px 40px 36px; display: flex; flex-direction: column; flex: 1; box-sizing: border-box; width: 100%; }
-    .p4__head { margin-bottom: 28px; }
+    .p4__inner { max-width: var(--max); margin: 0 auto; padding: 52px 40px 36px; display: flex; flex-direction: column; flex: 1; box-sizing: border-box; width: 100%; position: relative; z-index: 2; }
+    .p4__head { margin-bottom: 28px; text-align: center; }
+    .p4__head .label { justify-content: center; }
+    .p4__head h2.serif { margin: 10px auto 10px; max-width: 950px; }
+    .p4__head .body-text { max-width: 900px; margin: 0 auto; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .p4-car-wrap { display: flex; flex-direction: column; gap: 0; flex: 1; justify-content: center; }
     .p4-car-row { display: flex; align-items: center; padding: 10px 0; border-top: 1px solid rgba(255,255,255,.06); }
     .p4-car-row:last-child { border-bottom: 1px solid rgba(255,255,255,.06); }
     /* tire label badge */
     .p4-car-label { flex: 0 0 170px; display: flex; align-items: center; justify-content: center; padding: 0 12px 0 0; }
-    .p4-tire { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 140px; height: 56px; border-radius: 28px; position: relative; overflow: hidden; }
+    .p4-tire { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 140px; height: 56px; border-radius: 28px; position: relative; overflow: hidden;
+      cursor: pointer; transition: transform .3s cubic-bezier(0.4,0,0.2,1), box-shadow .3s cubic-bezier(0.4,0,0.2,1), border-color .3s ease; }
     .p4-tire::before { content: ''; position: absolute; inset: 0; border-radius: 28px; background: repeating-linear-gradient(90deg, rgba(255,255,255,.04) 0px, rgba(255,255,255,.04) 2px, transparent 2px, transparent 10px); }
     .p4-tire::after { content: ''; position: absolute; inset: 5px; border-radius: 23px; background: var(--ink); }
-    .p4-tire__name { position: relative; z-index: 1; font-family: var(--cond); font-size: 12px; font-weight: 900; letter-spacing: .18em; text-transform: uppercase; line-height: 1; }
+    .p4-tire__name { position: relative; z-index: 1; font-family: var(--cond); font-size: 12px; font-weight: 900; letter-spacing: .18em; text-transform: uppercase; line-height: 1; transition: color .3s ease, text-shadow .3s ease; }
     .p4-tire__range { position: relative; z-index: 1; font-family: var(--cond); font-size: 7px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; margin-top: 3px; opacity: .6; }
     .p4-car-row--iconic   .p4-tire { border: 5px solid rgba(123,170,212,.5); box-shadow: 0 0 14px rgba(123,170,212,.08); }
     .p4-car-row--iconic   .p4-tire__name { color: rgba(123,170,212,.95); }
     .p4-car-row--iconic   .p4-tire__range { color: rgba(123,170,212,.7); }
+    .p4-car-row--iconic   .p4-tire:hover { transform: scale(1.1); border-color: #7baad4;
+      box-shadow: 0 0 14px rgba(123,170,212,.5), 0 0 28px rgba(123,170,212,.28), 0 0 44px rgba(123,170,212,.14); }
+    .p4-car-row--iconic   .p4-tire:hover .p4-tire__name { color: #cfe1f2; text-shadow: 0 0 7px rgba(123,170,212,.55); }
     .p4-car-row--enterprise .p4-tire { border: 5px solid rgba(201,74,74,.5); box-shadow: 0 0 14px rgba(201,74,74,.08); }
     .p4-car-row--enterprise .p4-tire__name { color: rgba(201,74,74,.95); }
     .p4-car-row--enterprise .p4-tire__range { color: rgba(201,74,74,.7); }
+    .p4-car-row--enterprise .p4-tire:hover { transform: scale(1.1); border-color: #c94a4a;
+      box-shadow: 0 0 14px rgba(201,74,74,.5), 0 0 28px rgba(201,74,74,.28), 0 0 44px rgba(201,74,74,.14); }
+    .p4-car-row--enterprise .p4-tire:hover .p4-tire__name { color: #f2c9c9; text-shadow: 0 0 7px rgba(201,74,74,.55); }
     .p4-car-row--growth   .p4-tire { border: 5px solid rgba(201,162,58,.45); box-shadow: 0 0 14px rgba(201,162,58,.08); }
     .p4-car-row--growth   .p4-tire__name { color: rgba(201,162,58,.95); }
     .p4-car-row--growth   .p4-tire__range { color: rgba(201,162,58,.7); }
+    .p4-car-row--growth   .p4-tire:hover { transform: scale(1.1); border-color: #c9a23a;
+      box-shadow: 0 0 14px rgba(201,162,58,.5), 0 0 28px rgba(201,162,58,.28), 0 0 44px rgba(201,162,58,.14); }
+    .p4-car-row--growth   .p4-tire:hover .p4-tire__name { color: #f2e4c0; text-shadow: 0 0 7px rgba(201,162,58,.55); }
     .p4-car-row--funded   .p4-tire { border: 5px solid rgba(255,255,255,.18); }
     .p4-car-row--funded   .p4-tire__name { color: rgba(255,255,255,.5); }
+    .p4-car-row--funded   .p4-tire:hover { transform: scale(1.1); border-color: rgba(255,255,255,.9);
+      box-shadow: 0 0 14px rgba(255,255,255,.4), 0 0 28px rgba(255,255,255,.2), 0 0 44px rgba(255,255,255,.1); }
+    .p4-car-row--funded   .p4-tire:hover .p4-tire__name { color: #fff; text-shadow: 0 0 7px rgba(255,255,255,.55); }
     .p4-car-row--funded   .p4-tire__range { color: rgba(255,255,255,.3); }
     /* brand text track */
     .p4-car-row-logos { flex: 1; overflow: hidden; position: relative; }
@@ -494,14 +615,22 @@
 
     /* ━━━━ PAGE 5: ACTIVATIONS ━━━━ */
     .p5 { background: #06080d; }
-    .p5__inner { max-width: var(--max); margin: 0 auto; padding: 52px 40px 40px; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; }
-    .p5__flags { display: flex; flex-direction: column; gap: 8px; flex: 1; margin-top: 32px; }
-    .p5-flag { flex: 1; display: flex; align-items: center; gap: 0; position: relative;
+    .p5__inner { max-width: var(--max); margin: 0 auto; padding: 52px 40px 40px; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; position: relative; z-index: 2; }
+    .p5__head { text-align: center; }
+    .p5__head .label { justify-content: center; }
+    .p5__head h2.p5__h2 { font-size: 50px; max-width: 1080px; margin-left: auto; margin-right: auto; }
+    .p5__flags { display: flex; flex-direction: column; gap: 8px; flex: 1; margin-top: 28px; justify-content: flex-start; }
+    .p5-flag { flex: 0 0 auto; display: flex; align-items: center; gap: 0; position: relative;
       clip-path: polygon(0 0, calc(100% - 40px) 0, 100% 50%, calc(100% - 40px) 100%, 0 100%); }
     .p5-flag__pole { width: 5px; align-self: stretch; flex-shrink: 0; }
-    .p5-flag__body { flex: 1; display: flex; align-items: center; gap: 28px; padding: 18px 72px 18px 20px; background: rgba(255,255,255,.04); }
-    .p5-flag:hover .p5-flag__body { background: rgba(255,255,255,.06); }
-    .p5-flag__head { font-family: var(--cond); font-size: 10.5px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; line-height: 1.3; flex: 0 0 220px; }
+    /* checkered background, same pattern + hover treatment as the page 6 schedule rows */
+    .p5-flag__body { flex: 1; display: flex; align-items: center; gap: 28px; padding: 18px 72px 18px 20px;
+      position: relative; overflow: hidden;
+      background: rgba(255,255,255,.03) repeating-conic-gradient(rgba(255,255,255,.03) 0% 25%, transparent 0% 50%) 0 0 / 10px 10px;
+      transition: background .25s; }
+    .p5-flag:hover .p5-flag__body { background: rgba(255,255,255,.055) repeating-conic-gradient(rgba(255,255,255,.045) 0% 25%, transparent 0% 50%) 0 0 / 10px 10px; }
+    .p5-flag__head, .p5-flag__text, .p5-flag__logos { position: relative; z-index: 1; }
+    .p5-flag__head { font-family: var(--cond); font-size: 16px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; line-height: 1.3; flex: 0 0 320px; }
     .p5-flag__text { font-size: 12px; color: rgba(255,255,255,.55); line-height: 1.5; flex: 1; }
     .p5-flag__logos { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
     .p5-logo { font-family: var(--cond); font-size: 8.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.35); white-space: nowrap; }
@@ -518,10 +647,32 @@
 
     /* ━━━━ PAGE 6: AGENDA ━━━━ */
     .p6 { background: var(--deep); }
-    .p6__inner { max-width: var(--max); margin: 0 auto; padding: 72px 40px; }
-    .p6__body { display: flex; gap: 40px; margin-top: 44px; align-items: flex-start; justify-content: space-between; }
+    .p6__inner { max-width: var(--max); margin: 0 auto; padding: 72px 40px; position: relative; z-index: 2;
+      height: 100%; box-sizing: border-box; display: flex; flex-direction: column; }
+    .p6__body { display: flex; gap: 40px; margin-top: 44px; align-items: stretch; justify-content: space-between; flex: 1; min-height: 0; }
     /* ── Pit board rows ── */
-    .ros { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px; }
+    .ros { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+    .ros-pages { position: relative; flex: 1; min-height: 0; overflow: hidden; }
+    .ros-page {
+      position: absolute; inset: 0; display: flex; flex-direction: column; gap: 5px;
+      opacity: 0; transform: translateX(24px); pointer-events: none;
+      transition: opacity .45s cubic-bezier(0.4,0,0.2,1), transform .45s cubic-bezier(0.4,0,0.2,1);
+    }
+    .ros-page.active { opacity: 1; transform: translateX(0); }
+    /* Only re-enable clicks when p6 itself is the visible page — otherwise this
+       invisible layer sits on top of whichever page is earlier in DOM order
+       (e.g. the podium cards) and silently steals their hover/click. */
+    .page.active .ros-page.active { pointer-events: auto; }
+    .ros-page.exiting { opacity: 0; transform: translateX(-24px); }
+    .ros__toggle {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      font-family: var(--cond); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--blue); background: rgba(123,170,212,.06); border: 1px solid rgba(123,170,212,.3);
+      border-radius: var(--r); padding: 12px 20px; cursor: pointer;
+      transition: all .25s ease;
+    }
+    .ros__toggle:hover { background: rgba(123,170,212,.12); border-color: rgba(123,170,212,.6);
+      box-shadow: 0 0 16px rgba(123,170,212,.2); }
     .rr { display: flex; align-items: stretch; border-radius: 7px; overflow: hidden; background: rgba(255,255,255,.03) repeating-conic-gradient(rgba(255,255,255,.03) 0% 25%, transparent 0% 50%) 0 0 / 10px 10px; transition: background .25s; }
     .rr:hover { background: rgba(255,255,255,.055) repeating-conic-gradient(rgba(255,255,255,.045) 0% 25%, transparent 0% 50%) 0 0 / 10px 10px; }
     .rr--hero { background: rgba(123,170,212,.07) repeating-conic-gradient(rgba(123,170,212,.07) 0% 25%, transparent 0% 50%) 0 0 / 10px 10px; border: 1px solid rgba(123,170,212,.18); }
@@ -538,7 +689,7 @@
     .rr__sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
     .p6-film-outer { display: flex; flex-direction: column; gap: 10px; margin-left: auto; flex-shrink: 0; align-items: flex-start; }
     .p6-film-label { font-family: var(--cond); font-size: 8px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.35); white-space: nowrap; }
-    .p6-film-wrap { width: 130px; flex-shrink: 0; border-radius: 8px; overflow: hidden; position: relative; }
+    .p6-film-wrap { width: 130px; flex: 1; min-height: 0; border-radius: 8px; overflow: hidden; position: relative; }
     .p6-film-wrap::before, .p6-film-wrap::after { content: ''; position: absolute; left: 0; right: 0; height: 60px; z-index: 2; pointer-events: none; }
     .p6-film-wrap::before { top: 0; background: linear-gradient(to bottom, var(--deep), transparent); }
     .p6-film-wrap::after  { bottom: 0; background: linear-gradient(to top, var(--deep), transparent); }
@@ -548,18 +699,20 @@
 
     /* ━━━━ PAGE 7: WEEKEND ━━━━ */
     .p7 { background: var(--ink); }
-    .p7__inner { max-width: var(--max); margin: 0 auto; padding: 72px 40px; }
+    .p7__inner { max-width: var(--max); margin: 0 auto; padding: 72px 40px; position: relative; z-index: 2; }
 
     .days {
-      display: grid; grid-template-columns: repeat(4,1fr); gap: 0;
-      margin-top: 52px; border-radius: var(--r); overflow: hidden;
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 4px;
+      margin-top: 52px;
     }
     .day {
       padding: 40px 28px 36px; position: relative; overflow: hidden;
-      border-right: 1px solid rgba(255,255,255,.04);
+      border-radius: 10px;
       min-height: 320px; display: flex; flex-direction: column; justify-content: flex-end;
+      cursor: pointer; transition: filter .3s ease, box-shadow .3s ease, transform .3s cubic-bezier(0.4,0,0.2,1);
+      transform: scale(.95); z-index: 0;
     }
-    .day:last-child { border-right: none; }
+    .day:hover { filter: brightness(1.15); transform: scale(1); z-index: 1; }
 
     /* big watermark date */
     .day__num {
@@ -569,7 +722,7 @@
     }
 
     /* ── Summit ── deep blue radial glow */
-    .day--summit { background: radial-gradient(ellipse at 35% 0%, #0d2a5e 0%, #060e1e 100%); }
+    .day--summit { background: repeating-conic-gradient(rgba(255,255,255,.03) 0% 25%, transparent 0% 50%) 0 0 / 10px 10px, radial-gradient(ellipse at 35% 0%, #0d2a5e 0%, #060e1e 100%); }
     .day--summit::before {
       content: ''; position: absolute; inset: 0;
       background: radial-gradient(ellipse at 40% 15%, rgba(123,170,212,.1) 0%, transparent 60%);
@@ -577,10 +730,13 @@
     .day--summit::after {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
       background: linear-gradient(90deg, transparent, var(--blue), transparent);
+      transition: box-shadow .3s ease;
     }
+    .day--summit:hover { box-shadow: inset 0 0 70px rgba(123,170,212,.3), inset 0 0 0 1px rgba(123,170,212,.4); }
+    .day--summit:hover::after { box-shadow: 0 0 16px rgba(123,170,212,.8); }
 
     /* ── Paddock ── motion-blur speed lines */
-    .day--paddock { background: linear-gradient(160deg, #111 0%, #080808 100%); }
+    .day--paddock { background: repeating-conic-gradient(rgba(255,255,255,.03) 0% 25%, transparent 0% 50%) 0 0 / 10px 10px, linear-gradient(160deg, #111 0%, #080808 100%); }
     .day--paddock::before {
       content: ''; position: absolute; inset: 0;
       background: repeating-linear-gradient(
@@ -593,11 +749,14 @@
     .day--paddock::after {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
       background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
+      transition: box-shadow .3s ease;
     }
+    .day--paddock:hover { box-shadow: inset 0 0 70px rgba(255,255,255,.14), inset 0 0 0 1px rgba(255,255,255,.25); }
+    .day--paddock:hover::after { box-shadow: 0 0 16px rgba(255,255,255,.6); }
     @keyframes speedLines { from { background-position: 0 0; } to { background-position: 80px 0; } }
 
     /* ── Qualifying ── electric amber glow */
-    .day--quali { background: radial-gradient(ellipse at 50% 0%, #1c1200 0%, #090700 100%); }
+    .day--quali { background: repeating-conic-gradient(rgba(255,255,255,.03) 0% 25%, transparent 0% 50%) 0 0 / 10px 10px, radial-gradient(ellipse at 50% 0%, #1c1200 0%, #090700 100%); }
     .day--quali::before {
       content: ''; position: absolute; inset: 0;
       background: radial-gradient(ellipse at 50% -5%, rgba(220,160,20,.14) 0%, transparent 55%);
@@ -605,10 +764,13 @@
     .day--quali::after {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
       background: linear-gradient(90deg, transparent, #d4a017, transparent);
+      transition: box-shadow .3s ease;
     }
+    .day--quali:hover { box-shadow: inset 0 0 70px rgba(212,160,23,.3), inset 0 0 0 1px rgba(212,160,23,.4); }
+    .day--quali:hover::after { box-shadow: 0 0 16px rgba(212,160,23,.8); }
 
     /* ── Race Day ── dramatic red + checkered */
-    .day--race { background: radial-gradient(ellipse at 35% 0%, #2d0808 0%, #0a0404 100%); }
+    .day--race { background: repeating-conic-gradient(rgba(255,255,255,.03) 0% 25%, transparent 0% 50%) 0 0 / 10px 10px, radial-gradient(ellipse at 35% 0%, #2d0808 0%, #0a0404 100%); }
     .day--race::before {
       content: ''; position: absolute; inset: 0;
       background:
@@ -619,7 +781,10 @@
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
       background: linear-gradient(90deg, transparent, #c0392b, rgba(255,80,60,.8), transparent);
       box-shadow: 0 0 12px rgba(192,57,43,.6);
+      transition: box-shadow .3s ease;
     }
+    .day--race:hover { box-shadow: inset 0 0 70px rgba(192,57,43,.32), inset 0 0 0 1px rgba(192,57,43,.4); }
+    .day--race:hover::after { box-shadow: 0 0 20px rgba(192,57,43,.9); }
 
     .day__date { font-size: 10px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.22); margin-bottom: 8px; position: relative; z-index: 1; }
     .day__name { font-family: var(--serif); font-size: 26px; font-weight: 500; color: var(--white); margin-bottom: 10px; position: relative; z-index: 1; }
@@ -636,19 +801,19 @@
     .day--summit .day__tag { border-color: rgba(123,170,212,.3); color: var(--blue); background: var(--bluedim); }
     .day--quali  .day__tag { border-color: rgba(212,160,23,.3); color: #d4a017; background: rgba(30,20,0,.5); }
     .day--race   .day__tag { border-color: rgba(192,57,43,.35); color: #e57373; background: rgba(45,8,8,.6); }
-    .day__desc { font-size: 13px; color: var(--muted); line-height: 1.65; position: relative; z-index: 1; }
+    .day__desc { font-size: 13px; color: var(--muted); line-height: 1.65; position: relative; z-index: 1; min-height: 86px; }
     @media (max-width: 768px) { .days { grid-template-columns: 1fr 1fr; min-height: 0; } }
     @media (max-width: 480px) { .days { grid-template-columns: 1fr; } }
 
     /* ━━━━ PAGE 8: SPONSORSHIP ━━━━ */
     .p8 { background: var(--deep); }
-    .p8__inner { max-width: var(--max); margin: 0 auto; padding: 72px 40px; }
-    .sp-layout { display: flex; align-items: flex-start; justify-content: space-between; margin-top: 40px; }
-    .sp-tiers { display: grid; grid-template-columns: repeat(4, 175px); gap: 20px; align-items: start; flex-shrink: 0; }
-    /* filmstrip carousel */
-    .sp-filmstrip-wrap { width: 130px; flex-shrink: 0; border-radius: 8px; overflow: hidden; position: relative; margin-left: auto; }
+    .p8__inner { max-width: var(--max); margin: 0 auto; padding: 72px 40px; position: relative; z-index: 2; }
+    .sp-layout { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; margin-top: 60px; }
+    .sp-tiers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; align-items: stretch; flex: 1; min-width: 0; }
+    /* filmstrip carousel — height locked to match the tier cards so it can't force page scroll */
+    .sp-filmstrip-wrap { width: 130px; height: 341px; flex-shrink: 0; border-radius: 8px; overflow: hidden; position: relative; }
     .sp-filmstrip-wrap::before,
-    .sp-filmstrip-wrap::after { content: ''; position: absolute; left: 0; right: 0; height: 60px; z-index: 2; pointer-events: none; }
+    .sp-filmstrip-wrap::after { content: ''; position: absolute; left: 0; right: 0; height: 50px; z-index: 2; pointer-events: none; }
     .sp-filmstrip-wrap::before { top: 0; background: linear-gradient(to bottom, var(--deep), transparent); }
     .sp-filmstrip-wrap::after  { bottom: 0; background: linear-gradient(to top, var(--deep), transparent); }
     .sp-filmstrip { display: flex; flex-direction: column; gap: 6px; animation: filmScroll 12s linear infinite; }
@@ -657,40 +822,6 @@
     .sp-filmstrip .paddock-frame { height: 110px; border-radius: 6px; flex-shrink: 0; }
     .sp-filmstrip .paddock-frame img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(.78) contrast(1.08); transition: filter .3s; }
     .sp-filmstrip .paddock-frame:hover img { filter: brightness(1) contrast(1.1); }
-    .spt-wrap { display: flex; flex-direction: column; align-items: center; }
-    .lanyard--title    { background: linear-gradient(180deg,#1a2a4a,#0e1a30); border-color: rgba(123,170,212,.3) !important; }
-    .lanyard--title span { color: #7baad4; }
-    .lanyard--platinum { background: linear-gradient(180deg,#252d38,#161c24); }
-    .lanyard--platinum span { color: #c0d0e0; }
-    .lanyard--gold     { background: linear-gradient(180deg,#2a1e08,#1a1205); }
-    .lanyard--gold span { color: #c8941a; }
-    .lanyard--silver   { background: linear-gradient(180deg,#242424,#161616); }
-    .lanyard--silver span { color: #909898; }
-    .lanyard {
-      width: 62px; height: 130px;
-      background: var(--ink);
-      border-left: 1px solid rgba(255,255,255,.1);
-      border-right: 1px solid rgba(255,255,255,.1);
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden; flex-shrink: 0;
-      writing-mode: vertical-rl;
-      text-orientation: mixed;
-    }
-    .lanyard img {
-      display: none;
-    }
-    .lanyard span {
-      font-family: var(--serif);
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: .18em;
-      color: rgba(255,255,255,.75);
-      text-transform: uppercase;
-      writing-mode: vertical-rl;
-      text-orientation: mixed;
-      transform: rotate(180deg);
-      white-space: nowrap;
-    }
     .spt {
       background: var(--card);
       border: 1px solid var(--border);
@@ -700,7 +831,18 @@
       display: flex; flex-direction: column; gap: 0;
       overflow: hidden;
       box-shadow: 0 16px 48px rgba(0,0,0,.5);
+      transition: transform .3s cubic-bezier(0.4,0,0.2,1), box-shadow .3s ease, border-color .3s ease;
     }
+    .spt:hover { transform: translateY(-6px); }
+    /* resting ambient glow — subtle, matching tier metal; intensifies on hover */
+    .spt--title    { box-shadow: 0 16px 48px rgba(0,0,0,.5), 0 0 22px rgba(123,170,212,.1), inset 0 0 0 1px rgba(123,170,212,.12); }
+    .spt--platinum { box-shadow: 0 16px 48px rgba(0,0,0,.5), 0 0 22px rgba(210,215,220,.08), inset 0 0 0 1px rgba(210,215,220,.1); }
+    .spt--gold     { box-shadow: 0 16px 48px rgba(0,0,0,.5), 0 0 22px rgba(200,148,26,.1), inset 0 0 0 1px rgba(200,148,26,.12); }
+    .spt--silver   { box-shadow: 0 16px 48px rgba(0,0,0,.5), 0 0 22px rgba(180,190,195,.08), inset 0 0 0 1px rgba(180,190,195,.1); }
+    .spt--title:hover { border-color: rgba(123,170,212,.7); box-shadow: 0 20px 56px rgba(0,0,0,.5), 0 0 44px rgba(123,170,212,.35), inset 0 0 40px rgba(123,170,212,.1); }
+    .spt--platinum:hover { border-color: rgba(210,215,220,.6); box-shadow: 0 20px 56px rgba(0,0,0,.5), 0 0 44px rgba(210,215,220,.3), inset 0 0 40px rgba(210,215,220,.1); }
+    .spt--gold:hover { border-color: rgba(200,148,26,.7); box-shadow: 0 20px 56px rgba(0,0,0,.5), 0 0 44px rgba(200,148,26,.35), inset 0 0 40px rgba(200,148,26,.1); }
+    .spt--silver:hover { border-color: rgba(180,190,195,.6); box-shadow: 0 20px 56px rgba(0,0,0,.5), 0 0 44px rgba(180,190,195,.3), inset 0 0 40px rgba(180,190,195,.1); }
     /* gloss shine overlay */
     .spt::after {
       content: '';
@@ -713,46 +855,85 @@
         transparent 100%);
       pointer-events: none;
       border-radius: 10px 10px 0 0;
+      z-index: 0;
     }
     .spt--platinum::after { background: linear-gradient(160deg, rgba(255,255,255,.14) 0%, rgba(255,255,255,.06) 40%, transparent 100%); }
     .spt--gold::after     { background: linear-gradient(160deg, rgba(255,210,80,.12)  0%, rgba(255,180,40,.05)  40%, transparent 100%); }
     .spt--silver::after   { background: linear-gradient(160deg, rgba(220,225,230,.10) 0%, rgba(200,210,215,.04) 40%, transparent 100%); }
 
     .spt__band {
-      height: 26px; width: 100%;
+      height: 28px; width: 100%; position: relative; z-index: 1; overflow: hidden;
       display: flex; align-items: center;
-      overflow: hidden; white-space: nowrap;
+      white-space: nowrap;
       font-family: var(--cond); font-size: 8px; font-weight: 900;
-      letter-spacing: .16em; text-transform: uppercase; padding: 0 8px;
+      letter-spacing: .2em; text-transform: uppercase; padding: 0 8px;
     }
+    .spt__band::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(100deg, transparent 30%, rgba(255,255,255,.45) 48%, rgba(255,255,255,.45) 52%, transparent 70%);
+      background-size: 220% 100%;
+      animation: bandShine 5s ease-in-out infinite;
+      mix-blend-mode: overlay;
+    }
+    @keyframes bandShine { 0%, 40% { background-position: 130% 0; } 100% { background-position: -30% 0; } }
     .spt--title    .spt__band { background: linear-gradient(90deg, #0e3a6e, #7baad4, #0e3a6e); color: rgba(255,255,255,.7); }
     .spt--platinum .spt__band { background: linear-gradient(90deg, #909aa0, #e8ecee, #909aa0); color: rgba(20,20,20,.55); }
     .spt--gold     .spt__band { background: linear-gradient(90deg, #c8941a, #f0c040, #c8941a); color: rgba(30,20,0,.55); }
     .spt--silver   .spt__band { background: linear-gradient(90deg, #606868, #c0c8c8, #606868); color: rgba(20,20,20,.5); }
 
-    .spt--platinum { background: #0e0f10; border-color: rgba(210,215,220,.25); }
+    .spt--platinum {
+      background-image: linear-gradient(135deg, rgba(24,26,29,.985) 0%, rgba(14,15,16,.995) 100%), url('WH Thumbnails/container-texture.jpg');
+      background-size: cover, cover; background-position: center, center;
+      border-color: rgba(210,215,220,.25);
+    }
     .spt--platinum .spt__price { color: #d8dde0; }
-    .spt--platinum .spt__badge { color: #d8dde0; }
+    .spt--platinum .spt__badge { color: #d8dde0; border-color: rgba(210,215,220,.35); background: rgba(210,215,220,.08); }
 
-    .spt--gold { background: #1a1508; border-color: rgba(200,148,26,.3); }
+    .spt--gold {
+      background-image: linear-gradient(135deg, rgba(34,27,10,.985) 0%, rgba(26,21,8,.995) 100%), url('WH Thumbnails/container-texture.jpg');
+      background-size: cover, cover; background-position: center, center;
+      border-color: rgba(200,148,26,.3);
+    }
     .spt--gold .spt__price { color: #c8941a; }
-    .spt--gold .spt__badge { color: #c8941a; }
+    .spt--gold .spt__badge { color: #c8941a; border-color: rgba(200,148,26,.4); background: rgba(200,148,26,.08); }
 
-    .spt--silver { background: #111314; border-color: rgba(180,190,195,.25); }
+    .spt--silver {
+      background-image: linear-gradient(135deg, rgba(22,24,26,.985) 0%, rgba(17,19,20,.995) 100%), url('WH Thumbnails/container-texture.jpg');
+      background-size: cover, cover; background-position: center, center;
+      border-color: rgba(180,190,195,.25);
+    }
     .spt--silver .spt__price { color: #b8c4c8; }
-    .spt--silver .spt__badge { color: #b8c4c8; }
-    .spt__body { padding: 14px 16px 20px; display: flex; flex-direction: column; gap: 10px; }
+    .spt--silver .spt__badge { color: #b8c4c8; border-color: rgba(180,190,195,.35); background: rgba(180,190,195,.08); }
+    .spt__body { padding: 16px 18px 22px; display: flex; flex-direction: column; gap: 11px; flex: 1; min-height: 0; position: relative; z-index: 1; }
     .spt__credential { font-family: var(--cond); font-size: 8px; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.2); }
-    .spt--title { background: #071828; border-color: rgba(123,170,212,.3); }
-    .spt__badge { font-size: 10px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.25); }
-    .spt--title .spt__badge { color: var(--blue); }
-    .spt__price { font-family: var(--serif); font-size: 28px; font-weight: 500; color: var(--white); line-height: 1; }
+    .spt--title {
+      background-image: linear-gradient(135deg, rgba(10,32,54,.985) 0%, rgba(7,24,40,.995) 100%), url('WH Thumbnails/container-texture.jpg');
+      background-size: cover, cover; background-position: center, center;
+      border-color: rgba(123,170,212,.3);
+    }
+    .spt__badge {
+      display: inline-flex; width: fit-content; font-size: 9.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      color: rgba(255,255,255,.5); border: 1px solid rgba(255,255,255,.15); background: rgba(255,255,255,.05);
+      padding: 3px 10px; border-radius: 20px;
+    }
+    .spt--title .spt__badge { color: var(--blue); border-color: rgba(123,170,212,.4); background: rgba(123,170,212,.1); }
+    .spt__price { font-family: var(--serif); font-size: 32px; font-weight: 500; color: var(--white); line-height: 1; letter-spacing: -.01em; }
     .spt--title .spt__price { color: var(--blue); }
     .spt__limit { font-size: 10px; color: rgba(255,255,255,.25); margin-top: 3px; }
-    .spt__perks { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    /* perks list crossfades with the photo reveal on hover, sharing the same footprint */
+    .spt__perks-wrap { position: relative; flex: 1; min-height: 0; }
+    .spt__perks { list-style: none; display: flex; flex-direction: column; gap: 7px; transition: opacity .3s ease; }
     .spt__perks li { font-size: 11px; color: var(--muted); line-height: 1.4; display: flex; gap: 8px; align-items: flex-start; }
     .spt__perks li::before { content: '—'; color: rgba(255,255,255,.18); flex-shrink: 0; font-size: 11px; margin-top: 2px; }
     .spt--title .spt__perks li::before { color: rgba(123,170,212,.5); }
+    .spt__photos {
+      position: absolute; inset: 0; display: flex; flex-direction: column; gap: 6px;
+      opacity: 0; pointer-events: none; transition: opacity .35s ease;
+    }
+    .spt__photos img { width: 100%; flex: 1; min-height: 0; object-fit: cover; border-radius: 6px;
+      filter: brightness(.8) contrast(1.1); }
+    .spt:hover .spt__perks { opacity: 0; }
+    .spt:hover .spt__photos { opacity: 1; }
     /* vertical photo column */
     .paddock-frame { position: relative; overflow: hidden; border-radius: 8px; flex: 1; min-height: 0; }
     .paddock-frame img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(.75) contrast(1.1); transition: filter .4s; }
@@ -776,7 +957,9 @@
 
     /* ━━━━ PAGE 9: PAST EVENTS ━━━━ */
     .p9 { background: var(--ink); }
-    .p9__inner { max-width: var(--max); margin: 0 auto; padding: 72px 40px; }
+    .p9__inner { max-width: var(--max); margin: 0 auto; padding: 72px 40px; position: relative; z-index: 2; }
+    .p9__head { text-align: center; }
+    .p9__head .label { justify-content: center; }
     /* ── Pit Stop Timeline ───────────────────────── */
     .pit-circuit-wrap { position: relative; margin-top: 36px; }
     .pit-circuit-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; z-index: 0; }
@@ -798,7 +981,11 @@
     .pit-row.has-active .pit:not(.pit--active) { opacity: .45; transform: scale(.95); }
     .pit-row:not(.has-active) .pit__card { opacity: 0; pointer-events: none; transition: opacity .4s; }
     .pit-row:not(.has-active) .pit__line { opacity: 0; transition: opacity .4s; }
-    .pit-row:not(.has-active) .pit__num { opacity: .4; cursor: pointer; pointer-events: auto; transition: opacity .4s; }
+    .pit-row:not(.has-active) .pit__num { opacity: .4; cursor: pointer; transition: opacity .4s; }
+    /* Scoped to an active page for the same reason as .ros-page above — an
+       unconditioned pointer-events:auto here would leak clicks onto whichever
+       page is earlier in DOM order while this page sits invisible on top. */
+    .page.active .pit-row:not(.has-active) .pit__num { pointer-events: auto; }
     .pit-row:not(.has-active) .pit__num:hover { opacity: .7; }
     .pit-row.has-active .pit:not(.pit--active) .pit__card { filter: blur(.4px); }
     .pit--active .pit__num { border-color: var(--yellow); background: rgba(245,197,32,.12); box-shadow: 0 0 0 4px var(--ink), 0 0 24px rgba(245,197,32,.4); }
@@ -806,6 +993,13 @@
     .pit--active .pit__line { background: linear-gradient(to bottom, var(--yellow), transparent); }
     .pit--active .pit__card { border-color: rgba(245,197,32,.45); transform: translateY(-8px) scale(1.03); box-shadow: 0 16px 40px rgba(0,0,0,.5), 0 0 30px rgba(245,197,32,.08); }
     .pit__line { width: 1px; height: 16px; background: linear-gradient(to bottom, var(--red), transparent); }
+    /* Row 2 (pits 6–10): visually lift the card above the marker via transform only —
+       this must NOT change the marker's own layout position, since buildCircuit() measures
+       .pit__num's position directly to draw the track oval. */
+    #pit-row-1 .pit__line { background: linear-gradient(to top, var(--red), transparent); transform: translateY(-76px); }
+    #pit-row-1 .pit--active .pit__line { background: linear-gradient(to top, var(--yellow), transparent); }
+    #pit-row-1 .pit__card { transform: translateY(calc(-100% - 84px)); }
+    #pit-row-1 .pit--active .pit__card { transform: translateY(calc(-100% - 84px)) scale(1.03); }
     .pit__card { border: 1px solid var(--border); border-radius: var(--r); padding: 14px 13px; width: 100%; display: flex; flex-direction: column; gap: 6px; background: var(--card); transition: border-color .35s, transform .35s, box-shadow .35s; }
     .pit__series { font-family: var(--cond); font-size: 9px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--yellow); }
     .pit__title { font-family: var(--serif); font-size: 13px; font-weight: 500; color: var(--cream); line-height: 1.3; }
@@ -824,7 +1018,7 @@
     /* ━━━━ PAGE 10: CTA ━━━━ */
     .p10 {
       min-height: 100vh; display: flex; flex-direction: column;
-      position: relative; overflow: hidden;
+      overflow: hidden;
       background: radial-gradient(ellipse 60% 50% at 50% 85%, rgba(123,170,212,0.06) 0%, transparent 60%), var(--ink);
     }
     .p10__checker {
@@ -842,7 +1036,7 @@
     .p10__label { font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.25); margin-bottom: 24px; }
     .p10__h { font-family: var(--serif); font-size: clamp(52px, 9vw, 108px); font-weight: 400; line-height: .95; color: var(--white); margin-bottom: 24px; }
     .p10__h em { font-style: italic; color: var(--blue); }
-    .p10__sub { font-size: 16px; color: var(--muted); max-width: 460px; margin: 0 auto 40px; line-height: 1.75; font-weight: 300; }
+    .p10__sub { font-size: 16px; color: var(--muted); max-width: 640px; margin: 0 auto 40px; line-height: 1.75; font-weight: 300; }
     .p10__email { font-size: 13px; color: rgba(255,255,255,.25); margin-top: 20px; }
     .p10__email a { color: var(--blue); }
     .p10__foot {
@@ -878,14 +1072,6 @@
       <div class="sk"></div><div class="sk"></div><div class="sk"></div>
       <div class="sk"></div><div class="sk"></div>
     </div>
-    <svg class="p1__cota" viewBox="0 0 500 620" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M410,55 L455,55 L465,78 L455,118 L415,138 L375,125 L335,108 L295,114 L252,142 L214,182 L196,224 L188,266 L194,306 L210,334 L242,352 L272,345 L292,316 L285,285 L258,268 L228,274 L212,300 L218,328 L242,352 L272,384 L280,428 L258,468 L226,496 L184,514 L144,522 L104,512 L74,490 L54,458 L50,418 L66,386 L98,364 L128,358 L152,370 L160,398 L152,424 L128,438 L98,438 L72,422 L62,396 L72,370 L98,354 L128,348 L155,360"
-        stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M155,360 L190,354 L220,334 L234,302 L222,272 L196,254 L170,250 L144,262 L124,284 L120,314 L136,340 L162,354"
-        stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="413" cy="55" r="5" fill="#f5c520" opacity=".9"/>
-      <text x="425" y="52" fill="rgba(255,255,255,.5)" font-size="12" font-family="sans-serif">S/F</text>
-    </svg>
     <div class="checker-corner"></div>
     <div class="p1__body">
       <div class="p1__eyebrow">
@@ -894,7 +1080,7 @@
         <div class="pill pill--red">F1 USGP Weekend</div>
       </div>
       <h1 class="p1__h1">World of Sports<br>&amp; <em>Human Performance</em></h1>
-      <p class="p1__sub">Create a <em>high-signal convergence</em> where <span style="color:var(--white);font-weight:400">brands</span>, <span style="color:var(--white);font-weight:400">elite teams</span>, and <span style="color:var(--white);font-weight:400">performance innovators</span> form <em>partnerships</em>, launch <em>pilots</em>, and capture <em>content</em> that powers <span style="color:var(--yellow);font-weight:400">year-round growth</span> across the <span style="color:var(--blue);font-weight:400">Willpower platform</span>.</p>
+      <p class="p1__sub">Connecting brands, elite teams, and innovators to spark partnerships, launch pilots, and grow.</p>
       <div class="telem">
         <div class="tl">
           <div class="tl__dot" style="background:var(--yellow)"></div>
@@ -928,6 +1114,10 @@
 
   <!-- BLANK / BRAND CAROUSELS -->
   <div class="page p-blank" data-label="">
+    <div class="streaks">
+      <div class="sk"></div><div class="sk"></div><div class="sk"></div>
+      <div class="sk"></div><div class="sk"></div>
+    </div>
     <div class="bcar-wrap">
 
       <!-- Row 1: Consumer Brands -->
@@ -994,66 +1184,91 @@
 
   <!-- 2 · HEADLINERS -->
   <div class="page p2" data-label="New for 2026">
+    <div class="streaks">
+      <div class="sk"></div><div class="sk"></div><div class="sk"></div>
+      <div class="sk"></div><div class="sk"></div>
+    </div>
     <div class="p2__inner">
       <div class="label">New for 2026</div>
       <h2 class="serif">The marquee moments that make this <em>the room nobody can skip.</em></h2>
-      <div class="podium-stage">
-        <!-- P2 — left step -->
-        <div class="podium-col podium-col--2">
-          <div class="pod-flag-wrap">
-            <div class="pod-flag">
-              <div class="pod-flag__cloth"><img class="pod-flag__logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783123972/willpower/logos/brand-ammortal-logo.svg" alt="Ammortal"></div>
-              <div class="pod-flag__pole"></div>
-            </div>
-          </div>
-          <div class="pod-card">
-            <div class="pod-card__watermark">2</div>
-            <div class="pod-card__tag">02 — Flagship Suite</div>
-            <div class="pod-card__title">The Longevity Lounge</div>
-            <p class="pod-card__desc">A Brady-anchored recovery &amp; longevity suite — Aescape, Marriott &amp; Ammortal under one roof. The activation that keeps attendees in the room all day.</p>
-          </div>
-          <div class="pod-platform"><span class="pod-platform__num">2</span></div>
-        </div>
-        <!-- P1 — center, tallest step -->
-        <div class="podium-col podium-col--1">
+      <div class="podium-stage" id="podium-stage">
+        <!-- P1 — headline moment -->
+        <div class="podium-col podium-col--1" data-podium="0">
           <div class="pod-flag-wrap">
             <div class="pod-flag">
               <div class="pod-flag__cloth"><img class="pod-flag__logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783123942/willpower/logos/brand-aescape-wordmark-white.svg" alt="Aescape"></div>
               <div class="pod-flag__pole"></div>
             </div>
           </div>
-          <div class="pod-card">
+          <div class="pod-card" onclick="selectPodium(0)">
             <div class="pod-card__watermark">1</div>
             <div class="pod-card__tag">01 — Headline Moment</div>
             <div class="pod-card__title">Tom Brady × Aescape</div>
             <p class="pod-card__desc">The live launch of the Brady Protocol on the summit stage — a world-first reveal in front of the room. Brady is the keystone: his name unlocks F1 drivers, marquee athletes, and the brand room around him.</p>
+            <div class="pod-card__gallery">
+              <img src="WH Thumbnails/tom-brady-aescape-3.png" alt="Tom Brady x Aescape">
+              <img src="WH Thumbnails/tom-brady-aescape-2.jpg" alt="Aescape treatment room">
+              <img src="WH Thumbnails/tom-brady-aescape-1.jpg" alt="Aescape recovery device">
+            </div>
           </div>
           <div class="pod-platform"><span class="pod-platform__num">1</span></div>
         </div>
-        <!-- P3 — right, shortest step -->
-        <div class="podium-col podium-col--3">
+        <!-- P2 — flagship suite -->
+        <div class="podium-col podium-col--2" data-podium="1">
+          <div class="pod-flag-wrap">
+            <div class="pod-flag">
+              <div class="pod-flag__cloth"><img class="pod-flag__logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783123972/willpower/logos/brand-ammortal-logo.svg" alt="Ammortal"></div>
+              <div class="pod-flag__pole"></div>
+            </div>
+          </div>
+          <div class="pod-card" onclick="selectPodium(1)">
+            <div class="pod-card__watermark">2</div>
+            <div class="pod-card__tag">02 — Flagship Suite</div>
+            <div class="pod-card__title">The Longevity Lounge</div>
+            <p class="pod-card__desc">A Brady-anchored recovery &amp; longevity suite — Aescape, Marriott &amp; Ammortal under one roof. The activation that keeps attendees in the room all day.</p>
+            <div class="pod-card__gallery">
+              <img src="WH Thumbnails/longevity-lounge-1.jpg" alt="Aescape recovery treatment">
+              <img src="WH Thumbnails/longevity-lounge-2.jpg" alt="Ammortal red-light therapy">
+              <img src="WH Thumbnails/longevity-lounge-3.jpg" alt="Marriott activation signage">
+            </div>
+          </div>
+          <div class="pod-platform"><span class="pod-platform__num">2</span></div>
+        </div>
+        <!-- P3 — anchor partner -->
+        <div class="podium-col podium-col--3" data-podium="2">
           <div class="pod-flag-wrap">
             <div class="pod-flag">
               <div class="pod-flag__cloth"><img class="pod-flag__logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124022/willpower/logos/brand-cadillac-f1-logo.png" alt="Cadillac"></div>
               <div class="pod-flag__pole"></div>
             </div>
           </div>
-          <div class="pod-card">
+          <div class="pod-card" onclick="selectPodium(2)">
             <div class="pod-card__watermark">3</div>
             <div class="pod-card__tag">03 — Anchor Partner</div>
             <div class="pod-card__title">Cadillac House</div>
             <p class="pod-card__desc">America's new F1 team makes Austin its home-soil statement. Cadillac House hosts the room — brand execs and F1 drivers in the same space.</p>
+            <div class="pod-card__gallery">
+              <img src="WH Thumbnails/cadillac-house-1-small.jpg" alt="Cadillac Formula 1 Team livery reveal">
+              <img src="WH Thumbnails/cadillac-house-2-small.jpg" alt="Cadillac Formula 1 car detail">
+              <img src="WH Thumbnails/cadillac-house-3-small.jpg" alt="Cadillac Formula 1 drivers">
+            </div>
           </div>
           <div class="pod-platform"><span class="pod-platform__num">3</span></div>
         </div>
-      </div>
-      <!-- P4 — base card full width -->
-      <div class="pod-base">
-        <div class="pod-base__num">4</div>
-        <div>
-          <div class="pod-base__tag">04 — Crown Experience</div>
-          <div class="pod-base__title">F1 Paddock Club</div>
-          <p class="pod-base__desc">Executive trackside access on Friday as the cars hit the track. The money-can't-buy crown of the weekend — reserved for Title sponsors and hand-picked VIPs.</p>
+        <!-- P4 — crown experience -->
+        <div class="podium-col podium-col--4" data-podium="3">
+          <div class="pod-card" onclick="selectPodium(3)">
+            <div class="pod-card__watermark">4</div>
+            <div class="pod-card__tag">04 — Crown Experience</div>
+            <div class="pod-card__title">F1 Paddock Club</div>
+            <p class="pod-card__desc">Executive trackside access on Friday as the cars hit the track. The money-can't-buy crown of the weekend — reserved for Title sponsors and hand-picked VIPs.</p>
+            <div class="pod-card__gallery">
+              <img src="WH Thumbnails/paddock-club-1.jpg" alt="COTA circuit aerial view">
+              <img src="WH Thumbnails/paddock-club-2.jpg" alt="Paddock Club guest overlooking the track">
+              <img src="WH Thumbnails/paddock-club-3.jpg" alt="Paddock Lofts lounge seating">
+            </div>
+          </div>
+          <div class="pod-platform"><span class="pod-platform__num">4</span></div>
         </div>
       </div>
     </div>
@@ -1061,10 +1276,14 @@
 
   <!-- 3 · AUDIENCE -->
   <div class="page p3" data-label="The Audience">
+    <div class="streaks">
+      <div class="sk"></div><div class="sk"></div><div class="sk"></div>
+      <div class="sk"></div><div class="sk"></div>
+    </div>
     <div class="p3__inner">
       <div class="p3__head">
         <div class="label">The Audience</div>
-        <h2 class="serif" style="margin-top:10px;max-width:640px">Curated, capped &amp; senior — <em>the decision-makers</em> everyone else is trying to reach.</h2>
+        <h2 class="serif" style="margin:10px auto 0;max-width:900px">Curated, capped &amp; senior — <em>the decision-makers</em> everyone else is trying to reach.</h2>
       </div>
 
       <div class="p3__stats">
@@ -1122,12 +1341,14 @@
 
   <!-- 4 · COMMUNITY -->
   <div class="page p4" data-label="The Community">
+    <div class="streaks">
+      <div class="sk"></div><div class="sk"></div><div class="sk"></div>
+      <div class="sk"></div><div class="sk"></div>
+    </div>
     <div class="p4__inner">
-      <div class="p4__head two-col" style="margin-bottom:0">
-        <div>
-          <div class="label">The Community</div>
-          <h2 class="serif">The brands already in our community — and the <em>dream targets</em> for 2026.</h2>
-        </div>
+      <div class="p4__head" style="margin-bottom:0">
+        <div class="label">The Community</div>
+        <h2 class="serif">The brands already in our community — and the <em>dream targets</em> for 2026.</h2>
         <p class="body-text">Four cohorts across revenue stage and category. The room is segmented by design so every conversation carries leverage.</p>
       </div>
 
@@ -1293,13 +1514,14 @@
 
   <!-- 5 · ACTIVATIONS -->
   <div class="page p5" data-label="Activations">
+    <div class="streaks">
+      <div class="sk"></div><div class="sk"></div><div class="sk"></div>
+      <div class="sk"></div><div class="sk"></div>
+    </div>
     <div class="p5__inner">
-      <div class="two-col" style="margin-bottom:0">
-        <div>
-          <div class="label">Why We Are Doing This</div>
-          <h2 class="serif" style="margin-top:10px">Connecting brands, teams &amp; innovators — <em>deals that compound.</em></h2>
-        </div>
-        <p class="body-text">Create a high-signal convergence where brands, elite teams, and performance innovators form partnerships, launch pilots, and capture content that powers year-round growth.</p>
+      <div class="p5__head">
+        <div class="label">Why We Are Doing This</div>
+        <h2 class="serif p5__h2" style="margin-top:10px">Connecting brands, teams &amp; innovators<br><em>Deals that compound.</em></h2>
       </div>
 
       <div class="p5__flags">
@@ -1364,6 +1586,10 @@
 
   <!-- 6 · THE DAY -->
   <div class="page p6" data-label="The Day">
+    <div class="streaks">
+      <div class="sk"></div><div class="sk"></div><div class="sk"></div>
+      <div class="sk"></div><div class="sk"></div>
+    </div>
     <div class="p6__inner">
       <div class="two-col" style="margin-bottom:0">
         <div>
@@ -1374,15 +1600,22 @@
       </div>
       <div class="p6__body">
         <div class="ros">
-          <div class="rr rr--green"><div class="rr__stripe"></div><div class="rr__inner"><div class="rr__time">8:30</div><div><div class="rr__title">Arrivals &amp; Breakfast</div><div class="rr__sub">Lounges &amp; Tech Playground open</div></div></div></div>
-          <div class="rr rr--green"><div class="rr__stripe"></div><div class="rr__inner"><div class="rr__time">9:00</div><div><div class="rr__title">Stadium Run w/ Austin FC</div><div class="rr__sub">Optional movement — the warmup lap</div></div></div></div>
-          <div class="rr rr--yellow"><div class="rr__stripe"></div><div class="rr__inner"><div class="rr__time">9:45</div><div><div class="rr__title">The New Brand Blueprint</div><div class="rr__sub">How wellness &amp; performance brands break into sports culture</div></div></div></div>
-          <div class="rr rr--yellow"><div class="rr__stripe"></div><div class="rr__inner"><div class="rr__time">10:45</div><div><div class="rr__title">The Performance Platform</div><div class="rr__sub">How teams and performance brands partner to push human potential</div></div></div></div>
-          <div class="rr rr--hero rr--red"><div class="rr__stripe"></div><div class="rr__inner"><div class="rr__time">11:45</div><div><div class="rr__title rr__title--blue">The Brady Protocol — Live Launch w/ Aescape</div><div class="rr__sub">A world-first reveal on the summit stage</div></div></div></div>
-          <div class="rr rr--green"><div class="rr__stripe"></div><div class="rr__inner"><div class="rr__time">12:15</div><div><div class="rr__title">Padel w/ The Pros &amp; Lunch</div><div class="rr__sub">Activations, concierge intros</div></div></div></div>
-          <div class="rr rr--yellow"><div class="rr__stripe"></div><div class="rr__inner"><div class="rr__time">1:30</div><div><div class="rr__title">The Performance Edge</div><div class="rr__sub">Recovery, longevity &amp; mental performance</div></div></div></div>
-          <div class="rr rr--yellow"><div class="rr__stripe"></div><div class="rr__inner"><div class="rr__time">2:30</div><div><div class="rr__title">Building Worlds Through Sports</div><div class="rr__sub">Teams, brands &amp; culture</div></div></div></div>
-          <div class="rr rr--green"><div class="rr__stripe"></div><div class="rr__inner"><div class="rr__time">4:00</div><div><div class="rr__title">Padel &amp; Chill</div><div class="rr__sub">Sunset reception → curated VIP dinners</div></div></div></div>
+          <div class="ros-pages">
+            <div class="ros-page active" id="ros-page-0">
+              <div class="rr rr--green"><div class="rr__stripe"></div><div class="rr__inner"><div class="rr__time">8:30</div><div><div class="rr__title">Arrivals &amp; Breakfast</div><div class="rr__sub">Lounges &amp; Tech Playground open</div></div></div></div>
+              <div class="rr rr--green"><div class="rr__stripe"></div><div class="rr__inner"><div class="rr__time">9:00</div><div><div class="rr__title">Stadium Run w/ Austin FC</div><div class="rr__sub">Optional movement — the warmup lap</div></div></div></div>
+              <div class="rr rr--yellow"><div class="rr__stripe"></div><div class="rr__inner"><div class="rr__time">9:45</div><div><div class="rr__title">The New Brand Blueprint</div><div class="rr__sub">How wellness &amp; performance brands break into sports culture</div></div></div></div>
+              <div class="rr rr--yellow"><div class="rr__stripe"></div><div class="rr__inner"><div class="rr__time">10:45</div><div><div class="rr__title">The Performance Platform</div><div class="rr__sub">How teams and performance brands partner to push human potential</div></div></div></div>
+              <div class="rr rr--hero rr--red"><div class="rr__stripe"></div><div class="rr__inner"><div class="rr__time">11:45</div><div><div class="rr__title rr__title--blue">The Brady Protocol — Live Launch w/ Aescape</div><div class="rr__sub">A world-first reveal on the summit stage</div></div></div></div>
+            </div>
+            <div class="ros-page" id="ros-page-1">
+              <div class="rr rr--green"><div class="rr__stripe"></div><div class="rr__inner"><div class="rr__time">12:15</div><div><div class="rr__title">Padel w/ The Pros &amp; Lunch</div><div class="rr__sub">Activations, concierge intros</div></div></div></div>
+              <div class="rr rr--yellow"><div class="rr__stripe"></div><div class="rr__inner"><div class="rr__time">1:30</div><div><div class="rr__title">The Performance Edge</div><div class="rr__sub">Recovery, longevity &amp; mental performance</div></div></div></div>
+              <div class="rr rr--yellow"><div class="rr__stripe"></div><div class="rr__inner"><div class="rr__time">2:30</div><div><div class="rr__title">Building Worlds Through Sports</div><div class="rr__sub">Teams, brands &amp; culture</div></div></div></div>
+              <div class="rr rr--green"><div class="rr__stripe"></div><div class="rr__inner"><div class="rr__time">4:00</div><div><div class="rr__title">Padel &amp; Chill</div><div class="rr__sub">Sunset reception → curated VIP dinners</div></div></div></div>
+            </div>
+          </div>
+          <button class="ros__toggle" id="ros-toggle" onclick="toggleRosPage()">Afternoon Schedule — 12:15–4:00 →</button>
         </div>
         <div class="p6-film-outer">
           <div class="p6-film-label">Brand Integration Opportunities &amp; Experiences</div>
@@ -1409,6 +1642,10 @@
 
   <!-- 7 · WEEKEND -->
   <div class="page p7" data-label="The Weekend">
+    <div class="streaks">
+      <div class="sk"></div><div class="sk"></div><div class="sk"></div>
+      <div class="sk"></div><div class="sk"></div>
+    </div>
     <div class="p7__inner">
       <div class="two-col" style="margin-bottom:0">
         <div>
@@ -1452,6 +1689,10 @@
 
   <!-- 8 · SPONSORSHIP -->
   <div class="page p8" data-label="Sponsorship">
+    <div class="streaks">
+      <div class="sk"></div><div class="sk"></div><div class="sk"></div>
+      <div class="sk"></div><div class="sk"></div>
+    </div>
     <div class="p8__inner">
       <div class="two-col">
         <div>
@@ -1462,7 +1703,6 @@
       </div>
       <div class="sp-layout">
         <div class="sp-tiers">
-        <div class="spt-wrap"><div class="lanyard lanyard--title"><img src="WH Thumbnails/logo for willpower.png" alt="Willpower"><span>Willpower</span></div>
           <div class="spt spt--title">
             <div class="spt__band">TITLE & PRESENTING ● TITLE & PRESENTING ● TITLE & PRESENTING ● TITLE & PRESENTING ●</div>
             <div class="spt__body">
@@ -1472,67 +1712,83 @@
                 <div class="spt__price">$125k+</div>
                 <div class="spt__limit">1–2 brands only</div>
               </div>
-              <ul class="spt__perks">
-                <li>Name the summit</li>
-                <li>Headline both tracks</li>
-                <li>F1 Paddock Club (Friday)</li>
-                <li>Cadillac House co-presence</li>
-                <li>10 VIP passes</li>
-                <li>Host your own guests all weekend</li>
-              </ul>
+              <div class="spt__perks-wrap">
+                <ul class="spt__perks">
+                  <li>Name the summit</li>
+                  <li>Headline both tracks</li>
+                  <li>F1 Paddock Club (Friday)</li>
+                  <li>Cadillac House co-presence</li>
+                  <li>10 VIP passes</li>
+                  <li>Host your own guests all weekend</li>
+                </ul>
+                <div class="spt__photos">
+                  <img src="WH Thumbnails/spon-title-real1-small.jpg" alt="F1 Paddock Club entrance">
+                  <img src="WH Thumbnails/spon-title-real2-small.jpg" alt="Paddock Club hospitality">
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="spt-wrap"><div class="lanyard lanyard--platinum"><img src="WH Thumbnails/logo for willpower.png" alt="Willpower"><span>Willpower</span></div>
           <div class="spt spt--platinum">
             <div class="spt__band">PLATINUM ● PLATINUM ● PLATINUM ● PLATINUM ● PLATINUM ● PLATINUM ● PLATINUM ● PLATINUM ●</div>
             <div class="spt__body">
               <div class="spt__credential">Austin GP · Oct 2026 · Paddock Access</div>
               <div class="spt__badge">Platinum</div>
               <div><div class="spt__price">$50k+</div></div>
-              <ul class="spt__perks">
-                <li>Headline partner both tracks</li>
-                <li>Named hero activation</li>
-                <li>6–8 VIP intros</li>
-                <li>Recap video + filmed case study</li>
-                <li>10 VIP passes</li>
-              </ul>
+              <div class="spt__perks-wrap">
+                <ul class="spt__perks">
+                  <li>Headline partner both tracks</li>
+                  <li>Named hero activation</li>
+                  <li>6–8 VIP intros</li>
+                  <li>Recap video + filmed case study</li>
+                  <li>10 VIP passes</li>
+                </ul>
+                <div class="spt__photos">
+                  <img src="WH Thumbnails/spon-platinum-real1-small.jpg" alt="Padel zone activation signage">
+                  <img src="WH Thumbnails/spon-platinum-real2-small.jpg" alt="World of Sports panel discussion">
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="spt-wrap"><div class="lanyard lanyard--gold"><img src="WH Thumbnails/logo for willpower.png" alt="Willpower"><span>Willpower</span></div>
           <div class="spt spt--gold">
             <div class="spt__band">GOLD ● GOLD ● GOLD ● GOLD ● GOLD ● GOLD ● GOLD ● GOLD ● GOLD ● GOLD ●</div>
             <div class="spt__body">
               <div class="spt__credential">Austin GP · Oct 2026 · Paddock Access</div>
               <div class="spt__badge">Gold</div>
               <div><div class="spt__price">$35k</div></div>
-              <ul class="spt__perks">
-                <li>Featured panel seat</li>
-                <li>Co-branded track</li>
-                <li>1–3 concierge intros</li>
-                <li>Attendee passes</li>
-                <li>Photo set + recap mention</li>
-              </ul>
+              <div class="spt__perks-wrap">
+                <ul class="spt__perks">
+                  <li>Featured panel seat</li>
+                  <li>Co-branded track</li>
+                  <li>1–3 concierge intros</li>
+                  <li>Attendee passes</li>
+                  <li>Photo set + recap mention</li>
+                </ul>
+                <div class="spt__photos">
+                  <img src="WH Thumbnails/spon-gold-real1-small.jpg" alt="Gold tier activation">
+                  <img src="WH Thumbnails/spon-gold-real2-small.jpg" alt="Gold tier activation">
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="spt-wrap"><div class="lanyard lanyard--silver"><img src="WH Thumbnails/logo for willpower.png" alt="Willpower"><span>Willpower</span></div>
           <div class="spt spt--silver">
             <div class="spt__band">SILVER ● SILVER ● SILVER ● SILVER ● SILVER ● SILVER ● SILVER ● SILVER ●</div>
             <div class="spt__body">
               <div class="spt__credential">Austin GP · Oct 2026 · Paddock Access</div>
               <div class="spt__badge">Silver / Activation</div>
               <div><div class="spt__price">$15–25k</div></div>
-              <ul class="spt__perks">
-                <li>Booth / wellness activation</li>
-                <li>Branded sampling</li>
-                <li>Attendee list</li>
-                <li>Marketing inclusion</li>
-              </ul>
+              <div class="spt__perks-wrap">
+                <ul class="spt__perks">
+                  <li>Booth / wellness activation</li>
+                  <li>Branded sampling</li>
+                  <li>Attendee list</li>
+                  <li>Marketing inclusion</li>
+                </ul>
+                <div class="spt__photos">
+                  <img src="WH Thumbnails/spon-silver-real1-small.jpg" alt="Silver tier activation">
+                </div>
+              </div>
             </div>
           </div>
-        </div>
         </div>
         <div class="sp-filmstrip-wrap">
           <div class="sp-filmstrip">
@@ -1554,13 +1810,14 @@
 
   <!-- 9 · PAST EVENTS -->
   <div class="page p9" data-label="Past Events">
+    <div class="streaks">
+      <div class="sk"></div><div class="sk"></div><div class="sk"></div>
+      <div class="sk"></div><div class="sk"></div>
+    </div>
     <div class="p9__inner">
-      <div class="two-col" style="margin-bottom:0">
-        <div>
-          <div class="label">Track Record</div>
-          <h2 class="serif">Past <em>Events</em></h2>
-        </div>
-        <p class="body-text">The community we've built — and the proof that the room shows up.</p>
+      <div class="p9__head">
+        <div class="label">Track Record</div>
+        <h2 class="serif">Past <em>Events</em></h2>
       </div>
       <div class="pit-circuit-wrap" id="pit-circuit-wrap">
   <!-- Circuit road SVG (drawn dynamically by JS) -->
@@ -1593,19 +1850,19 @@
     <!-- Row 1: Pits 1–5 left to right -->
     <div class="pit-row" id="pit-row-0">
       <div class="pit" data-pit="0"><div class="pit__num" onclick="clickPit(0)">PIT<span>1</span></div><div class="pit__line"></div><div class="pit__card"><div class="pit__series">Catalyst · ATX</div><div class="pit__title">Catalyst: Inflection Point</div><div class="pit__meta">Feb 5, 2025 · Soho House, Austin</div><div class="pit__body">70+ RSVPs · AG1 Mocktail Bar · Fireside w/ Paulie Dery</div><a href="https://youtu.be/XhDOOGA3t_g?si=Xde97bAEdRWetvw2" class="pit__link" target="_blank" rel="noopener">Watch recap →</a></div></div>
-      <div class="pit" data-pit="1"><div class="pit__num" onclick="clickPit(1)">PIT<span>2</span></div><div class="pit__line"></div><div class="pit__card"><div class="pit__series">Catalyst · ATX</div><div class="pit__title">Catalyst: Innovation Playbook</div><div class="pit__meta">Apr 16, 2025 · Soho House, Austin</div><div class="pit__body">90+ RSVPs · VIP Gifting Suite · Fireside w/ Kin Euphorics, Super Coffee, GoodPop</div><a href="https://youtu.be/_Vkkm9QgIvQ?si=EYsgqJA-ykfTm96L" class="pit__link" target="_blank" rel="noopener">Watch recap →</a></div></div>
-      <div class="pit" data-pit="2"><div class="pit__num" onclick="clickPit(2)">PIT<span>3</span></div><div class="pit__line"></div><div class="pit__card"><div class="pit__series">Willpower</div><div class="pit__title">Wellness House</div><div class="pit__meta">Mar 8, 2025 · Other Racquet Social Club</div><div class="pit__body">150+ RSVPs · 4x Panels · 10+ CPG Vendor Village · Cold Plunge &amp; Recovery</div><a href="https://youtu.be/30aSv-OTOSE?si=-vfieiFCQMFUUj_J" class="pit__link" target="_blank" rel="noopener">Watch recap →</a></div></div>
+      <div class="pit" data-pit="1"><div class="pit__num" onclick="clickPit(1)">PIT<span>2</span></div><div class="pit__line"></div><div class="pit__card"><div class="pit__series">Willpower</div><div class="pit__title">Wellness House</div><div class="pit__meta">Mar 8, 2025 · Other Racquet Social Club</div><div class="pit__body">150+ RSVPs · 4x Panels · 10+ CPG Vendor Village · Cold Plunge &amp; Recovery</div><a href="https://youtu.be/30aSv-OTOSE?si=-vfieiFCQMFUUj_J" class="pit__link" target="_blank" rel="noopener">Watch recap →</a></div></div>
+      <div class="pit" data-pit="2"><div class="pit__num" onclick="clickPit(2)">PIT<span>3</span></div><div class="pit__line"></div><div class="pit__card"><div class="pit__series">Catalyst · ATX</div><div class="pit__title">Catalyst: Innovation Playbook</div><div class="pit__meta">Apr 16, 2025 · Soho House, Austin</div><div class="pit__body">90+ RSVPs · VIP Gifting Suite · Fireside w/ Kin Euphorics, Super Coffee, GoodPop</div><a href="https://youtu.be/_Vkkm9QgIvQ?si=EYsgqJA-ykfTm96L" class="pit__link" target="_blank" rel="noopener">Watch recap →</a></div></div>
       <div class="pit" data-pit="3"><div class="pit__num" onclick="clickPit(3)">PIT<span>4</span></div><div class="pit__line"></div><div class="pit__card"><div class="pit__series">Catalyst · NYC</div><div class="pit__title">Catalyst: Cutting Through Noise</div><div class="pit__meta">Jul 29, 2025 · Ludlow House, NYC</div><div class="pit__body">90+ RSVPs · Gifting Suite · Fireside w/ Slate, Othership &amp; Whoop</div><a href="https://youtu.be/o7uRH4NNgEo?si=SW8kcwTcluo97pwr" class="pit__link" target="_blank" rel="noopener">Watch recap →</a></div></div>
-      <div class="pit" data-pit="4"><div class="pit__num" onclick="clickPit(4)">PIT<span>5</span></div><div class="pit__line"></div><div class="pit__card"><div class="pit__series">Willpower · ATX</div><div class="pit__title">Austin CPG Party</div><div class="pit__meta">Dec 10, 2025 · Falling Leaves, Austin TX</div><div class="pit__body">150+ RSVPs · Vendor Village · Drinks + Bars · Gifting Suite</div><a href="https://youtu.be/V8G28BFVXRU?si=suArvUDBGQ4o86ws" class="pit__link" target="_blank" rel="noopener">Watch recap →</a></div></div>
+      <div class="pit" data-pit="4"><div class="pit__num" onclick="clickPit(4)">PIT<span>5</span></div><div class="pit__line"></div><div class="pit__card"><div class="pit__series">Human Performance</div><div class="pit__title">Human Performance Dinner</div><div class="pit__meta">Sept 22, 2025 · Musaafer, NYC</div><div class="pit__body">15+ Wellness Founders &amp; Executives · Michelin Star Dinner</div><a href="https://www.instagram.com/reels/DPReYw9DuW2/" class="pit__link" target="_blank" rel="noopener">Watch recap →</a></div></div>
     </div>
 
     <!-- Row 2: REVERSED — pit 10 on left, pit 6 on right (circuit flows right-to-left) -->
     <div class="pit-row" id="pit-row-1">
       <div class="pit" data-pit="9"><div class="pit__num" onclick="clickPit(9)">PIT<span>10</span></div><div class="pit__line"></div><div class="pit__card"><div class="pit__series">Willpower · ATX</div><div class="pit__title">Willpower Wellness House 2026</div><div class="pit__meta">Mar 13, 2026 · Lefty's Day and Night</div><div class="pit__body">300+ RSVPs · Morning Wellness Workout · Brand Panels · Pitch Roast Live · Tech Demos &amp; Vendor Village</div><a href="https://youtu.be/nfEKYJxmqw8?si=ceqJTHb-ZPlJhWK6" class="pit__link" target="_blank" rel="noopener">Watch recap →</a></div></div>
-      <div class="pit" data-pit="8"><div class="pit__num" onclick="clickPit(8)">PIT<span>9</span></div><div class="pit__line"></div><div class="pit__card"><div class="pit__series">Human Performance</div><div class="pit__title">Human Performance Dinner</div><div class="pit__meta">Sept 22, 2025 · Musaafer, NYC</div><div class="pit__body">15+ Wellness Founders &amp; Executives · Michelin Star Dinner</div><a href="https://www.instagram.com/reels/DPReYw9DuW2/" class="pit__link" target="_blank" rel="noopener">Watch recap →</a></div></div>
-      <div class="pit" data-pit="7"><div class="pit__num" onclick="clickPit(7)">PIT<span>8</span></div><div class="pit__line"></div><div class="pit__card"><div class="pit__series">World of Sports</div><div class="pit__title">World of Sports &amp; Human Performance</div><div class="pit__meta">Oct 15, 2025 · Padel39, Austin</div><div class="pit__body">Recovery activations · Functional fuel ups · Padel play · 4x Loaded Panels</div><a href="https://youtu.be/oYreMTmoFbQ?si=L13M2TKhyuSwDiYa" class="pit__link" target="_blank" rel="noopener">Watch recap →</a></div></div>
-      <div class="pit" data-pit="6"><div class="pit__num" onclick="clickPit(6)">PIT<span>7</span></div><div class="pit__line"></div><div class="pit__card"><div class="pit__series">Catalyst · ATX</div><div class="pit__title">Catalyst: Winning Cultural Tentpoles</div><div class="pit__meta">Nov 10, 2025 · The Malin, Austin</div><div class="pit__body">90 RSVPs · VIP Gifting Suite · Fireside w/ Kendra Scott, Caraway &amp; LALO Tequila</div><a href="https://youtu.be/yNrT5y7eFPM?si=kvtCCZUkiAsvJvtV" class="pit__link" target="_blank" rel="noopener">Watch recap →</a></div></div>
-      <div class="pit" data-pit="5"><div class="pit__num" onclick="clickPit(5)">PIT<span>6</span></div><div class="pit__line"></div><div class="pit__card"><div class="pit__series">Catalyst · NYC</div><div class="pit__title">Capitalizing on the Future of Wellness</div><div class="pit__meta">Nov 10, 2025 · Soho House, NYC</div><div class="pit__body">90 RSVPs · VIP Gifting Suite · Fireside w/ Caulipower, MASA &amp; HYROX</div><a href="https://youtu.be/G2mtCKvZ3lc?si=ipbKAtMo0h_E7V6I" class="pit__link" target="_blank" rel="noopener">Watch recap →</a></div></div>
+      <div class="pit" data-pit="8"><div class="pit__num" onclick="clickPit(8)">PIT<span>9</span></div><div class="pit__line"></div><div class="pit__card"><div class="pit__series">Willpower · ATX</div><div class="pit__title">Austin CPG Party</div><div class="pit__meta">Dec 10, 2025 · Falling Leaves, Austin TX</div><div class="pit__body">150+ RSVPs · Vendor Village · Drinks + Bars · Gifting Suite</div><a href="https://youtu.be/V8G28BFVXRU?si=suArvUDBGQ4o86ws" class="pit__link" target="_blank" rel="noopener">Watch recap →</a></div></div>
+      <div class="pit" data-pit="7"><div class="pit__num" onclick="clickPit(7)">PIT<span>8</span></div><div class="pit__line"></div><div class="pit__card"><div class="pit__series">Catalyst · NYC</div><div class="pit__title">Capitalizing on the Future of Wellness</div><div class="pit__meta">Nov 10, 2025 · Soho House, NYC</div><div class="pit__body">90 RSVPs · VIP Gifting Suite · Fireside w/ Caulipower, MASA &amp; HYROX</div><a href="https://youtu.be/G2mtCKvZ3lc?si=ipbKAtMo0h_E7V6I" class="pit__link" target="_blank" rel="noopener">Watch recap →</a></div></div>
+      <div class="pit" data-pit="6"><div class="pit__num" onclick="clickPit(6)">PIT<span>7</span></div><div class="pit__line"></div><div class="pit__card"><div class="pit__series">World of Sports</div><div class="pit__title">World of Sports &amp; Human Performance</div><div class="pit__meta">Oct 15, 2025 · Padel39, Austin</div><div class="pit__body">Recovery activations · Functional fuel ups · Padel play · 4x Loaded Panels</div><a href="https://youtu.be/oYreMTmoFbQ?si=L13M2TKhyuSwDiYa" class="pit__link" target="_blank" rel="noopener">Watch recap →</a></div></div>
+      <div class="pit" data-pit="5"><div class="pit__num" onclick="clickPit(5)">PIT<span>6</span></div><div class="pit__line"></div><div class="pit__card"><div class="pit__series">Catalyst · ATX</div><div class="pit__title">Catalyst: Winning Cultural Tentpoles</div><div class="pit__meta">Oct 14, 2025 · The Malin, Austin</div><div class="pit__body">90 RSVPs · VIP Gifting Suite · Fireside w/ Kendra Scott, Caraway &amp; LALO Tequila</div><a href="https://youtu.be/yNrT5y7eFPM?si=kvtCCZUkiAsvJvtV" class="pit__link" target="_blank" rel="noopener">Watch recap →</a></div></div>
     </div>
 
   </div>
@@ -1615,12 +1872,16 @@
 
   <!-- 10 · CTA -->
   <div class="page p10" data-label="Partner">
+    <div class="streaks">
+      <div class="sk"></div><div class="sk"></div><div class="sk"></div>
+      <div class="sk"></div><div class="sk"></div>
+    </div>
     <div class="p10__checker"></div>
     <div class="p10__body">
       <div class="p10__label">Let's Build It</div>
-      <h2 class="p10__h">The room<br>nobody<br><em>can skip.</em></h2>
+      <h2 class="p10__h">The room nobody<br><em>can skip.</em></h2>
       <p class="p10__sub">October 22, 2026. Austin, Texas. Tom Brady. Cadillac F1. 150–200+ vetted brand and sports leaders. One day to do business — four days to close it.</p>
-      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <div class="p10__actions" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
         <a href="mailto:bill@drinkwillpower.com" class="btn btn--blue">Partner With Willpower →</a>
         <button class="btn btn--red" onclick="goTo(7)">View Sponsorship Tiers</button>
       </div>
@@ -1775,14 +2036,13 @@
     if (!forward) pages[idx].classList.add('from-above');
 
     cur = idx;
-    // Small rAF so the enter class is painted before active is added
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        pages[cur].classList.add('active');
-        pages[cur].scrollTop = 0;
-        sync();
-      });
-    });
+    // Force a reflow so the enter position is painted before active is added —
+    // more reliable than requestAnimationFrame, which can stall in a backgrounded
+    // or unfocused tab and leave the page non-interactive until it happens to fire.
+    void pages[cur].offsetWidth;
+    pages[cur].classList.add('active');
+    pages[cur].scrollTop = 0;
+    sync();
 
     setTimeout(() => {
       pages[prev].classList.remove('exit-up', 'exit-down');
@@ -2046,6 +2306,66 @@
   setTimeout(() => { if (!circuitBuilt) buildCircuit(); }, 300);
 
   setActivePit(0);
+</script>
+
+<script>
+  // ── Sync p3 stat glow with its matching column (paired by index) ──
+  (() => {
+    const stats = document.querySelectorAll('.p3-stat');
+    const cols  = document.querySelectorAll('.p3-col');
+    stats.forEach((stat, i) => {
+      const col = cols[i];
+      if (!col) return;
+      stat.addEventListener('mouseenter', () => col.classList.add('p3-sync'));
+      stat.addEventListener('mouseleave', () => col.classList.remove('p3-sync'));
+      col.addEventListener('mouseenter', () => stat.classList.add('p3-sync'));
+      col.addEventListener('mouseleave', () => stat.classList.remove('p3-sync'));
+    });
+  })();
+</script>
+
+<script>
+  // ── Page 6 schedule toggle: morning / afternoon, with slide-up crossfade ──
+  let rosTransitioning = false;
+  function toggleRosPage() {
+    if (rosTransitioning) return;
+    const pages = [document.getElementById('ros-page-0'), document.getElementById('ros-page-1')];
+    const btn = document.getElementById('ros-toggle');
+    const activeIdx = pages.findIndex(p => p.classList.contains('active'));
+    const nextIdx = activeIdx === 0 ? 1 : 0;
+    const current = pages[activeIdx];
+    const next = pages[nextIdx];
+
+    rosTransitioning = true;
+    current.classList.remove('active');
+    current.classList.add('exiting');   // slides up + fades out
+    next.classList.add('active');       // slides up into place + fades in
+    btn.textContent = nextIdx === 1
+      ? '← Morning Schedule — 8:30–11:45'
+      : 'Afternoon Schedule — 12:15–4:00 →';
+
+    setTimeout(() => {
+      current.classList.remove('exiting'); // reset so it's ready to slide up again next time
+      rosTransitioning = false;
+    }, 450);
+  }
+</script>
+
+<script>
+  // ── Page 2 podium: click a card to spotlight it, collapsing the others into number buttons ──
+  function selectPodium(idx) {
+    const stage = document.getElementById('podium-stage');
+    const cols = [...stage.querySelectorAll('.podium-col')];
+    const alreadyActive = cols[idx].classList.contains('pod-active');
+
+    cols.forEach(col => col.classList.remove('pod-active', 'pod-collapsed'));
+
+    if (!alreadyActive) {
+      cols.forEach((col, i) => {
+        col.classList.add(i === idx ? 'pod-active' : 'pod-collapsed');
+      });
+    }
+  }
 </script>
 </body>
 </html>
