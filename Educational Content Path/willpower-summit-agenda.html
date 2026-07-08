@@ -284,9 +284,9 @@
   .speaker-grid { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 14px; }
 
   .speaker-chip { display: flex; flex-direction: column; align-items: center; gap: 6px; width: 68px; }
-  .speaker-logo-box { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; }
-  .speaker-logo-box img { width: 44px; height: 44px; object-fit: contain; filter: brightness(0) invert(1); opacity: .75; }
-  .speaker-logo-box .logo-initials { font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: .06em; color: rgba(255,255,255,.38); }
+  .speaker-logo-box { width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; }
+  .speaker-logo-box img { width: 64px; height: 64px; object-fit: contain; filter: brightness(0) invert(1); opacity: .75; }
+  .speaker-logo-box .logo-initials { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: .06em; color: rgba(255,255,255,.38); }
   .speaker-chip-name { font-size: 9.5px; font-weight: 700; color: rgba(255,255,255,.68); text-align: center; line-height: 1.2; }
   .speaker-chip-role { display: none; }
   .speaker-chip-proposed { display: none; }
@@ -925,7 +925,7 @@
   function setLogo(box, src, invert) {
     const img = document.createElement('img');
     img.alt = box.dataset.brand || box.dataset.domain || '';
-    img.style.cssText = 'width:44px;height:44px;object-fit:contain;' + (invert ? 'filter:brightness(0) invert(1);opacity:.75;' : 'opacity:.85;');
+    img.style.cssText = 'width:64px;height:64px;object-fit:contain;' + (invert ? 'filter:brightness(0) invert(1);opacity:.75;' : 'opacity:.85;');
     img.onerror = function() {};
     img.src = src;
     box.innerHTML = '';
