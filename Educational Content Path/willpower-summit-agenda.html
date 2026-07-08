@@ -283,13 +283,54 @@
 
   .speaker-grid { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 14px; }
 
-  .speaker-chip { display: flex; flex-direction: column; align-items: center; gap: 6px; width: 68px; }
+  .speaker-chip { display: flex; flex-direction: column; align-items: center; gap: 4px; width: 72px; }
   .speaker-logo-box { width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; }
   .speaker-logo-box img { width: 64px; height: 64px; object-fit: contain; filter: brightness(0) invert(1); opacity: .75; }
   .speaker-logo-box .logo-initials { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: .06em; color: rgba(255,255,255,.38); }
-  .speaker-chip-name { font-size: 9.5px; font-weight: 700; color: rgba(255,255,255,.68); text-align: center; line-height: 1.2; }
-  .speaker-chip-role { display: none; }
+  .speaker-headshot { border-radius: 50%; overflow: hidden; }
+  .speaker-headshot img { border-radius: 50%; object-fit: cover !important; object-position: top center !important; filter: none !important; opacity: 1 !important; }
+  .speaker-chip-name { font-size: 9.5px; font-weight: 700; color: rgba(255,255,255,.75); text-align: center; line-height: 1.2; }
+  .speaker-chip-role { font-size: 8px; font-weight: 500; color: rgba(255,255,255,.38); text-align: center; line-height: 1.25; }
   .speaker-chip-proposed { display: none; }
+
+  /* Clickable speaker chips */
+  .speaker-chip[data-bio] { cursor: pointer; }
+  .speaker-chip[data-bio] .speaker-headshot { transition: box-shadow .18s; }
+  .speaker-chip[data-bio]:hover .speaker-headshot { box-shadow: 0 0 0 2px var(--red); }
+  .speaker-chip[data-bio] .speaker-logo-box:not(.speaker-headshot) { transition: opacity .18s; }
+  .speaker-chip[data-bio]:hover .speaker-logo-box:not(.speaker-headshot) { opacity: .6; }
+
+  /* Speaker bio modal */
+  #spk-modal { display:none; position:fixed; inset:0; z-index:900; background:rgba(0,0,0,.72); backdrop-filter:blur(6px); align-items:center; justify-content:center; padding:20px; }
+  #spk-modal.open { display:flex; }
+  #spk-modal-box {
+    background: #0b0d16;
+    border: 1px solid rgba(255,255,255,.1);
+    border-top: 2px solid var(--red);
+    border-radius: 4px;
+    padding: 24px;
+    max-width: 340px;
+    width: 100%;
+    position: relative;
+    animation: spk-in .18s ease;
+  }
+  @keyframes spk-in { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+  #spk-close { position:absolute; top:12px; right:14px; background:none; border:none; color:rgba(255,255,255,.38); font-size:18px; cursor:pointer; line-height:1; padding:0; }
+  #spk-close:hover { color:white; }
+  .spk-header { display:flex; align-items:center; gap:14px; margin-bottom:16px; }
+  .spk-photo { width:64px; height:64px; border-radius:50%; object-fit:cover; object-position:top center; flex-shrink:0; }
+  .spk-photo-logo { width:64px; height:64px; border-radius:50%; background:rgba(255,255,255,.04); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .spk-photo-logo img { width:48px; height:48px; object-fit:contain; filter:brightness(0) invert(1); opacity:.7; }
+  .spk-info { flex:1; min-width:0; }
+  .spk-name { font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:.04em; color:white; line-height:1; }
+  .spk-title { font-size:10px; font-weight:600; color:var(--red); letter-spacing:.08em; text-transform:uppercase; margin-top:4px; line-height:1.3; }
+  .spk-desc { font-size:12px; line-height:1.65; color:rgba(255,255,255,.65); margin-bottom:18px; }
+  .spk-company-row { display:flex; align-items:center; gap:12px; padding:12px 14px; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.07); border-radius:3px; }
+  .spk-company-logo { height:24px; max-width:90px; object-fit:contain; filter:brightness(0) invert(1); opacity:.7; flex-shrink:0; }
+  .spk-company-logo.no-invert { filter:none; opacity:.85; }
+  .spk-company-info { flex:1; min-width:0; }
+  .spk-company-name { font-size:10px; font-weight:700; color:rgba(255,255,255,.7); letter-spacing:.04em; }
+  .spk-company-desc { font-size:10px; color:rgba(255,255,255,.38); margin-top:2px; line-height:1.4; }
 
   .moderator-divider { font-size: 7.5px; font-weight: 800; letter-spacing: .24em; text-transform: uppercase; color: var(--muted); margin: 14px 0 10px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.05); }
 
@@ -511,20 +552,20 @@
           <p class="session-desc">The real mechanics of partnering with an F1 team — the deal, the activation, the ROI — from the team, a current partner, and a brand weighing the leap.</p>
           <div class="speaker-section-label">Speakers</div>
           <div class="speaker-grid">
-            <div class="speaker-chip">
-              <div class="speaker-logo-box speaker-headshot"><img src="https://d3w5afnqqrsdxl.cloudfront.net/api-possible.expoplatform.co.uk/image/160x160/MTc3NjgwODA4MDY5ZTdmMDkwMTM5Njg=.jpeg" alt="Ahmed Iqbal" style="width:64px;height:64px;object-fit:cover;border-radius:50%;opacity:.9;"></div>
+            <div class="speaker-chip" data-spk-id="ahmed-iqbal" data-bio="1">
+              <div class="speaker-logo-box speaker-headshot"><img src="https://d3w5afnqqrsdxl.cloudfront.net/api-possible.expoplatform.co.uk/image/160x160/MTc3NjgwODA4MDY5ZTdmMDkwMTM5Njg=.jpeg" alt="Ahmed Iqbal"></div>
               <div class="speaker-chip-name">Ahmed Iqbal</div>
               <div class="speaker-chip-role">CMO, Cadillac F1</div>
               <div class="speaker-chip-proposed">Proposed</div>
             </div>
-            <div class="speaker-chip">
-              <div class="speaker-logo-box speaker-headshot"><img src="https://static-www.adweek.com/wp-content/uploads/2025/08/brave-commerce-suntory-John-Alvarado.jpg?w=400" alt="John Alvarado" style="width:64px;height:64px;object-fit:cover;object-position:top;border-radius:50%;opacity:.9;"></div>
+            <div class="speaker-chip" data-spk-id="john-alvarado" data-bio="1">
+              <div class="speaker-logo-box speaker-headshot"><img src="https://brand-innovators.com/wp-content/uploads/2025/01/Alvarado-John.jpeg" alt="John Alvarado"></div>
               <div class="speaker-chip-name">John Alvarado</div>
               <div class="speaker-chip-role">Chief Brands Officer, Jim Beam</div>
               <div class="speaker-chip-proposed">Proposed</div>
             </div>
-            <div class="speaker-chip">
-              <div class="speaker-logo-box speaker-headshot"><img src="https://brand-innovators.com/wp-content/uploads/2024/01/Frias-Alex.jpeg" alt="Alex Frias" style="width:64px;height:64px;object-fit:cover;object-position:top;border-radius:50%;opacity:.9;"></div>
+            <div class="speaker-chip" data-spk-id="alex-frias" data-bio="1">
+              <div class="speaker-logo-box speaker-headshot"><img src="https://brand-innovators.com/wp-content/uploads/2024/01/Frias-Alex.jpeg" alt="Alex Frias"></div>
               <div class="speaker-chip-name">Alex Frias</div>
               <div class="speaker-chip-role">CMO, Steve Madden</div>
               <div class="speaker-chip-proposed">Proposed</div>
@@ -696,16 +737,16 @@
           <p class="session-desc">A fireside on longevity as the next brand frontier — and the live reveal of the Brady Protocol. The day's headline moment and the pivot point of the afternoon.</p>
           <div class="speaker-section-label">Speakers</div>
           <div class="speaker-grid">
-            <div class="speaker-chip">
-              <div class="speaker-logo-box" data-domain="tb12sports.com"><span class="logo-initials">TB</span></div>
+            <div class="speaker-chip" data-spk-id="tom-brady" data-bio="1">
+              <div class="speaker-logo-box speaker-headshot"><img src="https://a57.foxsports.com/statics.foxsports.com/www.foxsports.com/content/uploads/2024/09/400/400/tom-brady_727x727.png" alt="Tom Brady"></div>
               <div class="speaker-chip-name">Tom Brady</div>
               <div class="speaker-chip-role">7× Super Bowl Champion</div>
               <div class="speaker-chip-proposed">Proposed</div>
             </div>
-            <div class="speaker-chip">
-              <div class="speaker-logo-box" data-brand="aescape"><span class="logo-initials">AE</span></div>
-              <div class="speaker-chip-name">Founder / CEO, Aescape</div>
-              <div class="speaker-chip-role">Brady Protocol Launch</div>
+            <div class="speaker-chip" data-spk-id="eric-litman" data-bio="1">
+              <div class="speaker-logo-box speaker-headshot"><img src="https://pbs.twimg.com/profile_images/1892919393555746816/PkFA4ul8_400x400.jpg" alt="Eric Litman"></div>
+              <div class="speaker-chip-name">Eric Litman</div>
+              <div class="speaker-chip-role">Founder & CEO, Aescape</div>
               <div class="speaker-chip-proposed">Proposed</div>
             </div>
             <div class="speaker-chip">
@@ -935,6 +976,114 @@
     const entry = WP_LOGOS[box.dataset.brand] || WP_LOGOS[box.dataset.domain];
     if (entry) setLogo(box, entry.url, entry.invert);
   });
+</script>
+
+<!-- Speaker bio modal -->
+<div id="spk-modal" role="dialog" aria-modal="true">
+  <div id="spk-modal-box">
+    <button id="spk-close" aria-label="Close">×</button>
+    <div class="spk-header">
+      <div id="spk-avatar"></div>
+      <div class="spk-info">
+        <div class="spk-name" id="spk-name"></div>
+        <div class="spk-title" id="spk-title"></div>
+      </div>
+    </div>
+    <p class="spk-desc" id="spk-desc"></p>
+    <div class="spk-company-row">
+      <img class="spk-company-logo" id="spk-co-logo" alt="">
+      <div class="spk-company-info">
+        <div class="spk-company-name" id="spk-co-name"></div>
+        <div class="spk-company-desc" id="spk-co-desc"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const SPEAKERS = {
+    'ahmed-iqbal': {
+      name: 'Ahmed Iqbal',
+      title: 'Chief Marketing Officer · Cadillac F1',
+      photo: 'https://d3w5afnqqrsdxl.cloudfront.net/api-possible.expoplatform.co.uk/image/160x160/MTc3NjgwODA4MDY5ZTdmMDkwMTM5Njg=.jpeg',
+      desc: 'First CMO in Cadillac F1 history. Previously led automotive strategy at TikTok, building a nine-figure business, and before that served as Head of Global Automotive at Twitter. His playbook: make Cadillac America\'s home team through creators, community, and behind-the-scenes storytelling.',
+      company: 'Cadillac F1',
+      companyDesc: 'America\'s first Formula 1 constructor since 1986. Competing in the 2026 season, backed by GM — the only American team on the grid.',
+      logoUrl: 'https://www.cadillacf1team.com/assets/cadillac.webp',
+      logoInvert: true,
+    },
+    'john-alvarado': {
+      name: 'John Alvarado',
+      title: 'Chief Brands Officer · Suntory Global Spirits',
+      photo: 'https://brand-innovators.com/wp-content/uploads/2025/01/Alvarado-John.jpeg',
+      desc: 'U.S. Chief Brands Officer overseeing Jim Beam, Maker\'s Mark, and the full Suntory spirits portfolio. 25+ years in senior brand marketing at Constellation Brands and Keurig Dr Pepper. Jim Beam is Cadillac F1\'s official whiskey partner.',
+      company: 'Jim Beam · Suntory Global Spirits',
+      companyDesc: 'Home to Jim Beam, Maker\'s Mark, and Knob Creek. One of the world\'s largest spirits companies and an official Cadillac F1 team partner.',
+      logoUrl: 'https://www.cadillacf1team.com/ctfassets/images/123jt18lixwc/7AzvGgZtFopFVGhgLwl8Nm/5075d6ec15f395259b937bd358bc04ce/Partner-Jim_Beam.svg',
+      logoInvert: false,
+    },
+    'alex-frias': {
+      name: 'Alex Frias',
+      title: 'Chief Marketing Officer · Steve Madden',
+      photo: 'https://brand-innovators.com/wp-content/uploads/2024/01/Frias-Alex.jpeg',
+      desc: 'CMO overseeing full-stack marketing for Steve Madden\'s brand portfolio — Steve Madden, Dolce Vita, Betsey Johnson, and Blondo. Prior stops include Wayfair, FILA North America, and music streaming startup TIDAL. Known for driving cultural brand transformations.',
+      company: 'Steve Madden',
+      companyDesc: 'Global fashion and footwear powerhouse with $2B+ in annual revenue. A culturally-driven brand at the intersection of fashion, music, and pop culture.',
+      logoUrl: 'https://res.cloudinary.com/dtweaijj1/image/upload/v1783124422/willpower/logos/brand-stevemadden-logo.png',
+      logoInvert: true,
+    },
+    'tom-brady': {
+      name: 'Tom Brady',
+      title: '7× Super Bowl Champion · Aescape Strategic Partner',
+      photo: 'https://a57.foxsports.com/statics.foxsports.com/www.foxsports.com/content/uploads/2024/09/400/400/tom-brady_727x727.png',
+      desc: 'The most decorated quarterback in NFL history with 7 Super Bowl titles. Now an entrepreneur and Fox Sports analyst. Strategic partner and the face of the Brady Protocol — a science-backed longevity program launching live at this event.',
+      company: 'Aescape',
+      companyDesc: 'The world\'s first fully automated robotic massage experience. AI-powered and deployed at 100+ premium locations including Equinox, Four Seasons, and Marriott. $100M+ raised.',
+      logoUrl: 'https://res.cloudinary.com/dtweaijj1/image/upload/v1783123942/willpower/logos/brand-aescape-wordmark-white.svg',
+      logoInvert: false,
+    },
+    'eric-litman': {
+      name: 'Eric Litman',
+      title: 'Founder & CEO · Aescape',
+      photo: 'https://pbs.twimg.com/profile_images/1892919393555746816/PkFA4ul8_400x400.jpg',
+      desc: 'Serial entrepreneur with 4 exits who founded Aescape in 2017. Built the world\'s first AI-powered robotic massage system from the ground up, scaling to 100+ premium wellness locations. Raised $100M+ from strategic investors including backing from Tom Brady.',
+      company: 'Aescape',
+      companyDesc: 'The world\'s first fully automated robotic massage experience. AI-powered and deployed at 100+ premium locations including Equinox, Four Seasons, and Marriott. $100M+ raised.',
+      logoUrl: 'https://res.cloudinary.com/dtweaijj1/image/upload/v1783123942/willpower/logos/brand-aescape-wordmark-white.svg',
+      logoInvert: false,
+    },
+  };
+
+  const modal = document.getElementById('spk-modal');
+  document.querySelectorAll('[data-spk-id]').forEach(chip => {
+    chip.addEventListener('click', e => {
+      const spk = SPEAKERS[chip.dataset.spkId];
+      if (!spk) return;
+
+      const avatar = document.getElementById('spk-avatar');
+      if (spk.photo) {
+        avatar.innerHTML = `<img class="spk-photo" src="${spk.photo}" alt="${spk.name}">`;
+      } else {
+        avatar.innerHTML = `<div class="spk-photo-logo"><img src="${spk.logoUrl}" alt="${spk.company}"></div>`;
+      }
+
+      document.getElementById('spk-name').textContent = spk.name;
+      document.getElementById('spk-title').textContent = spk.title;
+      document.getElementById('spk-desc').textContent = spk.desc;
+      document.getElementById('spk-co-name').textContent = spk.company;
+      document.getElementById('spk-co-desc').textContent = spk.companyDesc;
+      const logo = document.getElementById('spk-co-logo');
+      logo.src = spk.logoUrl;
+      logo.alt = spk.company;
+      logo.className = 'spk-company-logo' + (spk.logoInvert ? '' : ' no-invert');
+
+      modal.classList.add('open');
+    });
+  });
+
+  document.getElementById('spk-close').addEventListener('click', () => modal.classList.remove('open'));
+  modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') modal.classList.remove('open'); });
 </script>
 
 <script>
