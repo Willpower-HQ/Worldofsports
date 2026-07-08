@@ -334,19 +334,19 @@
           <div class="speaker-section-label">Proposed Speakers</div>
           <div class="speaker-grid">
             <div class="speaker-chip">
-              <div class="speaker-logo-box"><span class="logo-initials">M</span></div>
+              <div class="speaker-logo-box" data-brand="cadillac-f1"><span class="logo-initials">M</span></div>
               <div class="speaker-chip-name">Meddy</div>
               <div class="speaker-chip-role">CMO, Cadillac F1</div>
               <div class="speaker-chip-proposed">Proposed</div>
             </div>
             <div class="speaker-chip">
-              <div class="speaker-logo-box"><img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.jimbeam.com&size=64" alt="Jim Beam"></div>
+              <div class="speaker-logo-box"><span class="logo-initials">JB</span></div>
               <div class="speaker-chip-name">CMO, Jim Beam</div>
               <div class="speaker-chip-role">Current Partner</div>
               <div class="speaker-chip-proposed">Proposed</div>
             </div>
             <div class="speaker-chip">
-              <div class="speaker-logo-box"><img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.stevemadden.com&size=64" alt="Steve Madden"></div>
+              <div class="speaker-logo-box" data-brand="stevemadden"><span class="logo-initials">SM</span></div>
               <div class="speaker-chip-name">CMO, Steve Madden</div>
               <div class="speaker-chip-role">Prospective Sponsor</div>
               <div class="speaker-chip-proposed">Proposed</div>
@@ -405,19 +405,19 @@
           <div class="speaker-section-label">Proposed Speakers</div>
           <div class="speaker-grid">
             <div class="speaker-chip">
-              <div class="speaker-logo-box"><img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.drinkpoppi.com&size=64" alt="Poppi"></div>
+              <div class="speaker-logo-box" data-brand="poppi"><span class="logo-initials">PO</span></div>
               <div class="speaker-chip-name">Community DTC CMO</div>
               <div class="speaker-chip-role">Poppi / OLIPOP / Liquid Death type</div>
               <div class="speaker-chip-proposed">Proposed</div>
             </div>
             <div class="speaker-chip">
-              <div class="speaker-logo-box"><img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.klaviyo.com&size=64" alt="Klaviyo"></div>
+              <div class="speaker-logo-box" data-brand="klaviyo"><span class="logo-initials">KL</span></div>
               <div class="speaker-chip-name">Speaker, Klaviyo</div>
               <div class="speaker-chip-role">Email &amp; SMS</div>
               <div class="speaker-chip-proposed">Sponsor Seat</div>
             </div>
             <div class="speaker-chip">
-              <div class="speaker-logo-box"><img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.okendo.io&size=64" alt="Okendo"></div>
+              <div class="speaker-logo-box" data-brand="okendo"><span class="logo-initials">OK</span></div>
               <div class="speaker-chip-name">Speaker, Okendo</div>
               <div class="speaker-chip-role">Reviews &amp; Loyalty</div>
               <div class="speaker-chip-proposed">Sponsor Seat</div>
@@ -530,7 +530,7 @@
               <div class="speaker-chip-proposed">Proposed</div>
             </div>
             <div class="speaker-chip">
-              <div class="speaker-logo-box"><span class="logo-initials">AE</span></div>
+              <div class="speaker-logo-box" data-brand="aescape"><span class="logo-initials">AE</span></div>
               <div class="speaker-chip-name">Founder / CEO, Aescape</div>
               <div class="speaker-chip-role">Brady Protocol Launch</div>
               <div class="speaker-chip-proposed">Proposed</div>
@@ -580,13 +580,13 @@
               <div class="speaker-chip-proposed">Proposed</div>
             </div>
             <div class="speaker-chip">
-              <div class="speaker-logo-box"><img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.shopify.com&size=64" alt="Shopify"></div>
+              <div class="speaker-logo-box" data-brand="shopify"><span class="logo-initials">SH</span></div>
               <div class="speaker-chip-name">Speaker, Shopify</div>
               <div class="speaker-chip-role">Commerce Infrastructure</div>
               <div class="speaker-chip-proposed">Sponsor Seat</div>
             </div>
             <div class="speaker-chip">
-              <div class="speaker-logo-box"><img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.route.com&size=64" alt="Route"></div>
+              <div class="speaker-logo-box" data-brand="route"><span class="logo-initials">RT</span></div>
               <div class="speaker-chip-name">Speaker, Route</div>
               <div class="speaker-chip-role">Post-Purchase</div>
               <div class="speaker-chip-proposed">Sponsor Seat</div>
@@ -630,7 +630,7 @@
           <div class="speaker-section-label">Proposed Speakers</div>
           <div class="speaker-grid">
             <div class="speaker-chip">
-              <div class="speaker-logo-box"><img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.yeti.com&size=64" alt="YETI"></div>
+              <div class="speaker-logo-box" data-brand="yeti"><span class="logo-initials">YT</span></div>
               <div class="speaker-chip-name">Iconic Brand CMO</div>
               <div class="speaker-chip-role">Yeti / Liquid Death / Poppi type</div>
               <div class="speaker-chip-proposed">Proposed</div>
@@ -732,6 +732,30 @@
 </div>
 
 <div class="footer">Willpower · World of Sports &amp; Human Performance · Austin, TX · Oct 22, 2026 · events@drinkwillpower.com</div>
+
+<script>
+  // Logo map from willpowerhq.com/data/logos.json
+  const WP_LOGOS = {
+    'cadillac-f1':  { url: 'https://res.cloudinary.com/dtweaijj1/image/upload/v1783124022/willpower/logos/brand-cadillac-f1-logo.png',   invert: true },
+    'stevemadden':  { url: 'https://res.cloudinary.com/dtweaijj1/image/upload/v1783124422/willpower/logos/brand-stevemadden-logo.png',   invert: true },
+    'poppi':        { url: 'https://res.cloudinary.com/dtweaijj1/image/upload/v1783124342/willpower/logos/brand-poppi-logo.png',          invert: true },
+    'klaviyo':      { url: 'https://res.cloudinary.com/dtweaijj1/image/upload/v1783124615/willpower/logos/sponsor-klaviyo-logo.png',      invert: true },
+    'shopify':      { url: 'https://res.cloudinary.com/dtweaijj1/image/upload/v1783124382/willpower/logos/brand-shopify-hq.png',          invert: true },
+    'route':        { url: 'https://res.cloudinary.com/dtweaijj1/image/upload/v1783124690/willpower/logos/sponsor-route-logo.svg',        invert: true },
+    'yeti':         { url: 'https://res.cloudinary.com/dtweaijj1/image/upload/v1783124778/willpower/logos/sponsor-yeti-logo.png',         invert: true },
+    'aescape':      { url: 'https://res.cloudinary.com/dtweaijj1/image/upload/v1783123942/willpower/logos/brand-aescape-wordmark-white.svg', invert: false },
+  };
+  document.querySelectorAll('[data-brand]').forEach(box => {
+    const entry = WP_LOGOS[box.dataset.brand];
+    if (!entry) return;
+    const img = document.createElement('img');
+    img.alt = box.dataset.brand;
+    img.style.cssText = 'width:36px;height:36px;object-fit:contain;' + (entry.invert ? 'filter:brightness(0) invert(1);opacity:.85;' : 'opacity:.9;');
+    img.src = entry.url;
+    box.innerHTML = '';
+    box.appendChild(img);
+  });
+</script>
 
 <script>
   document.querySelectorAll('[data-expandable]').forEach(card => {
