@@ -785,35 +785,40 @@
     .p6-rule--red { background: #E8002D; margin: 0; }
     .p6-eyebrow { font-family: 'Courier New', monospace; font-size: 7.5px; letter-spacing: .16em; color: rgba(30,130,255,.55); text-transform: uppercase; margin-bottom: 4px; max-width: 60%; }
     .p6-title { font-family: 'Bebas Neue', var(--cond); font-size: 50px; letter-spacing: .08em; line-height: 1; color: #fff; margin: 0; max-width: 60%; }
-    /* Modules */
-    .p6-modules { flex: 1; min-height: 0; margin-top: 10px; display: flex; flex-direction: column; overflow: hidden; position: relative; }
-    .p6-spine { position: absolute; left: 52px; top: 0; bottom: 60px; width: 1px; background: linear-gradient(to bottom, #E8002D 60%, rgba(232,0,45,.05) 100%); pointer-events: none; }
-    .p6-mod-group { display: flex; flex-direction: column; }
-    .p6-mod {
-      display: flex; align-items: center; gap: 0;
-      padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,.05);
-      position: relative; transition: background .2s;
+    /* ── Flow layout ── */
+    .p6-flow { flex: 1; min-height: 0; margin-top: 8px; display: flex; flex-direction: column; gap: 5px; overflow: hidden; }
+    /* Anchor rows — highlighted events */
+    .p6-anchor {
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      background: rgba(232,0,45,.07); border: 1px solid rgba(232,0,45,.22);
+      border-radius: 2px; padding: 7px 12px; flex-shrink: 0;
     }
-    .p6-mod:hover { background: rgba(232,0,45,.025); }
-    .p6-mod--hero { border-color: rgba(232,0,45,.18); }
-    .p6-mod__num { font-family: 'Courier New', monospace; font-size: 6.5px; letter-spacing: .14em; color: rgba(30,130,255,.42); text-transform: uppercase; width: 52px; flex-shrink: 0; }
-    .p6-mod__time { font-family: 'Bebas Neue', var(--cond); font-size: 28px; letter-spacing: .03em; color: rgba(255,255,255,.48); width: 68px; flex-shrink: 0; line-height: 1; }
-    .p6-mod--hero .p6-mod__time { color: rgba(255,255,255,.9); }
-    .p6-mod__arrow { font-family: 'Courier New', monospace; font-size: 10px; color: rgba(232,0,45,.42); flex-shrink: 0; padding: 0 8px; letter-spacing: -.06em; }
-    .p6-mod__body { flex: 1; min-width: 0; }
-    .p6-mod__title { font-family: var(--cond); font-size: 13px; font-weight: 700; letter-spacing: .04em; color: rgba(255,255,255,.88); line-height: 1.2; }
-    .p6-mod--hero .p6-mod__title { color: #E8002D; }
-    .p6-mod__sub { font-family: 'Courier New', monospace; font-size: 7px; letter-spacing: .06em; color: rgba(255,255,255,.25); margin-top: 1px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .p6-mod__tag { font-family: 'Courier New', monospace; font-size: 5.5px; letter-spacing: .12em; text-transform: uppercase; color: rgba(232,0,45,.7); border: 1px solid rgba(232,0,45,.22); border-radius: 1px; padding: 2px 5px; flex-shrink: 0; margin-left: 6px; white-space: nowrap; align-self: flex-start; margin-top: 2px; }
-    /* Toggle */
-    .p6-toggle {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-family: 'Courier New', monospace; font-size: 8px; letter-spacing: .14em; text-transform: uppercase;
-      color: rgba(30,130,255,.62); background: none; border: 1px solid rgba(30,130,255,.16);
-      border-radius: 1px; padding: 6px 14px; cursor: pointer; margin-top: 6px; margin-left: 120px;
-      transition: all .25s ease; white-space: nowrap;
+    .p6-anchor__left { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .p6-anchor__time { font-family: 'Bebas Neue', var(--cond); font-size: 22px; color: #fff; letter-spacing: .03em; line-height: 1; }
+    .p6-anchor__arrow { font-family: 'Courier New', monospace; font-size: 9px; color: rgba(232,0,45,.55); letter-spacing: -.06em; }
+    .p6-anchor__title { font-family: var(--cond); font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.9); }
+    .p6-anchor__logos { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    .p6-anchor__logo { height: 16px; width: auto; max-width: 52px; object-fit: contain; filter: brightness(0) invert(1); opacity: .65; }
+    .p6-anchor__logo[src*="gstatic"] { filter: grayscale(1) brightness(3); opacity: .5; }
+    /* Track sections — BRANDS / PERFORMANCE */
+    .p6-track { display: flex; gap: 0; flex-shrink: 0; }
+    .p6-track__label {
+      writing-mode: vertical-rl; text-orientation: mixed; transform: rotate(180deg);
+      font-family: 'Courier New', monospace; font-size: 6px; letter-spacing: .22em; text-transform: uppercase;
+      color: rgba(255,255,255,.18); padding: 4px 5px; flex-shrink: 0; border-left: 1px solid rgba(255,255,255,.06);
     }
-    .p6-toggle:hover { background: rgba(30,130,255,.06); border-color: rgba(30,130,255,.4); }
+    .p6-track__panels { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; border-left: 2px solid rgba(232,0,45,.25); padding-left: 8px; }
+    /* Panel rows */
+    .p6-panel { display: flex; align-items: center; gap: 0; padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,.04); }
+    .p6-panel__num { font-family: 'Courier New', monospace; font-size: 5.5px; letter-spacing: .12em; color: rgba(30,130,255,.35); text-transform: uppercase; width: 42px; flex-shrink: 0; }
+    .p6-panel__time { font-family: 'Bebas Neue', var(--cond); font-size: 24px; letter-spacing: .02em; color: rgba(255,255,255,.45); width: 58px; flex-shrink: 0; line-height: 1; }
+    .p6-panel__arrow { font-family: 'Courier New', monospace; font-size: 9px; color: rgba(232,0,45,.35); flex-shrink: 0; padding: 0 6px; letter-spacing: -.06em; }
+    .p6-panel__content { flex: 1; min-width: 0; }
+    .p6-panel__title { font-family: var(--cond); font-size: 12px; font-weight: 700; letter-spacing: .05em; color: rgba(255,255,255,.85); line-height: 1.2; }
+    .p6-panel__desc { font-family: 'Courier New', monospace; font-size: 6px; letter-spacing: .04em; color: rgba(255,255,255,.2); margin-top: 1px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; }
+    .p6-panel__targets { display: flex; align-items: center; gap: 5px; flex-shrink: 0; margin-left: 6px; }
+    .p6-panel__tlogo { height: 13px; width: auto; max-width: 38px; object-fit: contain; filter: brightness(0) invert(1); opacity: .45; }
+    .p6-panel__tlogo[src*="gstatic"] { filter: grayscale(1) brightness(3); opacity: .35; }
 
     /* ━━━━ PAGE 7: WEEKEND ━━━━ */
     .p7 { background: var(--ink); }
@@ -1840,81 +1845,128 @@
         <div class="p6-rule p6-rule--red"></div>
       </div>
 
-      <!-- Schedule modules -->
-      <div class="p6-modules">
-        <div class="p6-spine"></div>
+      <!-- Event flow -->
+      <div class="p6-flow">
 
-        <!-- Morning modules -->
-        <div class="p6-mod-group" id="p6-page-0">
-          <div class="p6-mod">
-            <span class="p6-mod__num">Module 01</span>
-            <span class="p6-mod__time">8:30</span>
-            <span class="p6-mod__arrow">────────►</span>
-            <div class="p6-mod__body"><div class="p6-mod__title">Arrivals &amp; Breakfast</div><div class="p6-mod__sub">Lounges &amp; Tech Playground open</div></div>
+        <!-- ANCHOR: Community Warm-Up -->
+        <div class="p6-anchor">
+          <div class="p6-anchor__left">
+            <span class="p6-anchor__time">10:00</span>
+            <span class="p6-anchor__arrow">──────►</span>
+            <span class="p6-anchor__title">Community Warm-Up</span>
           </div>
-          <div class="p6-mod">
-            <span class="p6-mod__num">Module 02</span>
-            <span class="p6-mod__time">9:00</span>
-            <span class="p6-mod__arrow">────────►</span>
-            <div class="p6-mod__body"><div class="p6-mod__title">Stadium Run w/ Austin FC</div><div class="p6-mod__sub">Optional movement — the warmup lap</div></div>
-            <span class="p6-mod__tag">Pace Lap</span>
-          </div>
-          <div class="p6-mod">
-            <span class="p6-mod__num">Module 03</span>
-            <span class="p6-mod__time">9:45</span>
-            <span class="p6-mod__arrow">────────►</span>
-            <div class="p6-mod__body"><div class="p6-mod__title">The New Brand Blueprint</div><div class="p6-mod__sub">How wellness &amp; performance brands break into sports culture</div></div>
-            <span class="p6-mod__tag">Main Stage</span>
-          </div>
-          <div class="p6-mod">
-            <span class="p6-mod__num">Module 04</span>
-            <span class="p6-mod__time">10:45</span>
-            <span class="p6-mod__arrow">────────►</span>
-            <div class="p6-mod__body"><div class="p6-mod__title">The Performance Platform</div><div class="p6-mod__sub">How teams and performance brands partner to push human potential</div></div>
-            <span class="p6-mod__tag">Main Stage</span>
-          </div>
-          <div class="p6-mod p6-mod--hero">
-            <span class="p6-mod__num">Module 05</span>
-            <span class="p6-mod__time">11:45</span>
-            <span class="p6-mod__arrow">────────►</span>
-            <div class="p6-mod__body"><div class="p6-mod__title">The Brady Protocol — Live Launch w/ Aescape</div><div class="p6-mod__sub">A world-first reveal on the summit stage</div></div>
-            <span class="p6-mod__tag">World First</span>
+          <div class="p6-anchor__logos">
+            <img class="p6-anchor__logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.nba.com/spurs&size=64" alt="Spurs">
+            <img class="p6-anchor__logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.equinox.com&size=64" alt="Equinox">
+            <img class="p6-anchor__logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.nutrabolt.com&size=64" alt="Nutrabolt">
+            <img class="p6-anchor__logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://hyperice.com&size=64" alt="Hyperice">
           </div>
         </div>
 
-        <!-- Afternoon modules (hidden by default) -->
-        <div class="p6-mod-group" id="p6-page-1" style="display:none">
-          <div class="p6-mod">
-            <span class="p6-mod__num">Module 06</span>
-            <span class="p6-mod__time">12:15</span>
-            <span class="p6-mod__arrow">────────►</span>
-            <div class="p6-mod__body"><div class="p6-mod__title">Padel w/ The Pros &amp; Lunch</div><div class="p6-mod__sub">Activations, concierge intros</div></div>
-            <span class="p6-mod__tag">On Court</span>
-          </div>
-          <div class="p6-mod">
-            <span class="p6-mod__num">Module 07</span>
-            <span class="p6-mod__time">1:30</span>
-            <span class="p6-mod__arrow">────────►</span>
-            <div class="p6-mod__body"><div class="p6-mod__title">The Performance Edge</div><div class="p6-mod__sub">Recovery, longevity &amp; mental performance</div></div>
-            <span class="p6-mod__tag">Main Stage</span>
-          </div>
-          <div class="p6-mod">
-            <span class="p6-mod__num">Module 08</span>
-            <span class="p6-mod__time">2:30</span>
-            <span class="p6-mod__arrow">────────►</span>
-            <div class="p6-mod__body"><div class="p6-mod__title">Building Worlds Through Sports</div><div class="p6-mod__sub">Teams, brands &amp; culture</div></div>
-            <span class="p6-mod__tag">Main Stage</span>
-          </div>
-          <div class="p6-mod p6-mod--hero">
-            <span class="p6-mod__num">Module 09</span>
-            <span class="p6-mod__time">4:00</span>
-            <span class="p6-mod__arrow">────────►</span>
-            <div class="p6-mod__body"><div class="p6-mod__title">Padel &amp; Chill</div><div class="p6-mod__sub">Sunset reception → curated VIP dinners</div></div>
-            <span class="p6-mod__tag">Closing</span>
+        <!-- BRANDS track -->
+        <div class="p6-track">
+          <div class="p6-track__label">Brands</div>
+          <div class="p6-track__panels">
+            <div class="p6-panel">
+              <span class="p6-panel__num">MOD 01</span>
+              <span class="p6-panel__time">9:45</span>
+              <span class="p6-panel__arrow">────►</span>
+              <div class="p6-panel__content">
+                <div class="p6-panel__title">The New Brand Blueprint</div>
+                <div class="p6-panel__desc">How wellness &amp; performance brands break into sports culture</div>
+              </div>
+              <div class="p6-panel__targets">
+                <img class="p6-panel__tlogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.nike.com&size=64" alt="Nike">
+                <img class="p6-panel__tlogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.whoop.com&size=64" alt="WHOOP">
+                <img class="p6-panel__tlogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://hyperice.com&size=64" alt="Hyperice">
+                <img class="p6-panel__tlogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.drinkpoppi.com&size=64" alt="Poppi">
+                <img class="p6-panel__tlogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.nutrabolt.com&size=64" alt="Nutrabolt">
+              </div>
+            </div>
+            <div class="p6-panel">
+              <span class="p6-panel__num">MOD 02</span>
+              <span class="p6-panel__time">10:30</span>
+              <span class="p6-panel__arrow">────►</span>
+              <div class="p6-panel__content">
+                <div class="p6-panel__title">The Performance Platform</div>
+                <div class="p6-panel__desc">How teams &amp; performance brands partner to push human potential</div>
+              </div>
+              <div class="p6-panel__targets">
+                <img class="p6-panel__tlogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.nba.com/spurs&size=64" alt="Spurs">
+                <img class="p6-panel__tlogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.austinfc.com&size=64" alt="Austin FC">
+                <img class="p6-panel__tlogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.nutrabolt.com&size=64" alt="Nutrabolt">
+                <img class="p6-panel__tlogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.whoop.com&size=64" alt="WHOOP">
+              </div>
+            </div>
           </div>
         </div>
 
-        <button class="p6-toggle" id="p6-toggle" onclick="toggleP6Page()">[ Afternoon Schedule — 12:15–4:00 → ]</button>
+        <!-- ANCHOR: Padel & Lunch -->
+        <div class="p6-anchor">
+          <div class="p6-anchor__left">
+            <span class="p6-anchor__time">1:00</span>
+            <span class="p6-anchor__arrow">──────►</span>
+            <span class="p6-anchor__title">Padel w/ The Pros &amp; Lunch</span>
+          </div>
+          <div class="p6-anchor__logos">
+            <img class="p6-anchor__logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.lovb.com&size=64" alt="LOVB">
+            <img class="p6-anchor__logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.nba.com/spurs&size=64" alt="Spurs">
+            <img class="p6-anchor__logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124022/willpower/logos/brand-cadillac-f1-logo.png" alt="Cadillac" style="filter:invert(1);mix-blend-mode:screen;">
+            <img class="p6-anchor__logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://texassports.com&size=64" alt="Longhorns">
+            <img class="p6-anchor__logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124129/willpower/logos/brand-formula1-logo.svg" alt="F1">
+          </div>
+        </div>
+
+        <!-- PERFORMANCE track -->
+        <div class="p6-track">
+          <div class="p6-track__label">Performance</div>
+          <div class="p6-track__panels">
+            <div class="p6-panel">
+              <span class="p6-panel__num">MOD 03</span>
+              <span class="p6-panel__time">2:30</span>
+              <span class="p6-panel__arrow">────►</span>
+              <div class="p6-panel__content">
+                <div class="p6-panel__title">High Stress Cognitive Performance</div>
+                <div class="p6-panel__desc">Cognitive performance on the battlefield, racetrack &amp; championship game</div>
+              </div>
+              <div class="p6-panel__targets">
+                <img class="p6-panel__tlogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.nba.com/spurs&size=64" alt="Spurs">
+                <img class="p6-panel__tlogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://texassports.com&size=64" alt="Longhorns">
+                <img class="p6-panel__tlogo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124022/willpower/logos/brand-cadillac-f1-logo.png" alt="Cadillac" style="filter:invert(1);mix-blend-mode:screen;">
+                <img class="p6-panel__tlogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.nasa.gov&size=64" alt="NASA">
+              </div>
+            </div>
+            <div class="p6-panel">
+              <span class="p6-panel__num">MOD 04</span>
+              <span class="p6-panel__time">3:15</span>
+              <span class="p6-panel__arrow">────►</span>
+              <div class="p6-panel__content">
+                <div class="p6-panel__title">American Performance</div>
+                <div class="p6-panel__desc">Sports, defense &amp; wellness leaders shaping the future of American performance</div>
+              </div>
+              <div class="p6-panel__targets">
+                <img class="p6-panel__tlogo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124022/willpower/logos/brand-cadillac-f1-logo.png" alt="Cadillac" style="filter:invert(1);mix-blend-mode:screen;">
+                <img class="p6-panel__tlogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.anduril.com&size=64" alt="Anduril">
+                <img class="p6-panel__tlogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.palantir.com&size=64" alt="Palantir">
+                <img class="p6-panel__tlogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.nba.com/spurs&size=64" alt="Spurs">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ANCHOR: Padel & Chill -->
+        <div class="p6-anchor">
+          <div class="p6-anchor__left">
+            <span class="p6-anchor__time">4:00</span>
+            <span class="p6-anchor__arrow">──────►</span>
+            <span class="p6-anchor__title">Padel &amp; Chill</span>
+          </div>
+          <div class="p6-anchor__logos">
+            <img class="p6-anchor__logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://hyperice.com&size=64" alt="Hyperice">
+            <img class="p6-anchor__logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.plunge.com&size=64" alt="Plunge">
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
