@@ -735,6 +735,17 @@
         radial-gradient(ellipse at 50% 50%, rgba(10,14,40,.8) 0%, transparent 80%),
         linear-gradient(160deg, #06091e 0%, #0a040e 60%, #04050f 100%);
     }
+    .p6-court { position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      display: flex; align-items: center; justify-content: center; opacity: .055; }
+    .p6-court svg { width: 92%; max-width: 440px; }
+    /* ── Anchor glow pulse ── */
+    @keyframes ef-anchor-glow {
+      0%, 100% { box-shadow: 0 0 0px 0px rgba(90,160,255,0), inset 0 0 0px rgba(90,160,255,0); }
+      50%       { box-shadow: 0 0 18px 3px rgba(90,160,255,.18), inset 0 1px 0 rgba(90,160,255,.08); }
+    }
+    .ef-anchor { animation: ef-anchor-glow 4s ease-in-out infinite; }
+    .ef-anchor:nth-child(3) { animation-delay: -1.3s; }
+    .ef-anchor:nth-child(7) { animation-delay: -2.6s; }
     .p6__inner {
       position: relative; z-index: 2;
       padding: 52px 14px 126px;
@@ -742,36 +753,58 @@
       display: flex; flex-direction: column; justify-content: space-between;
     }
     /* ── Header ── */
-    .ef-header { display: flex; align-items: baseline; gap: 8px; flex-shrink: 0; margin-bottom: 2px; }
-    .ef-header__title { font-family: 'Bebas Neue', var(--cond); font-size: 30px; letter-spacing: .12em; color: #fff; line-height: 1; }
-    .ef-header__sub { font-family: var(--cond); font-size: 9px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.3); }
-    /* ── Anchor pill rows ── */
-    .ef-anchor {
-      display: flex; align-items: center; gap: 10px;
-      background: rgba(12,17,46,.92);
-      border: 1px solid rgba(100,130,220,.28);
-      border-radius: 44px; padding: 6px 18px 7px; flex-shrink: 0;
-    }
-    .ef-anchor__icon { font-size: 20px; flex-shrink: 0; }
-    .ef-anchor__body { flex: 1; min-width: 0; text-align: center; }
-    .ef-anchor__time { font-family: var(--cond); font-size: 9px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.38); display: block; }
-    .ef-anchor__name { font-family: 'Bebas Neue', var(--cond); font-size: 17px; letter-spacing: .1em; text-transform: uppercase; color: #fff; display: block; line-height: 1.1; }
-    .ef-anchor__logos { display: flex; align-items: center; justify-content: center; gap: 7px; margin-top: 3px; flex-wrap: wrap; }
-    .ef-anchor__logo { height: 16px; width: auto; max-width: 50px; object-fit: contain; filter: brightness(0) invert(1); opacity: .7; }
-    .ef-anchor__logo[src*="gstatic"] { filter: none; border-radius: 4px; opacity: .85; }
-    .ef-anchor__logo--inv { filter: invert(1) brightness(2) !important; }
-    /* ── Logo carousel ── */
-    .ef-logo-carousel { overflow: hidden; width: 100%; margin-top: 4px; }
-    .ef-logo-track {
-      display: flex; align-items: center; gap: 18px;
+    .ef-header-wrap { flex-shrink: 0; }
+    .ef-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .ef-header__left { display: flex; align-items: baseline; gap: 8px; }
+    .ef-header__title { font-family: 'Bebas Neue', var(--cond); font-size: 24px; letter-spacing: .12em; color: #fff; line-height: 1; white-space: nowrap; }
+    .ef-header__sub { font-family: var(--cond); font-size: 8px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.3); white-space: nowrap; }
+    /* Countdown */
+    .ef-countdown { display: flex; gap: 6px; align-items: center; }
+    .ef-cd-unit { display: flex; flex-direction: column; align-items: center; }
+    .ef-cd-num { font-family: 'Bebas Neue', var(--cond); font-size: 22px; letter-spacing: .06em; color: #6aadff; line-height: 1; }
+    .ef-cd-label { font-family: var(--cond); font-size: 6px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-top: 1px; }
+    .ef-cd-sep { font-family: 'Bebas Neue', var(--cond); font-size: 18px; color: rgba(100,140,220,.3); line-height: 1; margin-bottom: 6px; }
+    /* Brand strip */
+    .ef-brand-strip { overflow: hidden; width: 100%; margin-top: 6px; border-top: 1px solid rgba(255,255,255,.06); padding-top: 5px; }
+    .ef-brand-track {
+      display: flex; align-items: center; gap: 16px;
       width: max-content;
-      animation: ef-scroll 10s linear infinite;
+      animation: ef-brand-scroll 22s linear infinite;
     }
-    .ef-logo-track:hover { animation-play-state: paused; }
-    @keyframes ef-scroll {
+    .ef-brand-track:hover { animation-play-state: paused; }
+    @keyframes ef-brand-scroll {
       0%   { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
+    .ef-blogo { height: 18px; width: 18px; object-fit: cover; border-radius: 4px; opacity: .6; flex-shrink: 0; }
+    .ef-bname { font-family: var(--cond); font-size: 8px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.35); white-space: nowrap; flex-shrink: 0; }
+    .ef-bdot { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,.15); flex-shrink: 0; }
+    /* ── Anchor pill rows ── */
+    .ef-anchor {
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      background: rgba(12,17,46,.92);
+      border: 1px solid rgba(100,130,220,.28);
+      border-radius: 44px; padding: 8px 16px; flex-shrink: 0;
+    }
+    .ef-anchor__side { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .ef-anchor__center { flex: 1; min-width: 0; text-align: center; }
+    .ef-anchor__time { font-family: var(--cond); font-size: 9px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.38); display: block; }
+    .ef-anchor__name { font-family: 'Bebas Neue', var(--cond); font-size: 17px; letter-spacing: .1em; text-transform: uppercase; color: #fff; display: block; line-height: 1.1; }
+    /* Uniform logo chip — same size/format for every anchor row */
+    .ef-plogo { width: 28px; height: 28px; flex-shrink: 0; object-fit: cover; border-radius: 7px; opacity: .92; }
+    .ef-plogo--white { object-fit: contain; padding: 5px; background: rgba(255,255,255,.12); filter: brightness(0) invert(1); opacity: .85; }
+    /* Text fallback for brands with no usable favicon */
+    .ef-pbadge { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 7px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18); flex-shrink: 0; font-family: var(--cond); font-size: 7px; font-weight: 900; letter-spacing: .04em; text-transform: uppercase; color: rgba(255,255,255,.85); text-align: center; line-height: 1.1; padding: 2px; }
+    /* Spacing control */
+    .ef-spacing-control {
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      background: rgba(10,14,40,.92); border: 1px solid rgba(100,130,220,.3);
+      border-radius: 20px; padding: 5px 12px; white-space: nowrap; flex-shrink: 0;
+      align-self: center;
+    }
+    .ef-spacing-control label { font-family: var(--cond); font-size: 8px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.4); white-space: nowrap; }
+    .ef-spacing-control input[type=range] { width: 70px; accent-color: #6aadff; cursor: pointer; }
+    .ef-spacing-val { font-family: var(--cond); font-size: 9px; font-weight: 700; color: #6aadff; min-width: 22px; text-align: right; }
     /* ── Track sections ── */
     .ef-section { display: flex; gap: 0; flex-shrink: 0; }
     .ef-section__vtag {
@@ -796,11 +829,6 @@
     .ef-panel__tlogo[src*="gstatic"] { filter: none; border-radius: 4px; opacity: .85; width: 32px; height: 20px; object-fit: cover; }
     .ef-panel__tlogo--inv { filter: invert(1) brightness(2) !important; opacity: .7 !important; }
     .ef-targets-vtag { writing-mode: vertical-rl; transform: rotate(180deg); font-family: var(--cond); font-size: 6px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.18); padding: 4px 3px; border-left: 1px solid rgba(255,255,255,.08); align-self: stretch; display: flex; align-items: center; justify-content: center; }
-    /* ── Bottom anchor (Padel & Chill) ── */
-    .ef-anchor--chill { justify-content: space-between; padding: 10px 20px; }
-    .ef-anchor--chill .ef-anchor__body { flex: initial; }
-    .ef-chill-logo { height: 20px; width: auto; max-width: 70px; object-fit: contain; filter: brightness(0) invert(1); opacity: .8; }
-    .ef-chill-logo[src*="gstatic"] { filter: none; border-radius: 4px; opacity: .9; }
 
     /* ━━━━ PAGE 7: WEEKEND ━━━━ */
     .p7 { background: var(--ink); }
@@ -1704,35 +1732,106 @@
   <!-- 6 · THE DAY -->
   <div class="page p6" data-label="The Day">
     <div class="p6-bg"></div>
+    <!-- Padel court overhead silhouette -->
+    <div class="p6-court">
+      <svg viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7ab4ff" stroke-linecap="round">
+        <!-- Outer court boundary -->
+        <rect x="4" y="4" width="472" height="212" stroke-width="3"/>
+        <!-- Back walls (double line — padel glass) -->
+        <rect x="4" y="4" width="472" height="212" stroke-width="8" stroke-opacity=".4"/>
+        <!-- Net -->
+        <line x1="240" y1="4" x2="240" y2="216" stroke-width="2.5" stroke-dasharray="5,4"/>
+        <!-- Service lines (3m from net on each side = 3/10 * half-width) -->
+        <line x1="98"  y1="4"   x2="98"  y2="216" stroke-width="1.2" stroke-opacity=".7"/>
+        <line x1="382" y1="4"   x2="382" y2="216" stroke-width="1.2" stroke-opacity=".7"/>
+        <!-- Center service line each side -->
+        <line x1="98"  y1="110" x2="240" y2="110" stroke-width="1.2" stroke-opacity=".7"/>
+        <line x1="240" y1="110" x2="382" y2="110" stroke-width="1.2" stroke-opacity=".7"/>
+        <!-- Corner glass panels (45° cuts) -->
+        <line x1="4"   y1="44"  x2="44"  y2="4"   stroke-width="1.5" stroke-opacity=".5"/>
+        <line x1="4"   y1="176" x2="44"  y2="216" stroke-width="1.5" stroke-opacity=".5"/>
+        <line x1="436" y1="4"   x2="476" y2="44"  stroke-width="1.5" stroke-opacity=".5"/>
+        <line x1="436" y1="216" x2="476" y2="176" stroke-width="1.5" stroke-opacity=".5"/>
+      </svg>
+    </div>
     <div class="p6__inner">
 
-      <!-- Header -->
-      <div class="ef-header">
-        <span class="ef-header__title">📅 Event Flow:</span>
-        <span class="ef-header__sub">Thursday · Oct 22 · Austin, TX</span>
+      <!-- Header + countdown + brand strip -->
+      <div class="ef-header-wrap">
+        <div class="ef-header">
+          <div class="ef-header__left">
+            <span class="ef-header__title">📅 Event Flow:</span>
+            <span class="ef-header__sub">Thursday · Oct 22 · Austin, TX</span>
+          </div>
+          <div class="ef-countdown" id="efCountdown">
+            <div class="ef-cd-unit"><span class="ef-cd-num" id="efDays">--</span><span class="ef-cd-label">Days</span></div>
+            <span class="ef-cd-sep">·</span>
+            <div class="ef-cd-unit"><span class="ef-cd-num" id="efHrs">--</span><span class="ef-cd-label">Hrs</span></div>
+            <span class="ef-cd-sep">·</span>
+            <div class="ef-cd-unit"><span class="ef-cd-num" id="efMin">--</span><span class="ef-cd-label">Min</span></div>
+          </div>
+        </div>
+        <!-- Scrolling brand strip -->
+        <div class="ef-brand-strip">
+          <div class="ef-brand-track" id="efBrandTrack">
+            <img class="ef-blogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.nba.com/spurs&size=64" alt="Spurs"><span class="ef-bname">Spurs</span><span class="ef-bdot"></span>
+            <img class="ef-blogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.nike.com&size=64" alt="Nike"><span class="ef-bname">Nike</span><span class="ef-bdot"></span>
+            <img class="ef-blogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.whoop.com&size=64" alt="WHOOP"><span class="ef-bname">WHOOP</span><span class="ef-bdot"></span>
+            <img class="ef-blogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://hyperice.com&size=64" alt="Hyperice"><span class="ef-bname">Hyperice</span><span class="ef-bdot"></span>
+            <span class="ef-bname">Equinox</span><span class="ef-bdot"></span>
+            <img class="ef-blogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.nutrabolt.com&size=64" alt="Nutrabolt"><span class="ef-bname">Nutrabolt</span><span class="ef-bdot"></span>
+            <span class="ef-bname">LOVB</span><span class="ef-bdot"></span>
+            <img class="ef-blogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://texassports.com&size=64" alt="UT"><span class="ef-bname">Longhorns</span><span class="ef-bdot"></span>
+            <img class="ef-blogo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124129/willpower/logos/brand-formula1-logo.svg" alt="F1" style="filter:brightness(0) invert(1);opacity:.55"><span class="ef-bname">Formula 1</span><span class="ef-bdot"></span>
+            <img class="ef-blogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.austinfc.com&size=64" alt="Austin FC"><span class="ef-bname">Austin FC</span><span class="ef-bdot"></span>
+            <img class="ef-blogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.nasa.gov&size=64" alt="NASA"><span class="ef-bname">NASA</span><span class="ef-bdot"></span>
+            <img class="ef-blogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.anduril.com&size=64" alt="Anduril"><span class="ef-bname">Anduril</span><span class="ef-bdot"></span>
+            <img class="ef-blogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.palantir.com&size=64" alt="Palantir"><span class="ef-bname">Palantir</span><span class="ef-bdot"></span>
+            <span class="ef-bname">Plunge</span><span class="ef-bdot"></span>
+            <span class="ef-bname">Texas Ranchers</span><span class="ef-bdot"></span>
+            <img class="ef-blogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.drinkpoppi.com&size=64" alt="Poppi"><span class="ef-bname">Poppi</span><span class="ef-bdot"></span>
+            <!-- duplicate set for seamless loop -->
+            <img class="ef-blogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.nba.com/spurs&size=64" alt="Spurs"><span class="ef-bname">Spurs</span><span class="ef-bdot"></span>
+            <img class="ef-blogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.nike.com&size=64" alt="Nike"><span class="ef-bname">Nike</span><span class="ef-bdot"></span>
+            <img class="ef-blogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.whoop.com&size=64" alt="WHOOP"><span class="ef-bname">WHOOP</span><span class="ef-bdot"></span>
+            <img class="ef-blogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://hyperice.com&size=64" alt="Hyperice"><span class="ef-bname">Hyperice</span><span class="ef-bdot"></span>
+            <span class="ef-bname">Equinox</span><span class="ef-bdot"></span>
+            <img class="ef-blogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.nutrabolt.com&size=64" alt="Nutrabolt"><span class="ef-bname">Nutrabolt</span><span class="ef-bdot"></span>
+            <span class="ef-bname">LOVB</span><span class="ef-bdot"></span>
+            <img class="ef-blogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://texassports.com&size=64" alt="UT"><span class="ef-bname">Longhorns</span><span class="ef-bdot"></span>
+            <img class="ef-blogo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124129/willpower/logos/brand-formula1-logo.svg" alt="F1" style="filter:brightness(0) invert(1);opacity:.55"><span class="ef-bname">Formula 1</span><span class="ef-bdot"></span>
+            <img class="ef-blogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.austinfc.com&size=64" alt="Austin FC"><span class="ef-bname">Austin FC</span><span class="ef-bdot"></span>
+            <img class="ef-blogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.nasa.gov&size=64" alt="NASA"><span class="ef-bname">NASA</span><span class="ef-bdot"></span>
+            <img class="ef-blogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.anduril.com&size=64" alt="Anduril"><span class="ef-bname">Anduril</span><span class="ef-bdot"></span>
+            <img class="ef-blogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.palantir.com&size=64" alt="Palantir"><span class="ef-bname">Palantir</span><span class="ef-bdot"></span>
+            <span class="ef-bname">Plunge</span><span class="ef-bdot"></span>
+            <span class="ef-bname">Texas Ranchers</span><span class="ef-bdot"></span>
+            <img class="ef-blogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.drinkpoppi.com&size=64" alt="Poppi"><span class="ef-bname">Poppi</span><span class="ef-bdot"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Spacing control -->
+      <div class="ef-spacing-control">
+        <label>Logo Gap</label>
+        <input type="range" id="efGapSlider" min="4" max="40" value="8">
+        <span class="ef-spacing-val" id="efGapVal">8px</span>
       </div>
 
       <!-- ANCHOR 1: Community Warm-Up -->
       <div class="ef-anchor">
-        <span class="ef-anchor__icon">🏃</span>
-        <div class="ef-anchor__body">
+        <div class="ef-anchor__side">
+          <img class="ef-plogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.nba.com/spurs&size=64" alt="Spurs">
+          <img class="ef-plogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://hyperice.com&size=64" alt="Hyperice">
+        </div>
+        <div class="ef-anchor__center">
           <span class="ef-anchor__time">10:00 AM</span>
           <span class="ef-anchor__name">Community Warm-Up</span>
-          <div class="ef-logo-carousel">
-            <div class="ef-logo-track">
-              <img class="ef-anchor__logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.nba.com/spurs&size=64" alt="Spurs">
-              <img class="ef-anchor__logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://hyperice.com&size=64" alt="Hyperice">
-              <img class="ef-anchor__logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.equinox.com&size=64" alt="Equinox">
-              <img class="ef-anchor__logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.nutrabolt.com&size=64" alt="Nutrabolt">
-              <!-- duplicate for seamless loop -->
-              <img class="ef-anchor__logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.nba.com/spurs&size=64" alt="Spurs">
-              <img class="ef-anchor__logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://hyperice.com&size=64" alt="Hyperice">
-              <img class="ef-anchor__logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.equinox.com&size=64" alt="Equinox">
-              <img class="ef-anchor__logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.nutrabolt.com&size=64" alt="Nutrabolt">
-            </div>
-          </div>
         </div>
-        <span class="ef-anchor__icon">🏃</span>
+        <div class="ef-anchor__side">
+          <span class="ef-pbadge">EQX</span>
+          <span class="ef-pbadge">NUTRA<br>BOLT</span>
+        </div>
       </div>
 
       <!-- BRANDS section -->
@@ -1779,29 +1878,18 @@
 
       <!-- ANCHOR 2: Padel w/ The Pros & Lunch -->
       <div class="ef-anchor">
-        <span class="ef-anchor__icon">🥎</span>
-        <div class="ef-anchor__body">
+        <div class="ef-anchor__side">
+          <span class="ef-pbadge">LOVB</span>
+          <img class="ef-plogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.nba.com/spurs&size=64" alt="Spurs">
+        </div>
+        <div class="ef-anchor__center">
           <span class="ef-anchor__time">1:00 PM</span>
           <span class="ef-anchor__name">Padel w/ The Pros &amp; Lunch</span>
-          <div class="ef-logo-carousel">
-            <div class="ef-logo-track">
-              <img class="ef-anchor__logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.lovb.com&size=64" alt="LOVB">
-              <span style="font-family:var(--cond);font-size:8px;font-weight:800;letter-spacing:.06em;color:rgba(255,255,255,.75);white-space:nowrap;">TEXAS RANCHERS</span>
-              <img class="ef-anchor__logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.nba.com/spurs&size=64" alt="Spurs">
-              <img class="ef-anchor__logo ef-anchor__logo--inv" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124022/willpower/logos/brand-cadillac-f1-logo.png" alt="Cadillac">
-              <img class="ef-anchor__logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://texassports.com&size=64" alt="Longhorns">
-              <img class="ef-anchor__logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124129/willpower/logos/brand-formula1-logo.svg" alt="F1">
-              <!-- duplicate for seamless loop -->
-              <img class="ef-anchor__logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.lovb.com&size=64" alt="LOVB">
-              <span style="font-family:var(--cond);font-size:8px;font-weight:800;letter-spacing:.06em;color:rgba(255,255,255,.75);white-space:nowrap;">TEXAS RANCHERS</span>
-              <img class="ef-anchor__logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.nba.com/spurs&size=64" alt="Spurs">
-              <img class="ef-anchor__logo ef-anchor__logo--inv" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124022/willpower/logos/brand-cadillac-f1-logo.png" alt="Cadillac">
-              <img class="ef-anchor__logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://texassports.com&size=64" alt="Longhorns">
-              <img class="ef-anchor__logo" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124129/willpower/logos/brand-formula1-logo.svg" alt="F1">
-            </div>
-          </div>
         </div>
-        <span class="ef-anchor__icon">🥎</span>
+        <div class="ef-anchor__side">
+          <img class="ef-plogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://texassports.com&size=64" alt="Longhorns">
+          <img class="ef-plogo ef-plogo--white" src="https://res.cloudinary.com/dtweaijj1/image/upload/v1783124129/willpower/logos/brand-formula1-logo.svg" alt="F1">
+        </div>
       </div>
 
       <!-- PERFORMANCE section -->
@@ -1848,21 +1936,18 @@
 
       <!-- ANCHOR 3: Padel & Chill -->
       <div class="ef-anchor">
-        <span class="ef-anchor__icon">🥎</span>
-        <div class="ef-anchor__body">
+        <div class="ef-anchor__side">
+          <img class="ef-plogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://hyperice.com&size=64" alt="Hyperice">
+          <span class="ef-pbadge">PLUNGE</span>
+        </div>
+        <div class="ef-anchor__center">
           <span class="ef-anchor__time">4:00 PM</span>
           <span class="ef-anchor__name">Padel &amp; Chill</span>
-          <div class="ef-logo-carousel">
-            <div class="ef-logo-track">
-              <img class="ef-anchor__logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://hyperice.com&size=64" alt="Hyperice">
-              <img class="ef-anchor__logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.plunge.com&size=64" alt="Plunge">
-              <!-- duplicate -->
-              <img class="ef-anchor__logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://hyperice.com&size=64" alt="Hyperice">
-              <img class="ef-anchor__logo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.plunge.com&size=64" alt="Plunge">
-            </div>
-          </div>
         </div>
-        <span class="ef-anchor__icon">🥎</span>
+        <div class="ef-anchor__side">
+          <img class="ef-plogo" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://hyperice.com&size=64" alt="Hyperice">
+          <span class="ef-pbadge">PLUNGE</span>
+        </div>
       </div>
 
     </div>
@@ -2606,6 +2691,42 @@
       });
     }
   }
+</script>
+<script>
+  // Countdown to Oct 22 2026 9:00 AM CT
+  (function() {
+    const target = new Date('2026-10-22T09:00:00-05:00').getTime();
+    function tick() {
+      const now = Date.now();
+      const diff = target - now;
+      if (diff <= 0) { document.getElementById('efCountdown').style.display='none'; return; }
+      const days = Math.floor(diff / 86400000);
+      const hrs  = Math.floor((diff % 86400000) / 3600000);
+      const min  = Math.floor((diff % 3600000)  / 60000);
+      document.getElementById('efDays').textContent = days;
+      document.getElementById('efHrs').textContent  = String(hrs).padStart(2,'0');
+      document.getElementById('efMin').textContent  = String(min).padStart(2,'0');
+    }
+    tick();
+    setInterval(tick, 30000);
+  })();
+</script>
+<script>
+  (function() {
+    const slider = document.getElementById('efGapSlider');
+    const val = document.getElementById('efGapVal');
+    if (!slider) return;
+    function applyGap(px) {
+      val.textContent = px + 'px';
+      document.querySelectorAll('.ef-anchor').forEach(row => {
+        row.style.gap = px + 'px';
+      });
+      document.querySelectorAll('.ef-anchor__side').forEach(side => {
+        side.style.gap = px + 'px';
+      });
+    }
+    slider.addEventListener('input', () => applyGap(slider.value));
+  })();
 </script>
 </body>
 </html>
