@@ -1,8 +1,9 @@
 # Willpower World of Sports — F1 Austin GP 2026
 
-Sponsorship deck for the **Willpower World of Sports** event at the Formula 1 United States Grand Prix, Austin TX — October 2026.
+Sponsorship deck for **The World of Sports Summit** by Willpower, at the Formula 1
+United States Grand Prix, Austin TX (COTA) — October 22, 2026.
 
-**Live site:** [willpowerworldofsports.netlify.app](https://willpowerworldofsports.netlify.app)
+**Live site:** [willpowerworldofsports.netlify.app/world-of-sports-2026.html](https://willpowerworldofsports.netlify.app/world-of-sports-2026.html)
 
 ---
 
@@ -10,80 +11,98 @@ Sponsorship deck for the **Willpower World of Sports** event at the Formula 1 Un
 
 | File / Folder | Description |
 |---|---|
-| `world-of-sports-2026.html` | The full sponsorship deck (single-file, multi-page) |
-| `WH Thumbnails/` | Event photos, sponsor logos, and agenda images |
-| `Educational Content Path/` | Willpower brand assets (logo, etc.) |
+| `world-of-sports-2026.html` | The full sponsorship deck — one self-contained file (HTML + inline CSS + JS) |
+| `cota-bg.jpg` | Blurred COTA track photo used as the site-wide background |
+| `WH Thumbnails/` | Event photos, podium/tier images, textures |
+| `Educational Content Path/assets/logos/` | Local brand logos used in the deck (e.g. `aescape.png`) |
+
+> **Note:** most partner logos load from Willpower's logo database over Cloudinary
+> (`willpowerhq.com/data/logos.json`), so they work anywhere. A handful of logos and
+> the `cota-bg.jpg` background are local files — they must stay in the repo for the
+> deck to display correctly.
 
 ---
 
-## Deck Pages
+## Deck pages
 
-1. **Overview** — Event summary and value proposition
-2. **Brand Carousel** — Scrolling partner logo wall
-3. **New for 2026** — What's new this year
-4. **The Audience** — Attendee demographics and reach
-5. **The Community** — Sponsor tier carousel (Iconic / Enterprise / Growth / VC-Backed)
-6. **Activations** — Why we're doing this — 4 partnership pillars
-7. **The Day** — Run of show / agenda
-8. **The Weekend** — Full weekend programming breakdown
-9. **Sponsorship** — Tier packages and pricing
-10. **Past Events** — Photo highlights from previous activations
-11. **Partner** — Become a partner CTA
+Navigate with the on-screen dots, the ◄ / ► buttons, or the arrow keys. Nine slides, in order:
+
+1. **Overview** — Hero, key stats (attendees, brand revenue, venue)
+2. **Our Network** — Auto-scrolling wall of partner brand logos
+3. **New for 2026** — Marquee "podium" moments (Tom Brady × Aescape, Longevity Lounge, CPG Market, F1 Paddock Club)
+4. **The Audience** — Who's in the room: value channels, titles, segments
+5. **Why We're Here** — The three partnership pillars
+6. **Itinerary** — Full run-of-day schedule + activations
+7. **Sponsorship** — Four tiers: Title, Platinum, Gold, Silver
+8. **Past Events** — Track record, laid out as a race circuit
+9. **Partner** — Call to action + contact
 
 ---
 
-## Making changes
+## Preview locally
 
-Edit `world-of-sports-2026.html` directly (or have Claude Code do it), then push to `main` — Netlify auto-deploys within ~30 seconds.
+The deck loads local images, so serve it over a local web server (don't just double-click the file):
 
 ```bash
-git add world-of-sports-2026.html
-git commit -m "your change description"
+cd "path/to/repo"
+python3 -m http.server 8080
+# visit http://localhost:8080/world-of-sports-2026.html
+```
+
+---
+
+## Making changes & deploying
+
+Edit `world-of-sports-2026.html` (or have Claude Code do it), then commit and push —
+Netlify auto-deploys from `main` within ~30 seconds.
+
+```bash
+git add world-of-sports-2026.html cota-bg.jpg "WH Thumbnails" "Educational Content Path"
+git commit -m "describe your change"
 git push
 ```
+
+> ⚠️ **Do not commit the large video files.** The working folder contains multi-GB
+> `.mov` recordings (e.g. `Full panel.mov`) that must never be pushed — they exceed
+> GitHub/Netlify limits and will break deploys. Add them to `.gitignore`:
+>
+> ```gitignore
+> # Large media — do not deploy
+> *.mov
+> *.band
+> *.zip
+> ```
+>
+> Commit only the deck and its image assets (the folders listed above).
 
 ---
 
 ## Editing with Claude Code
 
-The fastest way to make changes is to use **Claude Code**, Anthropic's AI coding assistant, which can edit the deck for you via chat.
-
-### Setup (one time)
+The fastest way to update the deck is with **Claude Code** — describe the change in
+plain English and it edits `world-of-sports-2026.html` for you.
 
 1. Install Claude Code: [claude.ai/code](https://claude.ai/code)
-2. Clone this repo to your computer:
+2. Clone and open the repo:
    ```bash
    git clone https://github.com/events-willpower/willpowerworldofsports.git
    cd willpowerworldofsports
    ```
-3. Open Claude Code in that folder
-
-### Making edits
-
-1. Open Claude Code in the `willpowerworldofsports` folder
-2. Describe the change you want in plain English, for example:
-   - *"Change the headline on the Overview page to..."*
-   - *"Add Nike to the Iconic tier on The Community page"*
-   - *"Update the sponsorship pricing on the Sponsorship page"*
-3. Claude Code will edit `world-of-sports-2026.html` for you
-4. Push the changes live:
-   ```bash
-   git add world-of-sports-2026.html
-   git commit -m "describe your change"
-   git push
-   ```
-5. The live site updates automatically within ~30 seconds
+3. Ask for changes, e.g.:
+   - *"Change the Overview headline to..."*
+   - *"Add a brand to the logo wall on page 2"*
+   - *"Update the Platinum tier pricing on the Sponsorship page"*
+4. Commit and push (see above). The live site updates automatically.
 
 ---
 
 ## Adding collaborators
 
-GitHub: **Settings → Collaborators → Add people** (invite by email or username)
-
-Netlify: **[app.netlify.com/projects/willpowerworldofsports](https://app.netlify.com/projects/willpowerworldofsports) → Team settings → Members**
+- **GitHub:** Settings → Collaborators → Add people
+- **Netlify:** [app.netlify.com/projects/willpowerworldofsports](https://app.netlify.com/projects/willpowerworldofsports) → Team → Members
 
 ---
 
 ## Contact
 
-Events: [events@drinkwillpower.com](mailto:events@drinkwillpower.com)
+[events@drinkwillpower.com](mailto:events@drinkwillpower.com)
