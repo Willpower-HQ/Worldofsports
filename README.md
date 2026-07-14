@@ -1,4 +1,3 @@
-[README.md](https://github.com/user-attachments/files/30015310/README.md)
 # Willpower — The World of Sports Summit (F1 Austin GP 2026)
 
 Sponsorship deck for **The World of Sports Summit** by Willpower, held during the
