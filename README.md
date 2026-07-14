@@ -1,5 +1,5 @@
-[README.md](https://github.com/user-attachments/files/30015059/README.md)
-# Worldofsports# Willpower World of Sports — F1 Austin GP 2026
+[README.md](https://github.com/user-attachments/files/30015127/README.md)
+# Willpower World of Sports — F1 Austin GP 2026
 
 Sponsorship deck for **The World of Sports Summit** by Willpower, at the Formula 1
 United States Grand Prix, Austin TX (COTA) — October 22, 2026.
