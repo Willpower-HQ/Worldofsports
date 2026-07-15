@@ -267,6 +267,14 @@
     .btn--red { background: var(--red); color: #fff; }
     .btn--red:hover { opacity: .88; transform: translateY(-1px); }
 
+    /* Hero proof rail: real photos from Wellness House '26 + World of Sports */
+    .p1__proof { margin-top: 30px; }
+    .p1__proof .label { justify-content: center; margin-bottom: 12px; }
+    .p1__photos { display: flex; justify-content: center; align-items: stretch; gap: 10px; flex-wrap: wrap; }
+    .p1__photos img { height: clamp(84px, 13vh, 132px); width: auto; object-fit: cover; border-radius: 10px; border: 1px solid rgba(255,255,255,.14); box-shadow: 0 10px 30px rgba(0,0,0,.45); }
+    @media (max-width: 760px) { .p1__proof { margin-top: 22px; } .p1__photos img { height: 74px; border-radius: 8px; } }
+    @media (max-height: 760px) { .p1__photos img { height: 76px; } }
+
     /* Hero action buttons: transparent with strong colored glow on hover */
     .p1__actions .btn { border: 1.5px solid; transition: all .3s cubic-bezier(0.4,0,0.2,1); }
     .p1__actions .btn--blue { background: transparent; color: var(--blue); border-color: rgba(123,170,212,.6); }
@@ -1187,6 +1195,16 @@
         <button class="btn btn--blue" onclick="goTo(6)">View Sponsorship →</button>
         <button class="btn btn--ghost" onclick="goTo(5)">See the Agenda</button>
         <button class="btn btn--red" onclick="goTo(7)">Past Events →</button>
+      </div>
+      <div class="p1__proof">
+        <div class="label">Wellness House ’26 · World of Sports</div>
+        <div class="p1__photos">
+          <img src="WH Thumbnails/wh26-venue-wide.jpg" alt="Wellness House 2026: rooftop panel in front of a full crowd">
+          <img src="WH Thumbnails/wh26-panel-discussion.jpg" alt="Wellness House 2026 panel discussion">
+          <img src="WH Thumbnails/paddock-club-1.jpg" alt="Circuit of the Americas at sunset">
+          <img src="WH Thumbnails/wh26-morning-run.jpg" alt="Sunrise run at Wellness House">
+          <img src="WH Thumbnails/spon-platinum-real2-small.jpg" alt="World of Sports panel through the camera monitor">
+        </div>
       </div>
     </div>
   </div>
