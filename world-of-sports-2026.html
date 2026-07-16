@@ -992,14 +992,15 @@
       padding: 4px 12px; border-radius: 20px;
     }
     .spt--title .spt__badge { color: var(--blue); border-color: rgba(123,170,212,.4); background: rgba(123,170,212,.1); }
-    .spt__price { font-family: var(--serif); font-size: 42px; font-weight: 500; color: var(--white); line-height: 1; letter-spacing: -.01em; }
+    .spt__price { font-family: var(--serif); font-size: 48px; font-weight: 600; color: var(--white); line-height: 1; letter-spacing: -.01em; }
+    .spt__cur { font-size: .5em; position: relative; top: -.5em; margin-right: 2px; opacity: .9; }
     .spt--title .spt__price { color: var(--blue); }
     .spt__limit { font-size: 12px; color: rgba(255,255,255,.3); margin-top: 4px; }
     /* perks list crossfades with the photo reveal on hover, sharing the same footprint */
     .spt__perks-wrap { position: relative; flex: 1; min-height: 0; }
-    .spt__perks { list-style: none; display: flex; flex-direction: column; gap: 9px; transition: opacity .3s ease; }
+    .spt__perks { list-style: none; display: flex; flex-direction: column; gap: 11px; transition: opacity .3s ease; }
     .spt__perks li { font-size: 13px; color: var(--muted); line-height: 1.45; display: flex; gap: 8px; align-items: flex-start; }
-    .spt__perks li::before { content: ' '; color: rgba(255,255,255,.18); flex-shrink: 0; font-size: 13px; margin-top: 2px; }
+    .spt__perks li::before { content: '\2713'; flex-shrink: 0; width: 15px; height: 15px; border-radius: 50%; border: 1px solid currentColor; color: rgba(255,255,255,.35); font-size: 9px; font-weight: 700; line-height: 15px; text-align: center; margin-top: 2px; }
     .spt--title .spt__perks li::before { color: rgba(123,170,212,.5); }
     .spt__photos {
       position: absolute; inset: 0; display: flex; flex-direction: column; gap: 6px;
@@ -1472,7 +1473,7 @@
             <div class="spt__body">
               <div class="spt__badge">Title / Presenting</div>
               <div>
-                <div class="spt__price">$125k+</div>
+                <div class="spt__price"><span class="spt__cur">$</span>125k+</div>
                 <div class="spt__limit">1–2 brands only</div>
               </div>
               <div class="spt__perks-wrap">
@@ -1494,7 +1495,7 @@
           <div class="spt spt--platinum">
             <div class="spt__body">
               <div class="spt__badge">Platinum</div>
-              <div><div class="spt__price">$50k+</div></div>
+              <div><div class="spt__price"><span class="spt__cur">$</span>50k+</div></div>
               <div class="spt__perks-wrap">
                 <ul class="spt__perks">
                   <li>Headline partner both tracks</li>
@@ -1513,7 +1514,7 @@
           <div class="spt spt--gold">
             <div class="spt__body">
               <div class="spt__badge">Gold</div>
-              <div><div class="spt__price">$35k</div></div>
+              <div><div class="spt__price"><span class="spt__cur">$</span>35k</div></div>
               <div class="spt__perks-wrap">
                 <ul class="spt__perks">
                   <li>Featured panel seat</li>
@@ -1532,7 +1533,7 @@
           <div class="spt spt--silver">
             <div class="spt__body">
               <div class="spt__badge">Silver / Activation</div>
-              <div><div class="spt__price">$15–25k</div></div>
+              <div><div class="spt__price"><span class="spt__cur">$</span>15–25k</div></div>
               <div class="spt__perks-wrap">
                 <ul class="spt__perks">
                   <li>Booth / wellness activation</li>
