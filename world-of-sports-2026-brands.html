@@ -785,8 +785,8 @@
     .lineup { display: flex; flex-direction: column; padding: 30px 40px 34px; box-sizing: border-box;
       max-width: 1380px; margin: 0 auto; width: 100%; position: relative; z-index: 2; }
     .lineup__head { text-align: center; margin-bottom: 16px; }
-    .lineup__grid { display: grid; grid-template-columns: minmax(0,1fr) 330px; gap: 18px; align-items: start; }
-    .lineup__timeline { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+    .lineup__grid { display: grid; grid-template-columns: minmax(0,1fr) 330px; gap: 18px; align-items: stretch; }
+    .lineup__timeline { display: flex; flex-direction: column; gap: 8px; min-width: 0; justify-content: space-between; }
 
     /* rows */
     .lu-row { display: grid; grid-template-columns: 64px 2px minmax(0,1fr) auto; gap: 0 14px;
@@ -823,6 +823,39 @@
     .rail-card__desc { font-size: 11.5px; font-weight: 500; color: #d3d4da; line-height: 1.4; }
     .rail-card__logos { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-top: 2px; }
 
+
+    /* lineup motion + marquee highlight */
+    .lu-row { transition: transform .25s ease, filter .25s ease; }
+    .lu-row:hover { transform: translateX(6px); filter: brightness(1.14); }
+    .rail-card { transition: transform .25s ease, box-shadow .25s ease, filter .25s ease; }
+    .rail-card:hover { transform: translateY(-3px); filter: brightness(1.1); }
+    .lineup__rail > .rail-card:nth-of-type(2) { background: linear-gradient(135deg, rgba(120,150,234,.13), rgba(255,255,255,.02)); box-shadow: 0 0 22px rgba(120,150,234,.18); }
+    .lineup__rail > .rail-card:nth-of-type(3) { background: linear-gradient(135deg, rgba(53,196,106,.12), rgba(255,255,255,.02)); box-shadow: 0 0 22px rgba(53,196,106,.16); }
+    .lineup__rail > .rail-card:nth-of-type(4) { background: linear-gradient(135deg, rgba(160,139,255,.13), rgba(255,255,255,.02)); box-shadow: 0 0 22px rgba(160,139,255,.18); }
+    .lineup__rail > .rail-card:nth-of-type(5) { background: linear-gradient(135deg, rgba(231,38,28,.12), rgba(255,255,255,.02)); box-shadow: 0 0 22px rgba(231,38,28,.15); }
+    .lineup__rail > .rail-card:nth-of-type(6) { background: linear-gradient(135deg, rgba(245,208,0,.10), rgba(255,255,255,.02)); box-shadow: 0 0 22px rgba(245,208,0,.13); }
+    @keyframes luIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+    .page.active .lu-row, .page.active .lu-break { animation: luIn .45s cubic-bezier(.4,0,.2,1) backwards; }
+    .page.active .lineup__timeline > :nth-child(1) { animation-delay: 0.04s; }
+    .page.active .lineup__timeline > :nth-child(2) { animation-delay: 0.08s; }
+    .page.active .lineup__timeline > :nth-child(3) { animation-delay: 0.12s; }
+    .page.active .lineup__timeline > :nth-child(4) { animation-delay: 0.16s; }
+    .page.active .lineup__timeline > :nth-child(5) { animation-delay: 0.20s; }
+    .page.active .lineup__timeline > :nth-child(6) { animation-delay: 0.24s; }
+    .page.active .lineup__timeline > :nth-child(7) { animation-delay: 0.28s; }
+    .page.active .lineup__timeline > :nth-child(8) { animation-delay: 0.32s; }
+    .page.active .lineup__timeline > :nth-child(9) { animation-delay: 0.36s; }
+    .page.active .lineup__timeline > :nth-child(10) { animation-delay: 0.40s; }
+    .page.active .lineup__timeline > :nth-child(11) { animation-delay: 0.44s; }
+    .page.active .rail-card { animation: luIn .45s cubic-bezier(.4,0,.2,1) backwards; }
+    .page.active .lineup__rail > .rail-card:nth-of-type(2) { animation-delay: 0.30s; }
+    .page.active .lineup__rail > .rail-card:nth-of-type(3) { animation-delay: 0.36s; }
+    .page.active .lineup__rail > .rail-card:nth-of-type(4) { animation-delay: 0.42s; }
+    .page.active .lineup__rail > .rail-card:nth-of-type(5) { animation-delay: 0.48s; }
+    .page.active .lineup__rail > .rail-card:nth-of-type(6) { animation-delay: 0.54s; }
+    .lu-logos img { max-width: 130px; }
+    .rail-card__logos img { max-width: 100px; }
+    @media (prefers-reduced-motion: reduce) { .lu-row, .lu-break, .rail-card { animation: none !important; } }
     @media (max-width: 1080px) {
       .p-itinerary { overflow-y: auto !important; }
       .lineup { padding: 26px 16px 44px; }
@@ -1337,7 +1370,7 @@
             <div class="pod-card__watermark">5</div>
             <div class="pod-card__logo" style="margin-bottom:auto;padding-bottom:10px;"><span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#bcaaff;border:1px solid rgba(160,139,255,.45);border-radius:4px;padding:5px 12px;">Powered by Ghost Lab</span></div>
             <div class="pod-card__title">The Lab</div>
-            <p class="pod-card__desc">Ghost Lab curates the elite tier of human performance tech: wearables, neurostim and recovery gear you can't buy yet, live and hands-on. Built with Anthropy Partners &times; Ghost Lab.</p>
+            <p class="pod-card__desc">Ghost Lab curates the elite tier of human performance tech: wearables, neurostim and recovery gear you can't buy yet, live and hands-on. Built with Anthropy Partners.</p>
             <div class="pod-card__gallery">
               <img src="WH Thumbnails/agenda-tech-playground.jpg" alt="Performance tech playground">
               <img src="WH Thumbnails/agenda-recovery-zone.jpg" alt="Recovery tech zone">
@@ -1450,7 +1483,7 @@
           <div class="lu-row lu-row--panel" style="background:linear-gradient(90deg,rgba(53,196,106,.12),rgba(255,255,255,.02));border:1px solid rgba(53,196,106,.55);"><div class="lu-time">1:45</div><div class="lu-sep" style="background:rgba(53,196,106,.55);"></div><div class="lu-main"><div class="lu-title" style="color:#35C46A;">&#9733; Panel 4 &middot; Tom Brady &times; Aescape</div><div class="lu-desc">A fireside on longevity as the next brand frontier, and the live reveal of the Brady Protocol.</div></div><div class="lu-logos"><img src="Educational Content Path/assets/logos/aescape.png" alt="" style="height:18px;width:auto;object-fit:contain;flex-shrink:0;"><img src="https://willpowerhq.com/assets/logos/brand-hilton-logo.svg" alt="" style="height:20px;width:auto;object-fit:contain;flex-shrink:0;filter:brightness(0) invert(1);"><img src="Educational Content Path/assets/logos/tb12.png" alt="" style="height:28px;width:auto;object-fit:contain;flex-shrink:0;"></div></div>
           <div class="lu-row lu-row--panel" style="background:linear-gradient(90deg,rgba(245,208,0,.10),rgba(255,255,255,.02));border:1px solid rgba(245,208,0,.5);"><div class="lu-time">2:45</div><div class="lu-sep" style="background:rgba(245,208,0,.5);"></div><div class="lu-main"><div class="lu-title" style="color:#F5D000;">Panel 5 &middot; From Viral to Reliable</div><div class="lu-desc">Going viral is easy; staying alive isn't. The winners nail the boring stuff first.</div></div><div class="lu-logos"><img src="Educational Content Path/assets/logos/ghost.png" alt="" style="height:24px;width:auto;object-fit:contain;flex-shrink:0;"><img src="Educational Content Path/assets/logos/ammortal.png" alt="" style="height:14px;width:auto;object-fit:contain;flex-shrink:0;"><img src="Educational Content Path/assets/logos/everydaydose.png" alt="" style="height:24px;width:auto;object-fit:contain;flex-shrink:0;"></div></div>
           <div class="lu-row lu-row--panel" style="background:linear-gradient(90deg,rgba(245,208,0,.10),rgba(255,255,255,.02));border:1px solid rgba(245,208,0,.5);"><div class="lu-time">3:30</div><div class="lu-sep" style="background:rgba(245,208,0,.5);"></div><div class="lu-main"><div class="lu-title" style="color:#F5D000;">Panel 6 &middot; Brand Is the Moat</div><div class="lu-desc">Brand is the only moat that compounds. What sport and wellness figured out first.</div></div><div class="lu-logos"><img src="Educational Content Path/assets/logos/hyperice.png" alt="" style="height:14px;width:auto;object-fit:contain;flex-shrink:0;"><img src="Educational Content Path/assets/logos/whoop.png" alt="" style="height:14px;width:auto;object-fit:contain;flex-shrink:0;"></div></div>
-          <div class="lu-row lu-row--fill" style="background:linear-gradient(90deg,#8f1f18,#d6362a);box-shadow:0 0 22px rgba(231,38,28,.45);"><div class="lu-time lu-time--fill">4:15</div><div class="lu-sep lu-sep--fill"></div><div class="lu-main"><div class="lu-title lu-title--fill">Closing Remarks</div><div class="lu-desc lu-desc--fill">Padel with the pros &middot; presented by C&icirc;roc</div></div><div class="lu-logos"><img src="Educational Content Path/assets/logos/ciroc.png" alt="" style="height:18px;width:auto;object-fit:contain;flex-shrink:0;"></div></div>
+          <div class="lu-row lu-row--fill" style="background:linear-gradient(90deg,#8f1f18,#d6362a);box-shadow:0 0 22px rgba(231,38,28,.45);"><div class="lu-time lu-time--fill">4:15</div><div class="lu-sep lu-sep--fill"></div><div class="lu-main"><div class="lu-title lu-title--fill">Closing Remarks</div><div class="lu-desc lu-desc--fill">Presented by C&icirc;roc</div></div><div class="lu-logos"><img src="Educational Content Path/assets/logos/ciroc.png" alt="" style="height:18px;width:auto;object-fit:contain;flex-shrink:0;"></div></div>
         </div>
         <aside class="lineup__rail">
           <div class="rail__head">
@@ -1459,9 +1492,9 @@
           </div>
           <div class="rail-card" style="border-left:3px solid #7896EA;"><div class="rail-card__title" style="color:#7896EA;">&#9733; Longevity Lounge</div><div class="rail-card__desc">Recovery, biometrics, and body reset. You'll feel it by lunch.</div><div class="rail-card__logos"><img src="Educational Content Path/assets/logos/aescape.png" alt="" style="height:15px;width:auto;object-fit:contain;flex-shrink:0;"><img src="Educational Content Path/assets/logos/ammortal.png" alt="" style="height:10px;width:auto;object-fit:contain;flex-shrink:0;"><img src="https://willpowerhq.com/assets/logos/brand-hilton-logo.svg" alt="" style="height:16px;width:auto;object-fit:contain;flex-shrink:0;filter:brightness(0) invert(1);"><img src="Educational Content Path/assets/logos/hyperice.png" alt="" style="height:10px;width:auto;object-fit:contain;flex-shrink:0;"><img src="Educational Content Path/assets/logos/kohler.png" alt="" style="height:15px;width:auto;object-fit:contain;flex-shrink:0;"></div></div>
           <div class="rail-card" style="border-left:3px solid #35C46A;"><div class="rail-card__title" style="color:#35C46A;">Wellness Bodega</div><div class="rail-card__desc">The brands winning right now. Taste everything, take notes.</div><div class="rail-card__logos"><img src="Educational Content Path/assets/logos/bloom.png" alt="" style="height:14px;width:auto;object-fit:contain;flex-shrink:0;"><img src="https://willpowerhq.com/assets/logos/brand-ag1-hq.png" alt="" style="height:16px;width:auto;object-fit:contain;flex-shrink:0;filter:brightness(0) invert(1);"><img src="https://willpowerhq.com/assets/logos/brand-david-protein-logo.png" alt="" style="height:13px;width:auto;object-fit:contain;flex-shrink:0;"><img src="Educational Content Path/assets/logos/cymbiotika.png" alt="" style="height:22px;width:auto;object-fit:contain;flex-shrink:0;"><img src="Educational Content Path/assets/logos/ketoneiq.png" alt="" style="height:16px;width:auto;object-fit:contain;flex-shrink:0;"></div></div>
-          <div class="rail-card" style="border-left:3px solid #A08BFF;"><div class="rail-card__title" style="color:#A08BFF;">The Lab</div><div class="rail-card__tag">Powered by Ghost Lab</div><div class="rail-card__desc">Ghost Lab curates the elite tier of human performance tech. Wearables, neurostim and recovery hardware you can't buy yet, live and hands-on, with Anthropy Partners &times; Ghost Lab.</div><div class="rail-card__logos"><img src="Educational Content Path/assets/logos/evolv.png" alt="" style="height:13px;width:auto;object-fit:contain;flex-shrink:0;"><img src="https://willpowerhq.com/assets/logos/brand-neurable-logo.png" alt="" style="height:13px;width:auto;object-fit:contain;flex-shrink:0;filter:brightness(0) invert(1);"><img src="Educational Content Path/assets/logos/shiftwave.png" alt="" style="height:18px;width:auto;object-fit:contain;flex-shrink:0;"><img src="Educational Content Path/assets/logos/neuronic.png" alt="" style="height:14px;width:auto;object-fit:contain;flex-shrink:0;"></div></div>
+          <div class="rail-card" style="border-left:3px solid #A08BFF;"><div class="rail-card__title" style="color:#A08BFF;">The Lab</div><div class="rail-card__tag">Powered by Ghost Lab</div><div class="rail-card__desc">Ghost Lab curates the elite tier of human performance tech. Wearables, neurostim and recovery hardware you can't buy yet, live and hands-on, with Anthropy Partners.</div><div class="rail-card__logos"><img src="Educational Content Path/assets/logos/evolv.png" alt="" style="height:13px;width:auto;object-fit:contain;flex-shrink:0;"><img src="https://willpowerhq.com/assets/logos/brand-neurable-logo.png" alt="" style="height:13px;width:auto;object-fit:contain;flex-shrink:0;filter:brightness(0) invert(1);"><img src="Educational Content Path/assets/logos/shiftwave.png" alt="" style="height:18px;width:auto;object-fit:contain;flex-shrink:0;"><img src="Educational Content Path/assets/logos/neuronic.png" alt="" style="height:14px;width:auto;object-fit:contain;flex-shrink:0;"></div></div>
           <div class="rail-card" style="border-left:3px solid #E7261C;"><div class="rail-card__title" style="color:#E7261C;">VIP Paddock</div><div class="rail-card__desc">You're not in the stands. You're in the paddock.</div><div class="rail-card__logos"><img src="Educational Content Path/assets/logos/cadillac-f1.png" alt="" style="height:24px;width:auto;object-fit:contain;flex-shrink:0;"><span style="color:#6b6c72;font-size:11px;">or</span><img src="Educational Content Path/assets/logos/williams.png" alt="" style="height:14px;width:auto;object-fit:contain;flex-shrink:0;"><span style="color:#6b6c72;font-size:11px;">or</span><img src="Educational Content Path/assets/logos/revolut-f1-w.png" alt="" style="height:16px;width:auto;object-fit:contain;flex-shrink:0;"></div></div>
-          <div class="rail-card" style="border-left:3px solid #F5D000;"><div class="rail-card__title" style="color:#F5D000;">&#9733; VVIP Dinner</div><div class="rail-card__tag">Select Experience &middot; Invite Only</div><div class="rail-card__desc">Celebrity chef experience with Sweetgreen. A separate, invite-only evening for Title &amp; Platinum guests.</div><div class="rail-card__logos"><img src="Educational Content Path/assets/logos/sweetgreen.png" alt="" style="height:13px;width:auto;object-fit:contain;flex-shrink:0;filter:brightness(0) invert(1);"></div></div>
+          <div class="rail-card" style="border-left:3px solid #F5D000;"><div class="rail-card__title" style="color:#F5D000;">&#9733; VVIP Dinner</div><div class="rail-card__tag">Select Experience &middot; Invite Only</div><div class="rail-card__desc">Celebrity chef experience with Sweetgreen, for Title &amp; Platinum guests.</div><div class="rail-card__logos"><img src="Educational Content Path/assets/logos/sweetgreen.png" alt="" style="height:13px;width:auto;object-fit:contain;flex-shrink:0;filter:brightness(0) invert(1);"></div></div>
         </aside>
       </div>
     </div>
