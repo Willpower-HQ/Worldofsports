@@ -9,10 +9,6 @@ with all CSS and JavaScript inlined. No build step, no dependencies.
 **Current live version (draft):**
 [6a56581979f0ad41d0d209d8--willpowerworldofsports.netlify.app/world-of-sports-2026.html](https://6a56581979f0ad41d0d209d8--willpowerworldofsports.netlify.app/world-of-sports-2026.html)
 
-> ⚠️ The main URL (`willpowerworldofsports.netlify.app`) is **not** current — the
-> account's Netlify auto-deploy is paused by a billing cap ("credit usage exceeded").
-> Until that's cleared in the Netlify dashboard, share the **draft link** above, which
-> is redeployed on every change.
 
 ---
 
