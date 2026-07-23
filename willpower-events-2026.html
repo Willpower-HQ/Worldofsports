@@ -146,7 +146,9 @@
     .hs__val--wh  { color: var(--wh); }
     .hs__val--cat { color: var(--cat); }
     .hs__val--wos { color: var(--wos); }
-    .hs__lbl { font-size: 11px; color: rgba(255,255,255,.38); margin-top: 2px; }
+    .hs__lbl { font-size: 11px; color: rgba(255,255,255,.38); margin-top: 6px; display: block; }
+    .hs--logo { display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; }
+    .hs--logo img { width: auto; object-fit: contain; display: block; }
     .hero__actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 32px; }
     .hero__photos { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
     .hero__photos img { height: clamp(80px, 12vh, 122px); width: auto; object-fit: cover;
@@ -337,6 +339,17 @@
     .chap__heroshot img { width: 100%; height: 100%; max-height: 58vh; object-fit: cover; object-position: center 20%; display: block; }
     @media (max-width: 900px) { .chap--split .chap__body { grid-template-columns: 1fr; } .chap__heroshot { max-width: 420px; } }
 
+
+    /* ── generated abstract backdrops ── */
+    .page--hero::before, .page--cta::before, .sp--wh::before, .sp--cat::before, .sp--wos::before {
+      content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background-size: cover; background-position: center; background-repeat: no-repeat; }
+    .page--hero::before { background-image: linear-gradient(180deg, rgba(8,9,14,.62) 0%, rgba(8,9,14,.42) 50%, rgba(8,9,14,.78) 100%), url('art/abstract-blue.jpg'); }
+    .sp--wh::before  { background-image: linear-gradient(180deg, rgba(8,9,14,.78) 0%, rgba(8,9,14,.62) 55%, rgba(8,9,14,.85) 100%), url('art/abstract-sage.jpg'); }
+    .sp--cat::before { background-image: linear-gradient(180deg, rgba(8,9,14,.78) 0%, rgba(8,9,14,.62) 55%, rgba(8,9,14,.85) 100%), url('art/abstract-blue.jpg'); }
+    .sp--wos::before { background-image: linear-gradient(180deg, rgba(8,9,14,.78) 0%, rgba(8,9,14,.62) 55%, rgba(8,9,14,.85) 100%), url('art/abstract-red.jpg'); }
+    .page--cta::before { background-image: linear-gradient(180deg, rgba(8,9,14,.66) 0%, rgba(8,9,14,.5) 55%, rgba(8,9,14,.8) 100%), url('art/abstract-blue.jpg'); }
+
     /* ── track record + sponsor wall ── */
     .wall { margin-top: 26px; text-align: center; }
     .wall__label { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: .16em;
@@ -383,16 +396,42 @@
 <div class="pages-wrap">
 
   <!-- 1 · HERO -->
-  <div class="page active" data-label="Overview">
+  <div class="page page--hero active" data-label="Overview">
     <div class="hero__body">
       <img class="hero__bird" src="https://willpowerhq.com/assets/logos/willpower-logo-white.png" alt="Willpower" style="height:58px;">
       <div class="hero__kicker">Willpower · Sponsorship &amp; Partnership · 2026</div>
       <h1 class="hero__h1">The 2026 <em>season</em></h1>
       <div class="hero__note"><span class="hand">three series · one network</span></div>
       <div class="hero__stats">
-        <div class="hs"><span class="hs__val hs__val--wh">Wellness House</span><span class="hs__lbl">The flagship · SXSW · March</span></div>
-        <div class="hs"><span class="hs__val hs__val--cat">The Wellness Lounge</span><span class="hs__lbl">Catalyst Series · NYC + ATX · year-round</span></div>
-        <div class="hs"><span class="hs__val hs__val--wos">World of Sports</span><span class="hs__lbl">The marquee · F1 week · October</span></div>
+        <div class="hs hs--logo"><img src="https://willpowerhq.com/assets/logos/wh-logo-white-no-year.png" alt="Wellness House" style="height:34px;"><span class="hs__lbl">The flagship · SXSW · March</span></div>
+        <div class="hs hs--logo"><div style="font-family:var(--serif);font-size:24px;line-height:1;color:var(--white);letter-spacing:.02em;">Catalyst <em style="font-style:italic;">Series.</em><span style="display:block;font-style:italic;font-size:15px;color:var(--cat);margin-top:3px;">The Wellness Lounge</span></div><span class="hs__lbl">NYC + ATX · year-round</span></div>
+        <div class="hs hs--logo"><svg style="height:64px;width:auto;display:block;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img" aria-label="World of Sports Summit">
+  <style>
+    .wos-eyebrow {
+      font: 500 22px 'Cormorant Garamond', 'EB Garamond', Georgia, 'Times New Roman', serif;
+      letter-spacing: 0.42em;
+      fill: #faf6ee;
+    }
+    .wos-mark {
+      font: italic 400 140px 'Cormorant Garamond', 'EB Garamond', Georgia, 'Times New Roman', serif;
+      letter-spacing: -0.015em;
+      fill: #7baad4;
+    }
+    .wos-sub {
+      font: 500 14px 'Cormorant Garamond', 'EB Garamond', Georgia, 'Times New Roman', serif;
+      letter-spacing: 0.36em;
+      fill: #faf6ee;
+    }
+    .wos-rule {
+      stroke: #faf6ee;
+      stroke-width: 1.4;
+    }
+  </style>
+  <text x="360" y="62" class="wos-eyebrow" text-anchor="middle">WORLD OF</text>
+  <text x="360" y="222" class="wos-mark" text-anchor="middle">Sports.</text>
+  <line x1="240" y1="252" x2="480" y2="252" class="wos-rule"/>
+  <text x="360" y="292" class="wos-sub" text-anchor="middle">SUMMIT</text>
+</svg><span class="hs__lbl">The marquee · F1 week · October</span></div>
       </div>
       <div class="hero__actions">
         <button class="btn btn--cream" onclick="goTo(2)">The 2026 Calendar →</button>
@@ -728,7 +767,7 @@
   </div>
 
   <!-- 10 · CTA -->
-  <div class="page" data-label="Partner">
+  <div class="page page--cta" data-label="Partner">
     <div class="cta__body">
       <h2 class="cta__h">One network.<br><em>All year.</em></h2>
       <p class="cta__sub">SXSW in March. Lounges every quarter. F1 week in October. The same vetted rooms of $20M–$1BN brand leaders, compounding across three series and two cities. Season partners stack all three.</p>
