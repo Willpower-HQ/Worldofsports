@@ -84,10 +84,18 @@
     .nav__cta { font-size: 13px; font-weight: 600; letter-spacing: .04em; padding: 10px 22px;
       border-radius: var(--r); background: var(--cream); color: var(--ink); transition: opacity var(--t); }
     .nav__cta:hover { opacity: .85; }
+    .nav__pdf { font-size: 13px; font-weight: 600; letter-spacing: .04em; padding: 10px 18px;
+      border-radius: var(--r); border: 1px solid var(--border2); color: var(--cream);
+      transition: opacity var(--t); }
+    .nav__pdf:hover { opacity: .85; }
+    .nav__pdf-short { display: none; }
     @media (max-width: 640px) {
       .nav { padding: 0 16px; height: 56px; }
       .nav__dots, .nav__year { display: none; }
       .nav__cta { font-size: 12px; padding: 8px 14px; }
+      .nav__pdf { font-size: 12px; padding: 8px 12px; white-space: nowrap; }
+      .nav__pdf-full { display: none; }
+      .nav__pdf-short { display: inline; }
     }
 
     /* ── footer pager ── */
@@ -389,6 +397,7 @@
   <div class="nav__dots" id="nav-dots"></div>
   <div class="nav__right">
     <span class="nav__year">2026 Season</span>
+    <a href="Willpower-Events-2026.pdf" download class="nav__pdf"><span class="nav__pdf-full">Download PDF</span><span class="nav__pdf-short">PDF</span></a>
     <a href="mailto:bill@willpowerhq.com" class="nav__cta">Partner With Us →</a>
   </div>
 </nav>
