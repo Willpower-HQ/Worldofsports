@@ -1,0 +1,25 @@
+:root {
+  --wos-cream: #FAF6EE;
+  --wos-ink: #061B33;
+  --wos-deep-blue: #3D6FA3;
+  --wos-sky-blue: #79ABF2;
+  --wos-willpower-blue: #7694E5;
+  --wos-willpower-cream: #EFEEDE;
+  --wos-coral: #F0443A;
+  --wos-font-display: "Avenir Next Condensed", "Arial Narrow", sans-serif;
+  --wos-font-utility: "Avenir Next", Avenir, sans-serif;
+  --wos-font-editorial: Didot, "Iowan Old Style", Georgia, serif;
+  --wos-radius-small: 8px;
+  --wos-radius-panel: 24px;
+  --wos-motion-fast: 180ms;
+  --wos-motion-standard: 420ms;
+  --wos-motion-reveal: 720ms;
+}
+
+.wos-momentum-rule {
+  height: 4px;
+  border: 0;
+  background: var(--wos-coral);
+  transform: skewX(-24deg);
+  transform-origin: left center;
+}
