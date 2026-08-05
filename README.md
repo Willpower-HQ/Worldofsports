@@ -27,7 +27,7 @@ with all CSS and JavaScript inlined. No build step, no dependencies.
 
 ---
 
-## The deck (9 pages)
+## The deck (10 pages)
 
 1. **Overview** — Hero, key stats (attendees, brand revenue, venue)
 2. **Our Network** — Auto-scrolling wall of partner brand logos
@@ -37,7 +37,13 @@ with all CSS and JavaScript inlined. No build step, no dependencies.
 6. **Itinerary** — Full run-of-day schedule + activations
 7. **Sponsorship** — Four tiers: Title, Platinum, Gold, Silver
 8. **Past Events** — Track record, laid out as a race circuit
-9. **Partner** — Call to action + contact
+9. **Past Speakers** — Who has spoken at Willpower events, from `WH Thumbnails/speakers/`
+10. **Partner** — Call to action + contact
+
+The Past Speakers grid renders from the `PAST_SPEAKERS` array at the bottom of
+`world-of-sports-2026.html`. To add someone, drop a square headshot in
+`WH Thumbnails/speakers/<slug>.jpg` and add one row to that array. When the 2026 lineup
+is confirmed, swap the array for the lineup — no CSS changes needed.
 
 ### How it navigates
 
